@@ -1,0 +1,12 @@
+{
+  "nuxt.isNuxtApp": false,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "csharpier.csharpier-vscode",
+  "workbench.editor.closeOnFileDelete": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.fontFamily": "Cascadia Code,Consolas, 'Courier New', monospace",
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.tabSize": 4,
+}
