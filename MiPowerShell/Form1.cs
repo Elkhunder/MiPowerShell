@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Management.Automation;
 using Microsoft.Management.Infrastructure;
 using System.Windows.Forms;
+using MiPowerShell.Collectors;
 
 namespace MiPowerShell
 {
@@ -49,7 +50,7 @@ namespace MiPowerShell
                 newBiosPassword = (TextBox)ChildControlProvider.GetChildControlByName(parentControl, "NewBiosPassword");
                 confirmNewBiosPassword = (TextBox)ChildControlProvider.GetChildControlByName(parentControl, "ConfirmNewBiosPassword");
             }
-            InputCollector? inputCollector = null;
+            InputCollectorBase? inputCollector = null;
             switch (selectedCommand)
             {
                 case "Clear-BiosPassword":
@@ -58,17 +59,17 @@ namespace MiPowerShell
                 case "Set-BiosPassword":
                     if (newBiosPassword == null || confirmNewBiosPassword == null) return;
 
-                    if(newBiosPassword.Text == null || newBiosPassword.Text == "")
+                    if (newBiosPassword.Text == null || newBiosPassword.Text == "")
                     {
                         MessageBox.Show("Missing required field: 'NewBiosPassword'");
                         return;
                     }
-                    if(confirmNewBiosPassword.Text == null || confirmNewBiosPassword.Text == "") 
+                    if (confirmNewBiosPassword.Text == null || confirmNewBiosPassword.Text == "")
                     {
                         MessageBox.Show("Missing required field: ConfirmNewBiosPassword");
                         return;
                     }
-                    if(newBiosPassword?.Text != confirmNewBiosPassword?.Text)
+                    if (newBiosPassword?.Text != confirmNewBiosPassword?.Text)
                     {
                         MessageBox.Show("New Bios Password does not match");
                         return;
@@ -79,13 +80,23 @@ namespace MiPowerShell
                         inputCollector = new SetBiosPasswordInputCollector(this);
                     }
                     break;
+                case "Get-CurrentUser":
+                    inputCollector = new InputCollector(this);
+                    break;
+
+                case "Get-HardDriveSerial":
+                    inputCollector = new InputCollector(this);
+                    break;
+                case "Get-WindowsVersion":
+                    inputCollector = new InputCollector(this);
+                    break;
 
             }
             // Instantiate input collector
 
             // Call the collect method and assign collected inputs to arguments
             var arguments = inputCollector?.Collect()!;
-            _commandDispatcher.Dispatch(selectedCommand, arguments);
+            _commandDispatcher.Dispatch(selectedCommand, arguments, dataGridView1);
         }
 
         private void Button_Command_Clear_Click(object sender, EventArgs e)
@@ -117,7 +128,7 @@ namespace MiPowerShell
             {
                 return;
             }
-            InputCollector.AssignOpenFileDialog(openFileDialog1);
+            InputCollectorBase.AssignOpenFileDialog(openFileDialog1);
         }
 
         private void Button_Remote_Click(object sender, EventArgs e)

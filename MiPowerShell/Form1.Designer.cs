@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             ListBox_Commands = new ListBox();
             Label_Commands_Heading = new Label();
@@ -43,9 +44,13 @@
             Button_Remote = new Button();
             Button_File = new Button();
             TableLayoutPanel_Input = new TableLayoutPanel();
+            commandArgumentsBindingSource = new BindingSource(components);
+            dataGridView1 = new DataGridView();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             TableLayoutPanel_CommandButtons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)commandArgumentsBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // ListBox_Commands
@@ -53,7 +58,7 @@
             ListBox_Commands.Dock = DockStyle.Fill;
             ListBox_Commands.FormattingEnabled = true;
             ListBox_Commands.ItemHeight = 18;
-            ListBox_Commands.Items.AddRange(new object[] { "Clear-BiosPassword", "Set-BiosPassword" });
+            ListBox_Commands.Items.AddRange(new object[] { "Clear-BiosPassword", "Get-CurrentUser", "Get-HardDriveSerial", "Get-WindowsVersion", "Set-BiosPassword" });
             ListBox_Commands.Location = new Point(3, 27);
             ListBox_Commands.Margin = new Padding(3, 2, 3, 2);
             ListBox_Commands.Name = "ListBox_Commands";
@@ -81,19 +86,19 @@
             label_Command_Heading.Dock = DockStyle.Fill;
             label_Command_Heading.Location = new Point(199, 0);
             label_Command_Heading.Name = "label_Command_Heading";
-            label_Command_Heading.Size = new Size(304, 25);
+            label_Command_Heading.Size = new Size(330, 25);
             label_Command_Heading.TabIndex = 2;
             label_Command_Heading.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Button_Command_Clear
             // 
-            Button_Command_Clear.AutoSize = true;
             Button_Command_Clear.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            Button_Command_Clear.Dock = DockStyle.Fill;
+            Button_Command_Clear.Dock = DockStyle.Top;
             Button_Command_Clear.FlatStyle = FlatStyle.Popup;
-            Button_Command_Clear.Location = new Point(104, 3);
+            Button_Command_Clear.Location = new Point(113, 3);
+            Button_Command_Clear.MaximumSize = new Size(99, 32);
             Button_Command_Clear.Name = "Button_Command_Clear";
-            Button_Command_Clear.Size = new Size(95, 32);
+            Button_Command_Clear.Size = new Size(99, 32);
             Button_Command_Clear.TabIndex = 7;
             Button_Command_Clear.Text = "Clear";
             Button_Command_Clear.UseVisualStyleBackColor = true;
@@ -102,14 +107,14 @@
             // 
             // Button_Command_Cancel
             // 
-            Button_Command_Cancel.AutoSize = true;
             Button_Command_Cancel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Button_Command_Cancel.DialogResult = DialogResult.Cancel;
-            Button_Command_Cancel.Dock = DockStyle.Fill;
+            Button_Command_Cancel.Dock = DockStyle.Top;
             Button_Command_Cancel.FlatStyle = FlatStyle.Popup;
-            Button_Command_Cancel.Location = new Point(205, 3);
+            Button_Command_Cancel.Location = new Point(223, 3);
+            Button_Command_Cancel.MaximumSize = new Size(99, 32);
             Button_Command_Cancel.Name = "Button_Command_Cancel";
-            Button_Command_Cancel.Size = new Size(96, 32);
+            Button_Command_Cancel.Size = new Size(99, 32);
             Button_Command_Cancel.TabIndex = 8;
             Button_Command_Cancel.Text = "Exit";
             Button_Command_Cancel.UseVisualStyleBackColor = true;
@@ -118,15 +123,15 @@
             // 
             // Button_Command_Execute
             // 
-            Button_Command_Execute.AutoSize = true;
             Button_Command_Execute.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Button_Command_Execute.DialogResult = DialogResult.OK;
-            Button_Command_Execute.Dock = DockStyle.Fill;
+            Button_Command_Execute.Dock = DockStyle.Top;
             Button_Command_Execute.FlatAppearance.MouseOverBackColor = SystemColors.ButtonShadow;
             Button_Command_Execute.FlatStyle = FlatStyle.Popup;
             Button_Command_Execute.Location = new Point(3, 3);
+            Button_Command_Execute.MaximumSize = new Size(99, 32);
             Button_Command_Execute.Name = "Button_Command_Execute";
-            Button_Command_Execute.Size = new Size(95, 32);
+            Button_Command_Execute.Size = new Size(99, 32);
             Button_Command_Execute.TabIndex = 6;
             Button_Command_Execute.Text = "Execute";
             Button_Command_Execute.UseVisualStyleBackColor = true;
@@ -135,7 +140,6 @@
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.AutoSize = true;
             tableLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
@@ -146,7 +150,7 @@
             tableLayoutPanel1.Controls.Add(ListBox_Commands, 0, 1);
             tableLayoutPanel1.Controls.Add(TableLayoutPanel_CommandButtons, 1, 1);
             tableLayoutPanel1.Controls.Add(TableLayoutPanel_Input, 1, 2);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 4;
@@ -154,7 +158,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(506, 377);
+            tableLayoutPanel1.Size = new Size(532, 379);
             tableLayoutPanel1.TabIndex = 11;
             // 
             // tableLayoutPanel2
@@ -173,7 +177,7 @@
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(304, 38);
+            tableLayoutPanel2.Size = new Size(330, 40);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // TableLayoutPanel_CommandButtons
@@ -192,7 +196,7 @@
             TableLayoutPanel_CommandButtons.Name = "TableLayoutPanel_CommandButtons";
             TableLayoutPanel_CommandButtons.RowCount = 1;
             TableLayoutPanel_CommandButtons.RowStyles.Add(new RowStyle());
-            TableLayoutPanel_CommandButtons.Size = new Size(304, 34);
+            TableLayoutPanel_CommandButtons.Size = new Size(330, 34);
             TableLayoutPanel_CommandButtons.TabIndex = 4;
             // 
             // Button_Local
@@ -203,7 +207,7 @@
             Button_Local.FlatStyle = FlatStyle.Popup;
             Button_Local.Location = new Point(3, 3);
             Button_Local.Name = "Button_Local";
-            Button_Local.Size = new Size(83, 28);
+            Button_Local.Size = new Size(91, 28);
             Button_Local.TabIndex = 0;
             Button_Local.Text = "Local";
             Button_Local.UseVisualStyleBackColor = true;
@@ -216,9 +220,9 @@
             Button_Remote.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Button_Remote.Dock = DockStyle.Fill;
             Button_Remote.FlatStyle = FlatStyle.Popup;
-            Button_Remote.Location = new Point(92, 3);
+            Button_Remote.Location = new Point(100, 3);
             Button_Remote.Name = "Button_Remote";
-            Button_Remote.Size = new Size(83, 28);
+            Button_Remote.Size = new Size(91, 28);
             Button_Remote.TabIndex = 1;
             Button_Remote.Text = "Remote";
             Button_Remote.UseVisualStyleBackColor = true;
@@ -231,9 +235,9 @@
             Button_File.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Button_File.Dock = DockStyle.Fill;
             Button_File.FlatStyle = FlatStyle.Popup;
-            Button_File.Location = new Point(181, 3);
+            Button_File.Location = new Point(197, 3);
             Button_File.Name = "Button_File";
-            Button_File.Size = new Size(120, 28);
+            Button_File.Size = new Size(130, 28);
             Button_File.TabIndex = 2;
             Button_File.Text = "Select File";
             Button_File.UseVisualStyleBackColor = true;
@@ -251,8 +255,34 @@
             TableLayoutPanel_Input.RowCount = 2;
             TableLayoutPanel_Input.RowStyles.Add(new RowStyle());
             TableLayoutPanel_Input.RowStyles.Add(new RowStyle());
-            TableLayoutPanel_Input.Size = new Size(304, 262);
+            TableLayoutPanel_Input.Size = new Size(330, 262);
             TableLayoutPanel_Input.TabIndex = 5;
+            // 
+            // commandArgumentsBindingSource
+            // 
+            commandArgumentsBindingSource.DataSource = typeof(Arguments.CommandArguments);
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToOrderColumns = true;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.BackgroundColor = SystemColors.Control;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dataGridView1.Location = new Point(0, 379);
+            dataGridView1.Margin = new Padding(20, 3, 20, 3);
+            dataGridView1.MaximumSize = new Size(514, 1080);
+            dataGridView1.MinimumSize = new Size(514, 6);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(514, 83);
+            dataGridView1.TabIndex = 12;
+            dataGridView1.TabStop = false;
             // 
             // Form1
             // 
@@ -261,22 +291,26 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             CancelButton = Button_Command_Cancel;
-            ClientSize = new Size(506, 377);
+            ClientSize = new Size(532, 462);
+            Controls.Add(dataGridView1);
             Controls.Add(tableLayoutPanel1);
             Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
+            MaximumSize = new Size(1920, 1080);
+            MinimumSize = new Size(530, 424);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "MiPowerShell";
             TopMost = true;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel2.PerformLayout();
             TableLayoutPanel_CommandButtons.ResumeLayout(false);
             TableLayoutPanel_CommandButtons.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)commandArgumentsBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -295,5 +329,7 @@
         private Button Button_Remote;
         private Button Button_File;
         private TableLayoutPanel TableLayoutPanel_Input;
+        private BindingSource commandArgumentsBindingSource;
+        private DataGridView dataGridView1;
     }
 }

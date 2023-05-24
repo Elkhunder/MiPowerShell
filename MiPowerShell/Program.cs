@@ -26,9 +26,9 @@ namespace MiPowerShell
                     Application.Run(new Form1());
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                Debug.WriteLine(ex.ToString());
             }
         }
         private static void AdminLauncher()

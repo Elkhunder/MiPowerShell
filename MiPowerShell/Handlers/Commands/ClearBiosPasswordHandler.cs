@@ -1,34 +1,33 @@
 ﻿using Microsoft.Management.Infrastructure;
-using Microsoft.Management.Infrastructure.Options;
-using Microsoft.Management.Infrastructure.Generic;
 using MiPowerShell.Arguments;
 using MiPowerShell.Helpers;
-using System;
-using System.Management;
-using System.Management.Automation;
 using CimType = Microsoft.Management.Infrastructure.CimType;
-using MiPowerShell.Arguments.BiosCommands;
 using System.Security;
 using System.Runtime.InteropServices;
-using Namotion.Reflection;
-using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
-using System.DirectoryServices.Protocols;
+using MiPowerShell.Models;
+using System.Data;
 
 namespace MiPowerShell.Handlers.Commands
 {
     internal class ClearBiosPasswordHandler : ICommandHandler
     {
         private string? _result;
-        public void Handle(CommandArguments arguments)
+        public void Handle(CommandArguments arguments, DataGridView dataGridView)
         {
             var (biosPassword, _, computerNames, _, _) = arguments;
+            BiosPasswordResults results = new BiosPasswordResults();
+                 
             
             foreach (var computerName in computerNames)
             {
+                results.TermID?.Add(computerName);
                 bool isOnline = DeviceStatusChecked.IsDeviceOnline(computerName);
                 if (!isOnline)
                 {
                     _result = "Offline";
+                    results.Error?.Add("Device Offline");
+                    results.Successful?.Add(false);
+                    results.StatusCode?.Add(-4);
                     Console.WriteLine($"TermID: {computerName}, Result: {_result}");
                     continue;
                 }
@@ -46,10 +45,16 @@ namespace MiPowerShell.Handlers.Commands
                     if (ex.MessageId == "HRESULT 0x8007052e")
                     {
                         Console.WriteLine("Admin credentials are not valid, use the CyberArk Password Vault to update your credentials and relaunch the application");
+                        results.Error?.Add("Admin credentials are not valid, use the CyberArk Password Vault to update your credentials and relaunch the application");
+                        results.Successful?.Add(false);
+                        results.StatusCode?.Add(-3);
                     }
                     else
                     {
                         Console.WriteLine($"TermID: {computerName}, Error: {ex.Message}");
+                        results.Error?.Add(ex.Message);
+                        results.Successful?.Add(false);
+                        results.StatusCode?.Add(-2);
                     }
                     return;
                 }
@@ -71,12 +76,19 @@ namespace MiPowerShell.Handlers.Commands
                         {
                             _result = "BIOS password is not set";
                             Console.WriteLine($"TermID: {computerName}, Result: {_result}");
+                            results.Error?.Add("Already cleared");
+                            results.Successful?.Add(false);
+                            results.BiosPasswordIsSet?.Add(isBiosPasswordSet);
+                            results.StatusCode?.Add(-1);
                             continue;
                         }
                     }
                     catch (CimException ex)
                     {
                         Console.WriteLine($"TermID: {computerName}, Error: {ex.Message}");
+                        results.Error?.Add(ex.Message);
+                        results.Successful?.Add(false);
+                        results.StatusCode?.Add(-2);
                     }
                     finally
                     {
@@ -92,6 +104,9 @@ namespace MiPowerShell.Handlers.Commands
                     catch(CimException ex)
                     {
                         Console.WriteLine($"TermID: {computerName}, Error: {ex.Message}");
+                        results.Error?.Add(ex.Message);
+                        results.Successful?.Add(false);
+                        results.StatusCode?.Add(-2);
                     }
                     
                     string oldPassword = ConvertSecureStringToPlainText(biosPassword);
@@ -123,21 +138,31 @@ namespace MiPowerShell.Handlers.Commands
                             {
                                 _result = "BIOS password cleared successfully";
                                 Console.WriteLine($"TermID: {computerName}, Status Code: {statusCode}, Result: {_result}");
+                                results.Successful?.Add(true);
+                                results.StatusCode?.Add(statusCode);
                             }
                             else
                             {
                                 _result = "Failed to clear BIOS password";
                                 Console.WriteLine($"TermID: {computerName}, Status Code: {statusCode}, Result: {_result}");
+                                results.Successful?.Add(false);
+                                results.StatusCode?.Add(statusCode);
                             }
                         }
                         else
                         {
                             Console.WriteLine("Status parameter not found");
+                            results.Error?.Add("Status parameter not found");
+                            results.Successful?.Add(false);
+                            results.StatusCode?.Add(-2);
                         }
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine($"Error: {ex.Message}");
+                        results.Error?.Add(ex.Message);
+                        results.Successful?.Add(false);
+                        results.StatusCode?.Add(-2);
                     }
                     finally
                     {
@@ -159,12 +184,18 @@ namespace MiPowerShell.Handlers.Commands
                         {
                             _result = "bios password is not set";
                             Console.WriteLine($"termid: {computerName}, result: {_result}");
+                            results.Error?.Add("Already cleared");
+                            results.Successful?.Add(false);
+                            results.StatusCode?.Add(-1);
                             continue;
                         }
                     }
                     catch (CimException ex)
                     {
                         Console.WriteLine($"TermID: {computerName}, Error: {ex.Message}");
+                        results.Error?.Add(ex.Message);
+                        results.Successful?.Add(false);
+                        results.StatusCode?.Add(-2);
                     }
                     finally
                     {
@@ -180,6 +211,9 @@ namespace MiPowerShell.Handlers.Commands
                     catch(CimException ex)
                     {
                         Console.WriteLine($"TermID: {computerName}, Error: {ex.Message}");
+                        results.Error?.Add(ex.Message);
+                        results.Successful?.Add(false);
+                        results.StatusCode?.Add(-2);
                         continue;
                     }
                     string oldPassword = ConvertSecureStringToPlainText(biosPassword);
@@ -204,11 +238,17 @@ namespace MiPowerShell.Handlers.Commands
                             if (statusCode == 0)
                             {
                                 _result = "BIOS password cleared successfully.";
+                                results.Successful?.Add(true);
+                                results.BiosPasswordIsSet?.Add(false);
+                                results.StatusCode?.Add((int)statusCode);
                                 Console.WriteLine($"TermID: {computerName}, Status Code: {statusCode}, Result: {_result}");
                             }
                             else
                             {
                                 _result = "Failed to clear BIOS password";
+                                results.Successful?.Add(false);
+                                results.BiosPasswordIsSet?.Add(true);
+                                results.StatusCode?.Add((int)statusCode);
                                 Console.WriteLine($"TermID: {computerName}, Status Code: {statusCode}, Result: {_result}");
                             }
                         }
@@ -216,6 +256,9 @@ namespace MiPowerShell.Handlers.Commands
                     catch (Exception ex)
                     {
                         Console.WriteLine($"Error: {ex.Message}");
+                        results.Successful?.Add(false);
+                        results.Error?.Add(ex.Message);
+                        results.StatusCode?.Add(-2);
                     }
                     finally
                     {
@@ -223,6 +266,26 @@ namespace MiPowerShell.Handlers.Commands
                     }  
                 }
             }
+            DataTable table = new DataTable();
+
+            table.Columns.Add("TermID", typeof(string));
+            table.Columns.Add("Successful", typeof(bool));
+            table.Columns.Add("Error", typeof(string));
+            table.Columns.Add("StatusCode", typeof(int));
+            table.Columns.Add("BiosPasswordIsSet", typeof(bool));
+
+            for (int i = 0; i < results.TermID?.Count; i++)
+            {
+                string termId = results.TermID.ElementAtOrDefault(i) ?? string.Empty; // Handle null value for TermID
+                bool? successful = results.Successful.ElementAtOrDefault(i); // Allow nullable bool
+                string error = results.Error.ElementAtOrDefault(i) ?? string.Empty; // Handle null value for Error
+                int? statusCode = results.StatusCode.ElementAtOrDefault(i); // Allow nullable int
+                bool? biosPasswordIsSet = results.BiosPasswordIsSet.ElementAtOrDefault(i); // Allow nullable bool
+
+                // Add a new row to the DataTable
+                table.Rows.Add(termId, successful, error, statusCode, biosPasswordIsSet);
+            }
+            dataGridView.DataSource = table;
         }
 
         private static string ConvertSecureStringToPlainText(SecureString biosPassword)
@@ -248,13 +311,9 @@ namespace MiPowerShell.Handlers.Commands
             {
                 return false;
             }
-            if (arguments.ComputerNames == null || arguments.ComputerNames.Any(string.IsNullOrEmpty) && arguments.Local == (DialogResult)DialogResult.None)
+            if (arguments.ComputerNames == null || arguments.ComputerNames.Any(string.IsNullOrEmpty))
             {
                 return false;
-            }
-            if(arguments.Local == (DialogResult) DialogResult.Yes)
-            {
-                arguments.ComputerNames = new string[] { "localhost" };
             }
             return true;
         }

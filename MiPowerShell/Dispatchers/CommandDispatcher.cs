@@ -10,7 +10,7 @@ public class CommandDispatcher
         _commandHandlers = new CommandHandlers();
     }
 
-    public void Dispatch(string command, CommandArguments arguments)
+    public void Dispatch(string command, CommandArguments arguments, DataGridView dataGridView)
     {
         var handler = _commandHandlers?.GetHandler(command);
 
@@ -20,6 +20,6 @@ public class CommandDispatcher
             throw new ArgumentException("Invalid arguments", nameof(arguments));
         }
 
-        handler.Handle(arguments);
+        handler.Handle(arguments, dataGridView);
     }
 }

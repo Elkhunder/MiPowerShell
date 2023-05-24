@@ -3,9 +3,9 @@ namespace MiPowerShell.Arguments
 {
     public class CommandArguments
     {
-        public SecureString BiosPassword { get; set; }
+        public SecureString? BiosPassword { get; set; }
 
-        public SecureString NewBiosPassword { get; set; }
+        public SecureString? NewBiosPassword { get; set; }
         public string[]? ComputerNames { get; set; }
         public DialogResult? Remote { get; set; }
         public DialogResult? Local { get; set; }
@@ -14,6 +14,13 @@ namespace MiPowerShell.Arguments
         {
             BiosPassword = biosPassword;
             NewBiosPassword = newBiosPassword;
+            ComputerNames = computerNames;
+            Remote = remote;
+            Local = local;
+        }
+
+        public CommandArguments(string[] computerNames, DialogResult remote, DialogResult local)
+        {
             ComputerNames = computerNames;
             Remote = remote;
             Local = local;

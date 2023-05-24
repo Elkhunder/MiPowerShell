@@ -10,14 +10,14 @@
         "projectUniqueName": "C:\\Users\\jsissom\\source\\repos\\MiPowerShell\\MiPowerShell\\MiPowerShell.csproj",
         "projectName": "MiPowerShell",
         "projectPath": "C:\\Users\\jsissom\\source\\repos\\MiPowerShell\\MiPowerShell\\MiPowerShell.csproj",
-        "packagesPath": "C:\\Users\\jsissom\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\umhs-jsissom\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\jsissom\\source\\repos\\MiPowerShell\\MiPowerShell\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\jsissom\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\umhs-jsissom\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

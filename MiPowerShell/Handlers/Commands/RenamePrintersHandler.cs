@@ -3,7 +3,7 @@ using MiPowerShell.Helpers;
 
 internal class RenamePrintersHandler : ICommandHandler
 {
-    public void Handle(CommandArguments arguments)
+    public void Handle(CommandArguments arguments, DataGridView dataGridView)
     {
         throw new NotImplementedException();
     }

@@ -3,6 +3,8 @@ using Microsoft.Management.Infrastructure;
 using Microsoft.VisualBasic.Devices;
 using MiPowerShell.Arguments;
 using MiPowerShell.Helpers;
+using MiPowerShell.Models;
+using System.Data;
 using System.Runtime.InteropServices;
 using System.Security;
 
@@ -11,20 +13,24 @@ namespace MiPowerShell.Handlers.Commands
     internal class SetBiosPasswordHandler : ICommandHandler
     {
         private string? _result;
-        public void Handle(CommandArguments arguments)
+        public void Handle(CommandArguments arguments, DataGridView dataGridView)
         {
-            Console.WriteLine("Set Bios Password Handled");
+            BiosPasswordResults results = new BiosPasswordResults();
 
             var (biosPassword, newBiosPassword, computerNames, _, _) = arguments;
 
             foreach (var computerName in computerNames)
             {
+                results.TermID?.Add(computerName);
                 bool isOnline = DeviceStatusChecked.IsDeviceOnline(computerName);
         
                 if (!isOnline)
                 {
                     _result = "Offline";
                     Console.WriteLine($"TermID: {computerName}, Result: {_result}");
+                    results.Error?.Add("Device Offline");
+                    results.Successful?.Add(false);
+                    results.StatusCode?.Add(-1);
                     continue;
                 }
                 string namespaceName = @"root\cimv2";
@@ -39,11 +45,20 @@ namespace MiPowerShell.Handlers.Commands
                 catch (CimException ex)
                 {
                     Console.WriteLine($"TermID: {computerName}, Error: {ex.Message}");
+                    results.Error?.Add(ex.Message);
+                    results.Successful?.Add(false);
+                    results.StatusCode?.Add(-2);
                 }
 
                 string manufacturer = (string)instance!.CimInstanceProperties["Manufacturer"].Value;
 
-                if (manufacturer == null) return;
+                if (manufacturer == null)
+                {
+                    results.Error?.Add("Unable to determine device manufacturer");
+                    results.Successful?.Add(false);
+                    results.StatusCode?.Add(-3);
+                    return;
+                }
 
                 if (manufacturer.Contains("Dell"))
                 {
@@ -61,12 +76,19 @@ namespace MiPowerShell.Handlers.Commands
                         {
                             _result = "BIOS password is set, to change provide the current BIOS password";
                             Console.WriteLine($"TermID: {computerName}, Result: {_result}");
+                            results.Error?.Add("BIOS Password is already set, if you wish to update it provide the current BIOS password when running the command");
+                            results.Successful?.Add(false);
+                            results.StatusCode?.Add(-4);
+                            results.BiosPasswordIsSet?.Add(true);
                             continue;
                         }
                     }
                     catch (CimException ex)
                     {
                         Console.WriteLine($"TermID: {computerName}, Error: {ex.Message}");
+                        results.Error?.Add(nameSpace + ": " + ex.Message);
+                        results.Successful?.Add(false);
+                        results.StatusCode?.Add(-2);
                     }
                     finally
                     {
@@ -82,6 +104,9 @@ namespace MiPowerShell.Handlers.Commands
                     catch (CimException ex)
                     {
                         Console.WriteLine($"TermID: {computerName}, Error: {ex.Message}");
+                        results.Error?.Add(nameSpace+": " + ex.Message);
+                        results.Successful?.Add(false);
+                        results.StatusCode?.Add(-2);
                     }
 
                     string oldPassword = ConvertSecureStringToPlainText(biosPassword);
@@ -114,21 +139,36 @@ namespace MiPowerShell.Handlers.Commands
                             {
                                 _result = "BIOS password set successfully";
                                 Console.WriteLine($"TermID: {computerName}, Status Code: {statusCode}, Result: {_result}");
+                                results.Successful?.Add(true);
+                                results.BiosPasswordIsSet?.Add(false);
+                                results.StatusCode?.Add(statusCode);
                             }
                             else
                             {
                                 _result = "Failed to set BIOS password";
                                 Console.WriteLine($"TermID: {computerName}, Status Code: {statusCode}, Result: {_result}");
+                                results.Successful?.Add(false);
+                                results.Error?.Add("Failed to set BIOS password");
+                                results.StatusCode?.Add(statusCode);
+                                results.BiosPasswordIsSet?.Add(true);
                             }
                         }
                         else
                         {
                             Console.WriteLine("Status parameter not found");
+                            results.Successful?.Add(false);
+                            results.Error?.Add("Status parameter not found");
+                            results.StatusCode?.Add(-5);
+                            results.BiosPasswordIsSet?.Add(true);
                         }
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine($"Error: {ex.Message}");
+                        results.Successful?.Add(false);
+                        results.Error?.Add(nameSpace + ":" +  ex.Message);
+                        results.StatusCode?.Add(-2);
+                        results.BiosPasswordIsSet?.Add(true);
                     }
                     finally
                     {
@@ -151,12 +191,20 @@ namespace MiPowerShell.Handlers.Commands
                         {
                             _result = "BIOS password is set, to change provide the current BIOS password";
                             Console.WriteLine($"termid: {computerName}, result: {_result}");
+                            results.Error?.Add("BIOS Password is already set, if you wish to update it provide the current BIOS password when running the command");
+                            results.Successful?.Add(false);
+                            results.StatusCode?.Add(-4);
+                            results.BiosPasswordIsSet?.Add(true);
                             continue;
                         }
                     }
                     catch (CimException ex)
                     {
                         Console.WriteLine($"TermID: {computerName}, Error: {ex.Message}");
+                        results.Successful?.Add(false);
+                        results.Error?.Add(nameSpace + ":" + ex.Message);
+                        results.StatusCode?.Add(-2);
+                        results.BiosPasswordIsSet?.Add(true);
                     }
                     finally
                     {
@@ -172,7 +220,10 @@ namespace MiPowerShell.Handlers.Commands
                     catch (CimException ex)
                     {
                         Console.WriteLine($"TermID: {computerName}, Error: {ex.Message}");
-                        continue;
+                        results.Successful?.Add(false);
+                        results.Error?.Add(nameSpace + ":" + ex.Message);
+                        results.StatusCode?.Add(-2);
+                        results.BiosPasswordIsSet?.Add(true);
                     }
                     string oldPassword = ConvertSecureStringToPlainText(biosPassword);
                     string newPassword = ConvertSecureStringToPlainText(newBiosPassword);
@@ -198,17 +249,36 @@ namespace MiPowerShell.Handlers.Commands
                             {
                                 _result = "BIOS password set successfully.";
                                 Console.WriteLine($"TermID: {computerName}, Status Code: {statusCode}, Result: {_result}");
+                                results.Successful?.Add(true);
+                                results.BiosPasswordIsSet?.Add(false);
+                                results.StatusCode?.Add((int)statusCode);
                             }
                             else
                             {
                                 _result = "Failed to set BIOS password";
                                 Console.WriteLine($"TermID: {computerName}, Status Code: {statusCode}, Result: {_result}");
+                                results.Successful?.Add(false);
+                                results.Error?.Add("Failed to set BIOS password");
+                                results.StatusCode?.Add((int)statusCode);
+                                results.BiosPasswordIsSet?.Add(true);
                             }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Status parameter not found");
+                            results.Successful?.Add(false);
+                            results.Error?.Add("Status parameter not found");
+                            results.StatusCode?.Add(-5);
+                            results.BiosPasswordIsSet?.Add(true);
                         }
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine($"Error: {ex.Message}");
+                        results.Successful?.Add(false);
+                        results.Error?.Add(nameSpace + ":" + ex.Message);
+                        results.StatusCode?.Add(-2);
+                        results.BiosPasswordIsSet?.Add(true);
                     }
                     finally
                     {
@@ -216,6 +286,26 @@ namespace MiPowerShell.Handlers.Commands
                     }
                 }
             }
+            DataTable table = new DataTable();
+
+            table.Columns.Add("TermID", typeof(string));
+            table.Columns.Add("Successful", typeof(bool));
+            table.Columns.Add("Error", typeof(string));
+            table.Columns.Add("StatusCode", typeof(int));
+            table.Columns.Add("BiosPasswordIsSet", typeof(bool));
+
+            for (int i = 0; i < results.TermID?.Count; i++)
+            {
+                string termId = results.TermID.ElementAtOrDefault(i) ?? string.Empty; // Handle null value for TermID
+                bool? successful = results.Successful.ElementAtOrDefault(i); // Allow nullable bool
+                string error = results.Error.ElementAtOrDefault(i) ?? string.Empty; // Handle null value for Error
+                int? statusCode = results.StatusCode.ElementAtOrDefault(i); // Allow nullable int
+                bool? biosPasswordIsSet = results.BiosPasswordIsSet.ElementAtOrDefault(i); // Allow nullable bool
+
+                // Add a new row to the DataTable
+                table.Rows.Add(termId, successful, error, statusCode, biosPasswordIsSet);
+            }
+            dataGridView.DataSource = table;
         }
 
         private static string ConvertSecureStringToPlainText(SecureString biosPassword)
@@ -241,13 +331,9 @@ namespace MiPowerShell.Handlers.Commands
             {
                 return false;
             }
-            if (arguments.ComputerNames == null || arguments.ComputerNames.Any(string.IsNullOrEmpty) && arguments.Local == (DialogResult)DialogResult.None)
+            if (arguments.ComputerNames == null || arguments.ComputerNames.Any(string.IsNullOrEmpty))
             {
                 return false;
-            }
-            if (arguments.Local == (DialogResult)DialogResult.Yes)
-            {
-                arguments.ComputerNames = new string[] { "localhost" };
             }
             return true;
         }

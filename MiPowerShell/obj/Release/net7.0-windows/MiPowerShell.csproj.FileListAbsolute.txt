@@ -1,4 +1,3 @@
-C:\Users\jsissom\source\repos\MiPowerShell\MiPowerShell\bin\Release\net7.0-windows\MiPowerShell.pdb
 C:\Users\jsissom\source\repos\MiPowerShell\MiPowerShell\bin\Release\net7.0-windows\TraceReloggerLib.dll
 C:\Users\jsissom\source\repos\MiPowerShell\MiPowerShell\bin\Release\net7.0-windows\Dia2Lib.dll
 C:\Users\jsissom\source\repos\MiPowerShell\MiPowerShell\bin\Release\net7.0-windows\OSExtensions.dll
@@ -203,6 +202,7 @@ C:\Users\jsissom\source\repos\MiPowerShell\MiPowerShell\bin\Release\net7.0-windo
 C:\Users\jsissom\source\repos\MiPowerShell\MiPowerShell\bin\Release\net7.0-windows\MiPowerShell.deps.json
 C:\Users\jsissom\source\repos\MiPowerShell\MiPowerShell\bin\Release\net7.0-windows\MiPowerShell.runtimeconfig.json
 C:\Users\jsissom\source\repos\MiPowerShell\MiPowerShell\bin\Release\net7.0-windows\MiPowerShell.dll
+C:\Users\jsissom\source\repos\MiPowerShell\MiPowerShell\bin\Release\net7.0-windows\MiPowerShell.pdb
 C:\Users\jsissom\source\repos\MiPowerShell\MiPowerShell\bin\Release\net7.0-windows\BenchmarkDotNet.dll
 C:\Users\jsissom\source\repos\MiPowerShell\MiPowerShell\bin\Release\net7.0-windows\BenchmarkDotNet.Annotations.dll
 C:\Users\jsissom\source\repos\MiPowerShell\MiPowerShell\bin\Release\net7.0-windows\CommandLine.dll

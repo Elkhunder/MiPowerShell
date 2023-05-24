@@ -13,6 +13,7 @@ namespace MiPowerShell.Handlers.Commands
                 { "Set-BiosPassword", new SetBiosPasswordHandler() },
                 { "Get-HardDriveSerial", new GetHardDriveSerialHandler() },
                 { "Get-Printers", new GetPrintersHandler() },
+                { "Get-WindowsVersion", new GetWindowsVersionHandler() },
                 { "Install-Language", new InstallLanguageHandler() },
                 { "Rename-Printers", new RenamePrintersHandler() },
                 { "Set-NetworkProfile", new SetNetworkProfileHandler() },

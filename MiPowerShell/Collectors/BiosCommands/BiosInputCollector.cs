@@ -1,12 +1,10 @@
 ﻿using MiPowerShell.Arguments;
-using MiPowerShell.Arguments.BiosCommands;
 using MiPowerShell.Collectors.CommandInputCollector;
 using System.Security;
-using System.Windows.Forms;
 
 namespace MiPowerShell.Collectors.BiosCommands
 {
-    internal abstract class BiosInputCollector : InputCollector
+    internal abstract class BiosInputCollector : InputCollectorBase
     {
         public BiosInputCollector(Form form) : base(form) { }
 
