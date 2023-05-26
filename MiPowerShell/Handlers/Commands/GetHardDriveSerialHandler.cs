@@ -9,12 +9,12 @@ namespace MiPowerShell.Handlers.Commands
 {
     internal class GetHardDriveSerialHandler : ICommandHandler
     {
-        CimHandler? _cimHandler = new CimHandler();
+        CimHandler? _cimHandler;
         CimInstance[]? _cimInstance;
         HardDriveResults _results = new HardDriveResults();
         public void Handle(CommandArguments arguments, DataGridView dataGridView)
         {
-            var (_, _, computerNames, _, _) = arguments;
+            string[] computerNames = arguments.ComputerNames;
             // TODO: Create and import _results class //
 
             // TODO: Update to for loop //
@@ -32,11 +32,13 @@ namespace MiPowerShell.Handlers.Commands
                 string namespaceName = @"root\cimv2";
                 string className = "Win32_DiskDrive";
 
+                _cimHandler = new CimHandler(computerName, namespaceName, className);
+
                 if(_cimHandler != null)
                 {
                     try
                     {
-                        _cimInstance = _cimHandler.GetInstances(namespaceName, className, computerName);
+                        _cimInstance = _cimHandler.CimInstances;
                     }
                     catch (Exception ex)
                     {
@@ -48,9 +50,11 @@ namespace MiPowerShell.Handlers.Commands
                 if (_cimInstance != null)
                 {
                     string[] serialNumbers = new string[_cimInstance.Length];
+                    string[] driveNames = new string[_cimInstance.Length];
                     for (int i = 0; i < _cimInstance.Length; i++)
                     {
                         serialNumbers[i] = (string)_cimInstance[i].CimInstanceProperties["SerialNumber"].Value;
+                        driveNames[i] = (string)_cimInstance[i].CimInstanceProperties["Caption"].Value;
                         
                     }
                     if(serialNumbers.Length > 0)
@@ -58,28 +62,34 @@ namespace MiPowerShell.Handlers.Commands
                         _results.SerialNumbers.Add(serialNumbers);
                         _results.Successful?.Add(true);
                     }
+                    if(driveNames.Length > 0)
+                    {
+                        _results.Name.Add(driveNames);
+                    }
                 }
             }
             DataTable table = new DataTable();
 
             // TODO: Update Columns //
-            table.Columns.Add("TermID", typeof(string));
-            table.Columns.Add("SerialNumbers", typeof(string));
-            table.Columns.Add("Successful", typeof(bool));
-            table.Columns.Add("Error", typeof(string));
-            table.Columns.Add("StatusCode", typeof(int));
+            table.Columns.Add("TermID", typeof (string));
+            table.Columns.Add("DriveName", typeof (string));
+            table.Columns.Add("SerialNumbers", typeof (string));
+            table.Columns.Add("Successful", typeof (bool));
+            table.Columns.Add("Error", typeof (string));
+            table.Columns.Add("StatusCode", typeof (int));
 
             for (int i = 0; i < _results.TermID?.Count; i++)
             {
                 // TODO: Update //
-                string termId = _results.TermID.ElementAtOrDefault(i) ?? string.Empty; // Handle null value for TermID
-                bool? successful = _results.Successful?.ElementAtOrDefault(i); // Allow nullable bool
-                string error = _results.Error.ElementAtOrDefault(i) ?? string.Empty; // Handle null value for Error
-                int? statusCode = _results.StatusCode?.ElementAtOrDefault(i); // Allow nullable int
-                string serialNumbers = string.Join(",", _results.SerialNumbers.ElementAtOrDefault(i)!) ?? string.Empty; //Handle null value for SerialNumbers
+                string termId = _results.TermID.ElementAtOrDefault(i) ?? string.Empty;
+                bool? successful = _results.Successful?.ElementAtOrDefault(i);
+                string error = _results.Error.ElementAtOrDefault(i) ?? string.Empty;
+                int? statusCode = _results.StatusCode?.ElementAtOrDefault(i);
+                string serialNumbers = string.Join(",", _results.SerialNumbers.ElementAtOrDefault(i)!) ?? string.Empty;
+                string driveName = string.Join(",", _results.Name.ElementAtOrDefault(i)!) ?? string.Empty; 
 
                 // TODO: Update //
-                table.Rows.Add(termId, serialNumbers, successful, error, statusCode);
+                table.Rows.Add(termId, driveName, serialNumbers, successful, error, statusCode);
             }
             dataGridView.DataSource = table;
         }

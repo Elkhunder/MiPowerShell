@@ -14,7 +14,7 @@ namespace MiPowerShell.Handlers.Commands
         private string? _result;
         public void Handle(CommandArguments arguments, DataGridView dataGridView)
         {
-            var (biosPassword, _, computerNames, _, _) = arguments;
+            var (computerNames, biosPassword) = arguments;
             BiosPasswordResults results = new BiosPasswordResults();
                  
             

@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+	  <FrameworkReference Include="Microsoft.WindowsDesktop.App.WPF" />
     <AdditionalFiles Remove="app.manifest" />
   </ItemGroup>
 

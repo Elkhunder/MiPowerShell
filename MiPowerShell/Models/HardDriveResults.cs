@@ -9,9 +9,11 @@ namespace MiPowerShell.Models
     public class HardDriveResults : CommandResultBase
     {
         public List<string[]> SerialNumbers { get; set; }
+        public List<string[]> Name { get; set; }
         public HardDriveResults()
         {
             SerialNumbers = new List<string[]>();
+            Name = new List<string[]>();
         }
     }
 }
