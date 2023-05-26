@@ -14,7 +14,7 @@ namespace MiPowerShell.Handlers.Commands
 {
     internal class GetWindowsVersionHandler : ICommandHandler
     {
-        private readonly CimHandler _cimHandler = new();
+        private CimHandler? _cimHandler;
         private CimInstance[]? _cimInstance;
         private WindowsVersionResults _results = new();
 
@@ -37,7 +37,7 @@ namespace MiPowerShell.Handlers.Commands
         };
         public void Handle(CommandArguments arguments, DataGridView dataGridView)
         {
-            var (_, _, computerNames, _, _) = arguments;
+            string[] computerNames = arguments.ComputerNames;
 
             foreach (var computerName in computerNames)
             {
@@ -53,11 +53,13 @@ namespace MiPowerShell.Handlers.Commands
                 string namespaceName = @"root\cimv2";
                 string className = "CIM_OperatingSystem";
 
+                _cimHandler = new CimHandler(computerName, namespaceName, className);
+
                 if (_cimHandler != null)
                 {
                     try
                     {
-                        _cimInstance = _cimHandler.GetInstances(namespaceName, className, computerName);
+                        _cimInstance = _cimHandler.CimInstances;
                     }
                     catch (Exception ex)
                     {

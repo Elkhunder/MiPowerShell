@@ -17,7 +17,7 @@ namespace MiPowerShell.Handlers.Commands
         {
             BiosPasswordResults results = new BiosPasswordResults();
 
-            var (biosPassword, newBiosPassword, computerNames, _, _) = arguments;
+            var (computerNames, biosPassword, newBiosPassword) = arguments;
 
             foreach (var computerName in computerNames)
             {

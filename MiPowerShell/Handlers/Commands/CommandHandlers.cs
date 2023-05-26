@@ -8,19 +8,19 @@ namespace MiPowerShell.Handlers.Commands
         {
             _handlers = new Dictionary<string, ICommandHandler>
             {
+                { "Add-Shortcut", new AddShortcutHandler() },
                 { "Clear-BiosPassword", new ClearBiosPasswordHandler() },
-                { "Remove-UserProfile", new RemoveUserProfileHandler() },
-                { "Set-BiosPassword", new SetBiosPasswordHandler() },
+                { "Get-CurrentUser", new GetCurrentUserHandler() },
                 { "Get-HardDriveSerial", new GetHardDriveSerialHandler() },
                 { "Get-Printers", new GetPrintersHandler() },
+                { "Get-UserProfile", new GetUserProfileHandler() },
                 { "Get-WindowsVersion", new GetWindowsVersionHandler() },
                 { "Install-Language", new InstallLanguageHandler() },
-                { "Rename-Printers", new RenamePrintersHandler() },
+                { "Remove-UserProfile", new RemoveUserProfileHandler() },
+                { "Set-BiosPassword", new SetBiosPasswordHandler() },
                 { "Set-NetworkProfile", new SetNetworkProfileHandler() },
+                { "Set-PrinterName", new SetPrinterNameHandler() },
                 { "Set-Printers", new SetPrintersHandler() },
-                { "Get-CurrentUser", new GetCurrentUserHandler() },
-                { "Get-UserProfile", new GetUserProfileHandler() },
-                { "Add-Shortcut", new AddShortcutHandler() },
                 { "Uninstall-Software", new UninstallSoftwareHandler() }
             };
         }
