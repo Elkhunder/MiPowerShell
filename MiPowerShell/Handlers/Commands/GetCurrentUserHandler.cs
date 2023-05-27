@@ -5,6 +5,7 @@ using MiPowerShell.Arguments;
 using MiPowerShell.Helpers;
 using MiPowerShell.Models;
 using System.Data;
+using System.Security;
 
 internal class GetCurrentUserHandler : ICommandHandler
 {
@@ -12,7 +13,7 @@ internal class GetCurrentUserHandler : ICommandHandler
     public void Handle(CommandArguments arguments, DataGridView dataGridView)
     {
         CurrentUserResults results = new CurrentUserResults();
-        var (_, _, computerNames, _, _) = arguments;
+        string[] computerNames = arguments.ComputerNames;
 
         foreach (var computerName in computerNames)
         {

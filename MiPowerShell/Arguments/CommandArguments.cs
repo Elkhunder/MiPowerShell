@@ -1,38 +1,42 @@
 ﻿using System.Security;
 namespace MiPowerShell.Arguments
 {
-    public class CommandArguments
+    public record CommandArguments
     {
-        public SecureString? BiosPassword { get; set; }
+        public SecureString? BiosPassword { get; init; }
+        public string? PrinterName { get; init; }
+        public string? NewPrinterName { get; init; }
+        public SecureString? NewBiosPassword { get; init; }
+        public string[] ComputerNames { get; init; }
 
-        public SecureString? NewBiosPassword { get; set; }
-        public string[]? ComputerNames { get; set; }
-        public DialogResult? Remote { get; set; }
-        public DialogResult? Local { get; set; }
-
-        public CommandArguments(SecureString biosPassword, SecureString newBiosPassword, string[] computerNames, DialogResult remote, DialogResult local)
+        public CommandArguments(SecureString biosPassword, SecureString newBiosPassword, string[] computerNames, string printerName, string newPrinterName)
         {
             BiosPassword = biosPassword;
             NewBiosPassword = newBiosPassword;
             ComputerNames = computerNames;
-            Remote = remote;
-            Local = local;
+            PrinterName = printerName;
+            NewPrinterName = newPrinterName;
         }
 
-        public CommandArguments(string[] computerNames, DialogResult remote, DialogResult local)
+        public void Deconstruct(out string[] computerNames, out SecureString biosPassword)
         {
-            ComputerNames = computerNames;
-            Remote = remote;
-            Local = local;
+            computerNames = ComputerNames;
+            biosPassword = BiosPassword;
         }
 
-        public void Deconstruct(out SecureString biosPassword, out SecureString newBiosPassword, out string[] computerNames, out DialogResult remote, out DialogResult local)
+        public void Deconstruct(out string[] computerNames, out SecureString biosPassword, out SecureString newBiosPassword)
         {
+            computerNames = ComputerNames;
             biosPassword = BiosPassword;
             newBiosPassword = NewBiosPassword;
+        }
+
+        public void Deconstruct(out string[] computerNames, out string printerName, out string newPrinterName, out SecureString biosPassword)
+        {
             computerNames = ComputerNames;
-            remote = Remote.GetValueOrDefault();
-            local = Local.GetValueOrDefault();
+            printerName = PrinterName;
+            newPrinterName = NewPrinterName;
+            biosPassword = BiosPassword;
         }
     }
 }

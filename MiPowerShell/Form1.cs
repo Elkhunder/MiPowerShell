@@ -1,62 +1,57 @@
-using MiPowerShell.Collectors.CommandInputCollector;
-using MiPowerShell.Collectors.BiosCommands;
 using MiPowerShell.Dispatchers;
 using MiPowerShell.Providers.ControlProvider;
-using MiPowerShell.Handlers.Commands;
-using MiPowerShell.Arguments;
-using System.Diagnostics;
-using System.Management.Automation;
-using Microsoft.Management.Infrastructure;
-using System.Windows.Forms;
 using MiPowerShell.Collectors;
+using MiPowerShell.Models;
+using MiPowerShell.Helpers;
+using Microsoft.CodeAnalysis;
 
 namespace MiPowerShell
 {
     public partial class Form1 : Form
     {
+        private readonly Commands _commands;
         private readonly ControlFactory _controlFactory;
         private readonly CommandDispatcher _commandDispatcher;
         private readonly ErrorDispatcher _errorDispatcher;
+        private readonly InputCollector _inputCollector;
+        private string? _selectedCommand;
+        private readonly Control _tableLayoutPanel;
 
         public Form1()
         {
             InitializeComponent();
+            FormControlProvider.Instance.SetForm(this);
+            _commands = new Commands();
             _controlFactory = new ControlFactory(this);
             _commandDispatcher = new CommandDispatcher();
             _errorDispatcher = new ErrorDispatcher();
+            _inputCollector = new InputCollector(this);
+            _tableLayoutPanel = ParentControlProvider.GetParentControlByName("TableLayoutPanel_Input");
 
+            ListBox_Commands.BeginUpdate();
+            ListBox_Commands.DataSource = _commands.ActiveCommands;
+            ListBox_Commands.ClearSelected();
+            ListBox_Commands.EndUpdate();
         }
 
         private void ListBox_Commands_SelectedIndexChanged(object sender, EventArgs e)
         {
             Button_Remote.Select();
-            Button_Remote.DialogResult = DialogResult.Yes;
-            string selectedCommand = ListBox_Commands?.SelectedItem?.ToString()!;
-            _controlFactory.CreateControls(selectedCommand);
+            _inputCollector.RemoteDevice = true;
+            _selectedCommand = ListBox_Commands?.SelectedItem?.ToString()!;
+            _controlFactory.CreateControls(_selectedCommand);
         }
 
         private void Button_Command_Execute_Click(object sender, EventArgs e)
         {
-            FormControlProvider.Instance.SetForm(this);
-            var parentControl = ParentControlProvider.GetParentControlByName("TableLayoutPanel_Input");
-            string selectedCommand = ListBox_Commands.SelectedItem?.ToString()!;
-            TextBox? biosPassword = null;
-            TextBox? newBiosPassword = null;
-            TextBox? confirmNewBiosPassword = null;
+            if (_selectedCommand != null)
+            {
+                if (_selectedCommand == "Set-BiosPassword")
+                {
+                    TextBox biosPassword = (TextBox)ChildControlProvider.GetChildControlByName(_tableLayoutPanel, "BiosPassword");
+                    TextBox newBiosPassword = (TextBox)ChildControlProvider.GetChildControlByName(_tableLayoutPanel, "NewBiosPassword");
+                    TextBox confirmNewBiosPassword = (TextBox)ChildControlProvider.GetChildControlByName(_tableLayoutPanel, "ConfirmNewBiosPassword");
 
-            if (selectedCommand == "Set-BiosPassword")
-            {
-                biosPassword = (TextBox)ChildControlProvider.GetChildControlByName(parentControl, "BiosPassword");
-                newBiosPassword = (TextBox)ChildControlProvider.GetChildControlByName(parentControl, "NewBiosPassword");
-                confirmNewBiosPassword = (TextBox)ChildControlProvider.GetChildControlByName(parentControl, "ConfirmNewBiosPassword");
-            }
-            InputCollectorBase? inputCollector = null;
-            switch (selectedCommand)
-            {
-                case "Clear-BiosPassword":
-                    inputCollector = new ClearBiosPasswordInputCollector(this);
-                    break;
-                case "Set-BiosPassword":
                     if (newBiosPassword == null || confirmNewBiosPassword == null) return;
 
                     if (newBiosPassword.Text == null || newBiosPassword.Text == "")
@@ -77,26 +72,12 @@ namespace MiPowerShell
                     else
                     {
                         confirmNewBiosPassword!.Text = "";
-                        inputCollector = new SetBiosPasswordInputCollector(this);
                     }
-                    break;
-                case "Get-CurrentUser":
-                    inputCollector = new InputCollector(this);
-                    break;
+                }
 
-                case "Get-HardDriveSerial":
-                    inputCollector = new InputCollector(this);
-                    break;
-                case "Get-WindowsVersion":
-                    inputCollector = new InputCollector(this);
-                    break;
-
+                var arguments = _inputCollector.Collect();
+                _commandDispatcher.Dispatch(_selectedCommand, arguments, dataGridView1);
             }
-            // Instantiate input collector
-
-            // Call the collect method and assign collected inputs to arguments
-            var arguments = inputCollector?.Collect()!;
-            _commandDispatcher.Dispatch(selectedCommand, arguments, dataGridView1);
         }
 
         private void Button_Command_Clear_Click(object sender, EventArgs e)
@@ -128,7 +109,7 @@ namespace MiPowerShell
             {
                 return;
             }
-            InputCollectorBase.AssignOpenFileDialog(openFileDialog1);
+            _inputCollector.AssignOpenFileDialog(openFileDialog1);
         }
 
         private void Button_Remote_Click(object sender, EventArgs e)
@@ -136,7 +117,9 @@ namespace MiPowerShell
             if (Button_Remote.Enabled && Button_Remote.Focused)
             {
                 Button_Remote.DialogResult = DialogResult.Yes;
+                _inputCollector.RemoteDevice = true;
                 Button_Local.DialogResult = DialogResult.None;
+                _inputCollector.LocalDevice = false;
             }
             foreach (Control control in TableLayoutPanel_Input.Controls)
             {
@@ -151,10 +134,24 @@ namespace MiPowerShell
 
         private void Button_Local_Click(object sender, EventArgs e)
         {
+            ComboBox printerSelection = (ComboBox)ChildControlProvider.GetChildControlByName(_tableLayoutPanel, "ComboBox_PrinterSelection");
+            if (_selectedCommand != null && _selectedCommand == "Set-PrinterName")
+            {
+                Optional<string[]> printerList = PrinterHandler.GetPrinterList("localhost");
+                if (printerList.HasValue)
+                {
+                    string[] printerNames = printerList.Value;
+                    printerSelection.Items.Clear();
+                    printerSelection.Items.AddRange(printerNames);
+                }
+
+            }
             if (Button_Local.Enabled && Button_Local.Focused)
             {
                 Button_Remote.DialogResult = DialogResult.None;
+                _inputCollector.RemoteDevice = false;
                 Button_Local.DialogResult = DialogResult.Yes;
+                _inputCollector.LocalDevice = true;
             }
 
             foreach (Control control in TableLayoutPanel_Input.Controls)

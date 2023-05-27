@@ -1,9 +1,5 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows.Forms;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using MiPowerShell;
-using MiPowerShell.Controls;
+﻿using MiPowerShell.Controls;
+using MiPowerShell.Handlers.Events;
 using MiPowerShell.Validation;
 
 public class ControlFactory : IErrorProvider
@@ -12,6 +8,9 @@ public class ControlFactory : IErrorProvider
     private Control _tableLayoutPanel;
     private ErrorProvider _errorProvider;
     private Validator _validator;
+    private int _controlWidth = 100;
+    private readonly ComboBox_IndexChanged _comboBox_IndexChanged;
+    private readonly CheckBox_CheckChanged _checkBox_CheckChanged;
 
     public ControlFactory(Form form)
     {
@@ -20,6 +19,8 @@ public class ControlFactory : IErrorProvider
         _tableLayoutPanel = tableLayoutPanel[0];
         _errorProvider = new ErrorProvider();
         _errorProvider.BlinkRate = 1000;
+        _comboBox_IndexChanged = new ComboBox_IndexChanged();
+        _checkBox_CheckChanged = new CheckBox_CheckChanged(_tableLayoutPanel);
         _errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
         _validator = new Validator();
     }
@@ -29,9 +30,33 @@ public class ControlFactory : IErrorProvider
         DisposeControls();
         switch (selectedCommand)
         {
+            case "Add-Shortcut":
+                CreateComputerNameControl();
+                CreateShortcutControl();
+                break;
             case "Clear-BiosPassword":
                 CreateComputerNameControl();
                 CreatePasswordControl(selectedCommand);
+                break;
+            case "Get-CurrentUser":
+                CreateComputerNameControl();
+                break;
+            case "Get-HardDriveSerial":
+                CreateComputerNameControl();
+                break;
+            case "Get-Printers":
+                CreateComputerNameControl();
+                break;
+            case "Get-UserProfile":
+                CreateComputerNameControl();
+                CreateUsernameControl();
+                break;
+            case "Get-WindowsVersion":
+                CreateComputerNameControl();
+                break;
+            case "Install-Language":
+                CreateComputerNameControl();
+                CreateLanguageControl();
                 break;
             case "Remove-UserProfile":
                 CreateComputerNameControl();
@@ -43,39 +68,17 @@ public class ControlFactory : IErrorProvider
                 CreateNewBiosPasswordControl();
                 CreateConfirmNewPasswordControl();
                 break;
-            case "Get-HardDriveSerial":
-                CreateComputerNameControl();
-                break;
-            case "Get-Printers":
-                CreateComputerNameControl();
-                break;
-            case "Install-Language":
-                CreateComputerNameControl();
-                CreateLanguageControl();
-                break;
-            case "Rename-Printers":
-                CreateComputerNameControl();
-                CreateOldPrinterNameControl();
-                CreateNewPrinterNameControl();
-                break;
             case "Set-NetworkProfile":
                 CreateComputerNameControl();
                 CreateProfileControl();
                 break;
             case "Set-Printers":
                 CreateComputerNameControl();
-                CreatePrinterControl();
                 break;
-            case "Get-CurrentUser":
+            case "Set-PrinterName":
                 CreateComputerNameControl();
-                break;
-            case "Get-UserProfile":
-                CreateComputerNameControl();
-                CreateUsernameControl();
-                break;
-            case "Add-Shortcut":
-                CreateComputerNameControl();
-                CreateShortcutControl();
+                CreatePrinterSelectionControl();
+                CreateNewPrinterNameControl();
                 break;
             case "Uninstall-Software":
                 CreateComputerNameControl();
@@ -98,27 +101,8 @@ public class ControlFactory : IErrorProvider
 
     private void CreateComputerNameControl()
     {
-        Label label = new Label();
-        label.Text = "Enter Computer Name:";
-        label.Dock= DockStyle.Fill;
-        label.AutoSize = true;
-        TextBox textBox = new TextBox();
-        textBox.Name = "Computers";
-        textBox.Tag = "Computers";
-        textBox.Dock= DockStyle.Left;
-        textBox.AutoSize = true;
-        textBox.PlaceholderText = "Required";
-
-        //_errorProvider.SetIconAlignment(textBox, ErrorIconAlignment.MiddleRight);
-        //_errorProvider.SetIconPadding(textBox, 2);
-        //TermIdValidator termIdValidator= new TermIdValidator(_errorProvider);
-        //textBox.Validating += new CancelEventHandler(termIdValidator.Validate);
-
-        _tableLayoutPanel.Controls.Add(label);
-        _tableLayoutPanel.Controls.Add(textBox);
-        
-
-
+        CreateLabelControl("Enter Computer Name:");
+        CreateTextBoxControl("Required", "Computers", "Computers");
     }
 
     private void CreatePasswordControl(string selectedCommand)
@@ -143,7 +127,7 @@ public class ControlFactory : IErrorProvider
             checkBox.Checked = false;
             checkBox.Text = "Update existing BIOS password";
             checkBox.AutoSize = true;
-            checkBox.CheckedChanged += CheckBox_CheckedChanged;
+            checkBox.CheckedChanged += _checkBox_CheckChanged.CheckBox_BiosPassword_CheckChanged;
 
             FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
             flowLayoutPanel.Name = "flowLayoutPanel_BiosPassword";
@@ -169,27 +153,6 @@ public class ControlFactory : IErrorProvider
         //textBox.Validating += new CancelEventHandler(biosPasswordValidator.Validate);
 
         
-    }
-
-    private void CheckBox_CheckedChanged(object? sender, EventArgs e)
-    {
-        CheckBox checkBox = (CheckBox)sender!;
-        TextBox textBox = new TextBox();
-        FlowLayoutPanel flowLayoutPanel = _tableLayoutPanel.Controls
-            .OfType<FlowLayoutPanel>()
-            .FirstOrDefault(control => control.Name == "flowLayoutPanel_BiosPassword")!;
-        if(flowLayoutPanel != null)
-        {
-            textBox = flowLayoutPanel.Controls
-                .OfType<TextBox>()
-                .FirstOrDefault(control => control  is TextBox textBox)!;
-
-        }
-
-        if (textBox != null)
-        {
-            textBox.Enabled = checkBox.Checked;
-        }
     }
 
     private void CreateNewBiosPasswordControl()
@@ -248,33 +211,118 @@ public class ControlFactory : IErrorProvider
 
     private void CreateLanguageControl()
     {
-        Label label = new Label();
-        label.Text = "Language:";
-        _tableLayoutPanel.Controls.Add(label);
-
-        ComboBox comboBox = new ComboBox();
-        comboBox.Items.AddRange(new[] { "English", "French", "German", "Spanish" });
-        _tableLayoutPanel.Controls.Add(comboBox);
-    }
-
-    private void CreateOldPrinterNameControl()
-    {
-        Label label = new Label();
-        label.Text = "Old Printer Name:";
-        _tableLayoutPanel.Controls.Add(label);
-
-        TextBox textBox = new TextBox();
-        _tableLayoutPanel.Controls.Add(textBox);
+        CreateLabelControl("Select Language:");
+        CreateComboBoxControl("ComboBox_LanguageSelection", "Language", new[] { "English", "French", "German", "Spanish" }, true);
     }
 
     private void CreateNewPrinterNameControl()
     {
-        Label label = new Label();
-        label.Text = "New Printer Name:";
-        _tableLayoutPanel.Controls.Add(label);
+        CreateLabelControl("New Printer Name:");
+        CreateTextBoxControl("Required", "TextBox_NewPrinterName", "NewPrinterName");
+    }
 
+    private void CreatePrinterSelectionControl()
+    {
+
+        CreateLabelControl("Select Printer:");
+        CreateComboBoxControl("ComboBox_PrinterSelection", "PrinterName", new[] {"Yes","No"}, true);
+    }
+
+    private void CreateComboBoxControl(string name, string tag, bool dropDownMenu = false)
+    {
+        ComboBox comboBox = new ComboBox();
+        comboBox.Name = name;
+        comboBox.Tag = tag;
+
+        if (dropDownMenu)
+        {
+            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        _tableLayoutPanel.Controls.Add(comboBox);
+    }
+
+    private ComboBox CreateComboBoxControl(string name, string tag, string[]? range = null, bool dropDownMenu = false, EventHandler? eventHandler = null)
+    {
+        ComboBox comboBox = new ComboBox();
+        comboBox.Name = name;
+        comboBox.Tag = tag;
+        if (eventHandler != null)
+        {
+            comboBox.SelectedIndexChanged += eventHandler;
+        }
+        if (range != null)
+        {
+            comboBox.Items.AddRange(range);
+        }
+        if(dropDownMenu)
+        {
+            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+        _tableLayoutPanel.Controls.Add(comboBox);
+
+        return comboBox;
+    }
+
+    private void ComboBox_SelectedIndexChanged(object? sender, EventArgs e)
+    {
+        ComboBox comboBox;
+        if (sender != null)
+        {
+            comboBox = (ComboBox)sender;
+        }
+        else
+        {
+            return;
+        }
+
+        if (comboBox != null && comboBox.Name == "ComboBox_PrinterSelection");
+        
+    }
+
+    private void CreateTextBoxControl(string placeholderText)
+    {
         TextBox textBox = new TextBox();
+        textBox.PlaceholderText = placeholderText;
+        textBox.Width = _controlWidth;
         _tableLayoutPanel.Controls.Add(textBox);
+
+        //_errorProvider.SetIconAlignment(textBox, ErrorIconAlignment.MiddleRight);
+        //_errorProvider.SetIconPadding(textBox, 2);
+        //TermIdValidator termIdValidator= new TermIdValidator(_errorProvider);
+        //textBox.Validating += new CancelEventHandler(termIdValidator.Validate);
+    }
+
+    private void CreateTextBoxControl(string placeholderText, string name, string tag)
+    {
+        TextBox textBox = new TextBox();
+        textBox.PlaceholderText = placeholderText;
+        textBox.Name = name;
+        textBox.Tag = tag;
+        textBox.Dock = DockStyle.Fill;
+        textBox.Width = _controlWidth;
+        _tableLayoutPanel.Controls.Add(textBox);
+
+        //_errorProvider.SetIconAlignment(textBox, ErrorIconAlignment.MiddleRight);
+        //_errorProvider.SetIconPadding(textBox, 2);
+        //TermIdValidator termIdValidator= new TermIdValidator(_errorProvider);
+        //textBox.Validating += new CancelEventHandler(termIdValidator.Validate);
+    }
+
+    private void CreateLabelControl(string text)
+    {
+        Label label = new Label();
+        label.Text = text;
+        label.AutoSize = true;
+        _tableLayoutPanel.Controls.Add(label);
+    }
+
+    private void CreateListBoxControl(string name)
+    {
+        ListBox listBox = new ListBox();
+        listBox.Width = _controlWidth;
+        listBox.Name = "ListBox_PrinterSelection";
+        _tableLayoutPanel.Controls.Add(listBox);
     }
 
     private void CreateProfileControl()
@@ -286,16 +334,6 @@ public class ControlFactory : IErrorProvider
         ComboBox comboBox = new ComboBox();
         comboBox.Items.AddRange(new[] { "Public", "Private", "Domain" });
         _tableLayoutPanel.Controls.Add(comboBox);
-    }
-
-    private void CreatePrinterControl()
-    {
-        Label label = new Label();
-        label.Text = "Printer:";
-        _tableLayoutPanel.Controls.Add(label);
-
-        TextBox textBox = new TextBox();
-        _tableLayoutPanel.Controls.Add(textBox);
     }
 
     private void CreateShortcutControl()
