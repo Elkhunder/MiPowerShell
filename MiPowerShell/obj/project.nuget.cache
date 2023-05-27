@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "RYotFO9m3H2YC3kNWMlRttA2ImZeFuKfX+5iCi1c0bJUEXQ64x94c/7PeOwZDRyMoZUvL/jzibqfvyT1w5ZlFQ==",
+  "dgSpecHash": "l5S1+QVefq/nVWel+89wXNCdqPblYnfhrrpRsT5+XXRQ/+PPIhtC/+NHfJrJrVOyKkceTK+l98A+Iihc5ddhWg==",
   "success": true,
   "projectFilePath": "C:\\Users\\jsissom\\source\\repos\\MiPowerShell\\MiPowerShell\\MiPowerShell.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\umhs-jsissom\\.nuget\\packages\\benchmarkdotnet\\0.13.4\\benchmarkdotnet.0.13.4.nupkg.sha512",
     "C:\\Users\\umhs-jsissom\\.nuget\\packages\\benchmarkdotnet.annotations\\0.13.4\\benchmarkdotnet.annotations.0.13.4.nupkg.sha512",
     "C:\\Users\\umhs-jsissom\\.nuget\\packages\\commandlineparser\\2.4.3\\commandlineparser.2.4.3.nupkg.sha512",
+    "C:\\Users\\umhs-jsissom\\.nuget\\packages\\entityframework\\5.0.0\\entityframework.5.0.0.nupkg.sha512",
     "C:\\Users\\umhs-jsissom\\.nuget\\packages\\fluentvalidation\\11.4.0\\fluentvalidation.11.4.0.nupkg.sha512",
     "C:\\Users\\umhs-jsissom\\.nuget\\packages\\gee.external.capstone\\2.3.0\\gee.external.capstone.2.3.0.nupkg.sha512",
     "C:\\Users\\umhs-jsissom\\.nuget\\packages\\iced\\1.17.0\\iced.1.17.0.nupkg.sha512",
@@ -139,5 +140,16 @@
     "C:\\Users\\umhs-jsissom\\.nuget\\packages\\system.web.services.description\\4.10.0\\system.web.services.description.4.10.0.nupkg.sha512",
     "C:\\Users\\umhs-jsissom\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'EntityFramework 5.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "EntityFramework",
+      "targetGraphs": [
+        "net7.0-windows7.0"
+      ]
+    }
+  ]
 }
