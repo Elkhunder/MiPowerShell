@@ -9,7 +9,7 @@ namespace MiPowerShell.Models
 {
     internal class WorkstationReport
     {
-        public bool _gettingSoftwareList { get; set; };
+        public bool _gettingSoftwareList { get; set; }
         
         public WorkstationReport()
         {
@@ -18,7 +18,7 @@ namespace MiPowerShell.Models
             Centricity centricity = new();
             BuildInformation buildInformation = new();
             ScreenTimeOuts screenTimeOuts = new();
-            AppList appList = new();
+            //AppList appList = new();
         }
     }
 
@@ -119,19 +119,22 @@ namespace MiPowerShell.Models
 
     public class MaintenancePage
     {
-        //MaintenanceConfiguration
-            //MaintenanceTime
-            //LastBegan
-            //LastCompleted
-            //LastSucceeded
-            //LastResult
-            //RebootPending
-            //MachineUpTime
-        //PowerManagement
+        MaintenanceConfiguration maintenanceConfiguration = new();
+        PowerManagement powerManagement = new();
     }
 
     public class MaintenanceConfiguration
     {
+        public MaintenanceConfiguration()
+        {
+            MaintenanceTime = string.Empty;
+            LastBegan = string.Empty;
+            LastCompleted = string.Empty;
+            LastSucceeded = string.Empty;
+            RebootPending = string.Empty;
+            MachineUpTime = string.Empty;
+        }
+
         public string MaintenanceTime { get; set; }
         public string LastBegan { get; set; }
         public string LastCompleted { get; set; }
@@ -147,42 +150,40 @@ namespace MiPowerShell.Models
 
     public class HardwarePage
     {
-        //SystemInformation
-            //System/Model
-            //Manufacturer
-            //AssetTag
-            //ServiceTag
-        //Processors
-            //Name
-            //ProcessorType
-            //Architechture
-            //CPUStatus
-        //Memory
-            //Name
-            //Capacity
-            //Type
-        //HardDrives
-            //Name
-            //Model
-            //Size
-            //Type
-            //Partitions
-        //DiskDrives
-        //VideoControllers
-        //Monitors
-        //NetworkAdapters
-
+        SystemInformation systemInformation = new();
+        Memory Memory = new Memory();
+        HardDrives hardDrives = new();
+        DiskDrives diskDrives = new();
+        VideoControllers videoControllers = new();
+        Monitors monitors = new();
+        NetworkAdapters networkAdapters = new();
     }
 
     public class SystemInformation
     {
+        public SystemInformation()
+        {
+            Model = string.Empty;
+            Manufacturer = string.Empty;
+            AssetTag = string.Empty;
+            ServiceTag = string.Empty;
+        }
+
         public string Model { get; set; }
-        pubic string Manufacturer { get; set; }
+        public string Manufacturer { get; set; }
         public string AssetTag { get; set; }
         public string ServiceTag { get; set; }
     }
     public class Processors
     {
+        public Processors()
+        {
+            Name = string.Empty;
+            ProcessorType = string.Empty;
+            Architechture = string.Empty;
+            CPUStatus = string.Empty;
+        }
+
         public string Name { get; set; }
         public string ProcessorType { get; set; }
         public string Architechture { get; set; }
@@ -190,12 +191,28 @@ namespace MiPowerShell.Models
     }
     public class Memory
     {
+        public Memory()
+        {
+            Name = string.Empty;
+            Capacity = string.Empty;
+            Type = string.Empty;
+        }
+
         public string Name { get; set; }
         public string Capacity { get; set; }
         public string Type { get; set; }
     }
     public class HardDrives
     {
+        public HardDrives()
+        {
+            Name = string.Empty;
+            Model = string.Empty;
+            Size = string.Empty;
+            Type = string.Empty;
+            Partitions = string.Empty;
+        }
+
         public string Name { get; set; }
         public string Model { get; set; }
         public string Size { get; set; }
@@ -211,22 +228,23 @@ namespace MiPowerShell.Models
     public class Monitors
     {
     }
-    public class NetworkAdapters
-    {
-    }
 
 
     public class BiosPage
     {
-        //BiosInformation
-            //System/Model
-            //BIOSVersion
-            //BIOSDate
-        //BootOrder
-        //BIOSSettings
+        BIOSInformation biosInformation = new();
+        BootOrder bootOrder = new();
+        BIOSSettings biosSettings = new();
     }
-    public class BiosInformation
+    public class BIOSInformation
     {
+        public BIOSInformation()
+        {
+            Model = string.Empty;
+            BIOSVersion = string.Empty;
+            BIOSDate = string.Empty;
+        }
+
         public string Model { get; set; }
         public string BIOSVersion { get; set; }
         public string BIOSDate { get; set; }
@@ -241,25 +259,20 @@ namespace MiPowerShell.Models
 
     public class NetworkConfigPage
     {
-        //NetworkAdapters
-            //Adapter
-            //MacAddress
-            //Interface
-            //Status
-        //IPConfiguration
-            //Adapter
-            //MacAddress
-            //IPAddresses
-            //SubnetMasks
-            //Gateway
-            //DHCP
-            //DHCPServer
-            //PrimaryWINSServer
-            //SecondaryWINSServer
+        NetworkAdapters networkAdapters = new();
+        IPConfiguration ipConfiguration = new();
 
     }
     public class NetworkAdapters
     {
+        public NetworkAdapters()
+        {
+            Adapter = string.Empty;
+            MacAddress = string.Empty;
+            Interface = string.Empty;
+            Status = string.Empty;
+        }
+
         public string Adapter { get; set; }
         public string MacAddress { get; set; }
         public string Interface { get; set; }
@@ -267,6 +280,19 @@ namespace MiPowerShell.Models
     }
     public class IPConfiguration
     {
+        public IPConfiguration()
+        {
+            Adapter = string.Empty;
+            MacAddress = string.Empty;
+            IPAddress = string.Empty;
+            SubnetMasks = string.Empty;
+            Gateway = string.Empty;
+            DHCP = string.Empty;
+            DHCPServer =  string.Empty;   
+            PrimaryWINSServer = string.Empty;
+            SecondaryWINSServer = string.Empty;
+        }
+
         public string Adapter { get; set; }
         public string MacAddress { get; set; }
         public string IPAddress { get; set; }
@@ -281,23 +307,30 @@ namespace MiPowerShell.Models
 
     public class PrintersPage
     {
-        //InstalledPrinters
-            //DeviceID
-            //DriverName
-            //PortName
-        //PrinterDefaults
-            //Account
-            //Printer
-
+        InstalledPrinters installedPrinters = new();
+        PrinterDefaults printerDefaults = new();
     }
     public class InstalledPrinters
     {
+        public InstalledPrinters()
+        {
+            DeviceID = string.Empty;
+            DriverName = string.Empty;
+            PortName = string.Empty;
+        }
+
         public string DeviceID { get; set; }
         public string DriverName { get; set; }
         public string PortName { get; set; }
     }
     public class PrinterDefaults
     {
+        public PrinterDefaults()
+        {
+            UserAccount = string.Empty;
+            Printer = string.Empty;
+        }
+
         public string UserAccount { get; set; }
         public string Printer { get; set; }
     }
@@ -305,29 +338,46 @@ namespace MiPowerShell.Models
 
     public class SecurityPage
     {
-        //LocalAccounts
-        //LoacalAdmins
-        //InstalledHotFixes
+        LocalAccounts localAccounts = new();
+        LocalAdmins localAdmins = new();
+        InstalledHotFixes installedHotFixes = new();
+
     }
 
     public class LocalAccounts
     {
-        public string Name { get; set; }
+        public LocalAccounts()
+        {
+            Name = new List<string>();
+        }
+
+        public List<string> Name { get; set; }
     }
-    public class LoacalAdmins
+    public class LocalAdmins
     {
-        public string Name  { get; set; }
+        public LocalAdmins()
+        {
+            Name = new List<string>();
+        }
+
+        public List<string> Name  { get; set; }
     }
     public class InstalledHotFixes
     {
-        public string Name { get; set; }
-        public string InstalledDate { get; set; }
+        public InstalledHotFixes()
+        {
+            Name = new List<string>();
+            InstalledDate = new List<DateTime>();
+        }
+
+        public List<string> Name { get; set; }
+        public List<DateTime> InstalledDate { get; set; }
     }
 
 
     public class SoftwarePage
     {
-        AppList AppList = new();
+        AppList appList = new();
     }
 
    
@@ -338,16 +388,15 @@ namespace MiPowerShell.Models
             SoftwareName = new List<string>();
             SoftwareVersion = new List<int>();
             Publisher = new List<string>();
-            InstalledDate = new List<string>();
+            InstalledDate = new List<DateTime>();
 
         }
 
         public List<string> SoftwareName { get; set; }
         public List<int> SoftwareVersion { get; set; }
         public List<string> Publisher { get; set; }
-        public List<string> InstalledDate { get; set; }
+        public List<DateTime> InstalledDate { get; set; }
 
     }
-
     
 }
