@@ -31,7 +31,7 @@ namespace MiPowerShell.Helpers
 
         public static TextBox GetTextBox(TableLayoutPanel? parentControl, string controlName)
         {
-            TextBox? textBox= new TextBox();
+            TextBox? textBox = new();
             if ((bool)parentControl?.Controls.ContainsKey(controlName)!)
             {
                 textBox = ((TextBox)parentControl.Controls[controlName]!);

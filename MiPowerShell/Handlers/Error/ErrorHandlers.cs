@@ -26,6 +26,7 @@ namespace MiPowerShell.Handlers.Error
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
                 // TODO: Log the exception so the exception type can be added to the dictionary
             }
             return _handlers[exType];

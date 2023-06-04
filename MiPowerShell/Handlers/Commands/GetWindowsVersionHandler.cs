@@ -1,14 +1,14 @@
-﻿using Microsoft.Diagnostics.Runtime.Utilities;
-using Microsoft.Management.Infrastructure;
-using MiPowerShell.Arguments;
-using MiPowerShell.Helpers;
-using MiPowerShell.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Diagnostics.Runtime.Utilities;
+using Microsoft.Management.Infrastructure;
+using MiPowerShell.Arguments;
+using MiPowerShell.Helpers;
+using MiPowerShell.Models;
 
 namespace MiPowerShell.Handlers.Commands
 {
@@ -16,9 +16,9 @@ namespace MiPowerShell.Handlers.Commands
     {
         private CimHandler? _cimHandler;
         private CimInstance[]? _cimInstance;
-        private WindowsVersionResults _results = new();
+        private readonly WindowsVersionResults _results = new();
 
-        private readonly Dictionary<string, string> _buildToVersionMap = new Dictionary<string, string>
+        private readonly Dictionary<string, string> _buildToVersionMap = new()
         {
             { "10240", "1507" },
             { "10586", "1511" },
@@ -79,7 +79,7 @@ namespace MiPowerShell.Handlers.Commands
                          * Currently these cases are both handled by setting the windows version to uknown
                          * It would be beneficial to have a more specific handling of both cases seperately
                         */
-                        
+
                         _results.Successful?.Add(true);
                         _results.WindowsVersion.Add(_buildToVersionMap[buildNumber]);
                     }
@@ -89,8 +89,9 @@ namespace MiPowerShell.Handlers.Commands
                         _results.WindowsVersion.Add("unknown");
                     }
                 }
+                _cimHandler?.Dispose();
             }
-            DataTable table = new DataTable();
+            DataTable table = new();
 
             // TODO: Update Columns //
             table.Columns.Add("TermID", typeof(string));

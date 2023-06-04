@@ -1,21 +1,21 @@
-﻿using Microsoft.Diagnostics.Runtime.Utilities;
+﻿using System.Data;
+using System.Security;
+using Microsoft.Diagnostics.Runtime.Utilities;
 using Microsoft.Management.Infrastructure;
 using Microsoft.VisualBasic.ApplicationServices;
 using MiPowerShell.Arguments;
 using MiPowerShell.Helpers;
 using MiPowerShell.Models;
-using System.Data;
-using System.Security;
 
 internal class GetCurrentUserHandler : ICommandHandler
 {
     // TODO: Add Display Name //
     public void Handle(CommandArguments arguments, DataGridView dataGridView)
     {
-        CurrentUserResults results = new CurrentUserResults();
+        CurrentUserResults results = new();
         string[] computerNames = arguments.ComputerNames;
 
-        foreach (var computerName in computerNames)
+        foreach (string computerName in computerNames)
         {
             results.TermID?.Add(computerName);
 
@@ -60,10 +60,10 @@ internal class GetCurrentUserHandler : ICommandHandler
             results.Successful?.Add(true);
             results.StatusCode?.Add(0);
         }
-        DataTable table = new DataTable();
+        DataTable table = new();
 
         table.Columns.Add("TermID", typeof(string));
-        table.Columns.Add("UserName", typeof (string));
+        table.Columns.Add("UserName", typeof(string));
         table.Columns.Add("Successful", typeof(bool));
         table.Columns.Add("Error", typeof(string));
         table.Columns.Add("StatusCode", typeof(int));

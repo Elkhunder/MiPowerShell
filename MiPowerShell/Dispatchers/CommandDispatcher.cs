@@ -1,5 +1,6 @@
 ﻿using MiPowerShell.Arguments;
 using MiPowerShell.Handlers.Commands;
+using System.Diagnostics;
 
 public class CommandDispatcher
 {
@@ -17,7 +18,7 @@ public class CommandDispatcher
         if (!(bool)handler?.ValidateArguments(arguments)!)
         {
             // Add try catch block to pass the exception to the error handler or throw the exception into the error dispatcher class.
-            throw new ArgumentException("Invalid arguments", nameof(arguments));
+            Debug.WriteLine("Invalid arguments", nameof(arguments));
         }
 
         handler.Handle(arguments, dataGridView);

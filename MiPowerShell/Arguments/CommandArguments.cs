@@ -8,14 +8,16 @@ namespace MiPowerShell.Arguments
         public string? NewPrinterName { get; init; }
         public SecureString? NewBiosPassword { get; init; }
         public string[] ComputerNames { get; init; }
+        public string UserName { get; init; }
 
-        public CommandArguments(SecureString biosPassword, SecureString newBiosPassword, string[] computerNames, string printerName, string newPrinterName)
+        public CommandArguments(SecureString biosPassword, SecureString newBiosPassword, string[] computerNames, string printerName, string newPrinterName, string userName)
         {
             BiosPassword = biosPassword;
             NewBiosPassword = newBiosPassword;
             ComputerNames = computerNames;
             PrinterName = printerName;
             NewPrinterName = newPrinterName;
+            UserName = userName;
         }
 
         public void Deconstruct(out string[] computerNames, out SecureString biosPassword)

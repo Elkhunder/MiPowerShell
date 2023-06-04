@@ -6,7 +6,7 @@ namespace MiPowerShell.Providers.ControlProvider
     public sealed class FormControlProvider
     {
         private static FormControlProvider? _instance = null;
-        private static readonly object _lock = new object();
+        private static readonly object _lock = new();
         private Form? _form;
 
         private FormControlProvider() { }
@@ -17,10 +17,7 @@ namespace MiPowerShell.Providers.ControlProvider
             {
                 lock (_lock)
                 {
-                    if (_instance == null)
-                    {
-                        _instance = new FormControlProvider();
-                    }
+                    _instance ??= new FormControlProvider();
                     return _instance;
                 }
             }
@@ -31,7 +28,7 @@ namespace MiPowerShell.Providers.ControlProvider
             _form = form;
         }
 
-        public Form GetForm()
+        public Form? GetForm()
         {
             return _form;
         }

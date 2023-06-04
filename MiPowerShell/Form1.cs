@@ -1,9 +1,9 @@
-using MiPowerShell.Dispatchers;
-using MiPowerShell.Providers.ControlProvider;
-using MiPowerShell.Collectors;
-using MiPowerShell.Models;
-using MiPowerShell.Helpers;
 using Microsoft.CodeAnalysis;
+using MiPowerShell.Collectors;
+using MiPowerShell.Dispatchers;
+using MiPowerShell.Helpers;
+using MiPowerShell.Models;
+using MiPowerShell.Providers.ControlProvider;
 
 namespace MiPowerShell
 {
@@ -48,7 +48,7 @@ namespace MiPowerShell
             {
                 if (_selectedCommand == "Set-BiosPassword")
                 {
-                    TextBox biosPassword = (TextBox)ChildControlProvider.GetChildControlByName(_tableLayoutPanel, "BiosPassword");
+
                     TextBox newBiosPassword = (TextBox)ChildControlProvider.GetChildControlByName(_tableLayoutPanel, "NewBiosPassword");
                     TextBox confirmNewBiosPassword = (TextBox)ChildControlProvider.GetChildControlByName(_tableLayoutPanel, "ConfirmNewBiosPassword");
 
@@ -102,7 +102,7 @@ namespace MiPowerShell
 
         private void Button_File_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            OpenFileDialog openFileDialog1 = new();
             var dialogResult = openFileDialog1.ShowDialog();
 
             if (dialogResult == DialogResult.Cancel)
@@ -178,7 +178,7 @@ namespace MiPowerShell
 
         private void Button_Command_Cancel_MouseHover(object sender, EventArgs e) { }
 
-        private void textBox1_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        private void TextBox1_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
 
         }

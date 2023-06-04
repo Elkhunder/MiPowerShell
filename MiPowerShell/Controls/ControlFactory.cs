@@ -11,6 +11,7 @@ public class ControlFactory : IErrorProvider
     private int _controlWidth = 100;
     private readonly ComboBox_IndexChanged _comboBox_IndexChanged;
     private readonly CheckBox_CheckChanged _checkBox_CheckChanged;
+    private readonly TextBox_FocusLost
 
     public ControlFactory(Form form)
     {
@@ -103,6 +104,11 @@ public class ControlFactory : IErrorProvider
     {
         CreateLabelControl("Enter Computer Name:");
         CreateTextBoxControl("Required", "Computers", "Computers");
+    }
+
+    private void CreateComputerNameControl(string eventName)
+    {
+        CreateLabelControl("EnterComputerName");
     }
 
     private void CreatePasswordControl(string selectedCommand)
@@ -201,12 +207,8 @@ public class ControlFactory : IErrorProvider
 
     private void CreateUsernameControl()
     {
-        Label label = new Label();
-        label.Text = "Username:";
-        _tableLayoutPanel.Controls.Add(label);
-
-        TextBox textBox = new TextBox();
-        _tableLayoutPanel.Controls.Add(textBox);
+        CreateLabelControl("UserName");
+        CreateTextBoxControl("Required", "TextBox_UserName", "UserName");
     }
 
     private void CreateLanguageControl()
@@ -293,15 +295,22 @@ public class ControlFactory : IErrorProvider
         //textBox.Validating += new CancelEventHandler(termIdValidator.Validate);
     }
 
-    private void CreateTextBoxControl(string placeholderText, string name, string tag)
+    private void CreateTextBoxControl(string placeholderText, string name, string tag, EventHandler? eventHandler = null)
     {
-        TextBox textBox = new TextBox();
-        textBox.PlaceholderText = placeholderText;
-        textBox.Name = name;
-        textBox.Tag = tag;
-        textBox.Dock = DockStyle.Fill;
-        textBox.Width = _controlWidth;
+        TextBox textBox = new()
+        {
+            PlaceholderText = placeholderText,
+            Name = name,
+            Tag = tag,
+            Dock = DockStyle.Fill,
+            Width = _controlWidth
+        };
         _tableLayoutPanel.Controls.Add(textBox);
+
+        if (eventHandler != null)
+        {
+            textBox.LostFocus += eventHandler;
+        }
 
         //_errorProvider.SetIconAlignment(textBox, ErrorIconAlignment.MiddleRight);
         //_errorProvider.SetIconPadding(textBox, 2);

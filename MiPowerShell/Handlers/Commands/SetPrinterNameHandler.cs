@@ -1,7 +1,7 @@
-﻿using Microsoft.Management.Infrastructure;
+﻿using System.Diagnostics;
+using Microsoft.Management.Infrastructure;
 using MiPowerShell.Arguments;
 using MiPowerShell.Helpers;
-using System.Diagnostics;
 
 internal class SetPrinterNameHandler : ICommandHandler
 {
@@ -16,7 +16,7 @@ internal class SetPrinterNameHandler : ICommandHandler
 
             CimHandler cimHandler = new(computerNames[i], namespaceName, className);
             CimInstance[] cimInstance = cimHandler.CimInstances;
-            
+
             if (cimInstance != null)
             {
                 for (var j = 0; j < cimInstance.Length; j++)
@@ -24,7 +24,7 @@ internal class SetPrinterNameHandler : ICommandHandler
                     string printerName = (string)cimInstance[j].CimInstanceProperties["Name"].Value;
                     if (cimHandler != null && printerName == oldPrinterName)
                     {
-                        CimMethodParametersCollection methodParameters = new CimMethodParametersCollection
+                        CimMethodParametersCollection methodParameters = new()
                         {
                             CimMethodParameter.Create("NewPrinterName", newPrinterName, CimType.String, CimFlags.In)
                         };
@@ -51,11 +51,8 @@ internal class SetPrinterNameHandler : ICommandHandler
                     }
                 }
             }
-            if(cimHandler != null)
-            {
-                cimHandler.Dispose();
-            }
-            
+            cimHandler?.Dispose();
+
         }
     }
     public bool ValidateArguments(CommandArguments arguments)

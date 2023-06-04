@@ -11,7 +11,7 @@ namespace MiPowerShell.Helpers
     {
         public static bool IsDeviceOnline(string device)
         {
-            Ping ping = new Ping();
+            Ping ping = new();
             try
             {
                 PingReply reply = ping.Send(device);
