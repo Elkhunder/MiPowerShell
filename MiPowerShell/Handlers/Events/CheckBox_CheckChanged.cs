@@ -9,7 +9,7 @@ namespace MiPowerShell.Handlers.Events
 {
     public class CheckBox_CheckChanged
     {
-        private Control _tableLayoutPanel;
+        private readonly Control _tableLayoutPanel;
 
         public CheckBox_CheckChanged(Control tableLayoutPanel)
         {
@@ -19,7 +19,7 @@ namespace MiPowerShell.Handlers.Events
         public void CheckBox_BiosPassword_CheckChanged(object? sender, EventArgs e)
         {
             CheckBox checkBox = (CheckBox)sender!;
-            TextBox textBox = new TextBox();
+            TextBox textBox = new();
             FlowLayoutPanel flowLayoutPanel = _tableLayoutPanel.Controls
                 .OfType<FlowLayoutPanel>()
                 .FirstOrDefault(control => control.Name == "flowLayoutPanel_BiosPassword")!;

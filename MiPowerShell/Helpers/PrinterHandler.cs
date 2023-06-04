@@ -1,24 +1,14 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.Management.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Printing;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MiPowerShell.Helpers
 {
     public class PrinterHandler : IDisposable
     {
-        private PrintServer _printServer;
         private bool disposedValue;
 
-        public PrintServer PrintServer { get { return _printServer; } }
         public PrinterHandler(string computerName)
         {
-            _printServer = new PrintServer(computerName);
         }
 
         public static Optional<string[]> GetPrinterList(string computerName)
@@ -53,12 +43,10 @@ namespace MiPowerShell.Helpers
                 if (disposing)
                 {
                     // TODO: dispose managed state (managed objects)
-                    _printServer.Dispose();
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override finalizer
                 // TODO: set large fields to null
-                _printServer = null;
                 disposedValue = true;
             }
         }

@@ -1,16 +1,16 @@
-﻿using Microsoft.Management.Infrastructure;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Management.Infrastructure;
 
 namespace MiPowerShell.Helpers
 {
     public class CimHandler : IDisposable
     {
-        private CimSession _cimSession;
+        private readonly CimSession _cimSession;
         private CimInstance[] _cimInstances;
         public CimSession CimSession => _cimSession;
         public CimInstance[] CimInstances => _cimInstances;
@@ -19,7 +19,7 @@ namespace MiPowerShell.Helpers
         public CimHandler(string termId, string namespaceName, string className)
         {
             _cimSession = CimSession.Create(termId);
-            _cimInstances = _cimSession.EnumerateInstances(namespaceName, className).ToArray();   
+            _cimInstances = _cimSession.EnumerateInstances(namespaceName, className).ToArray();
         }
 
         protected virtual void Dispose(bool disposing)

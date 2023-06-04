@@ -12,7 +12,7 @@ namespace MiPowerShell
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        static void Main()
         {
             try
             {
@@ -35,11 +35,13 @@ namespace MiPowerShell
         {
             if (!IsAdmin())
             {
-                ProcessStartInfo proc = new ProcessStartInfo();
-                proc.UseShellExecute = true;
-                proc.WorkingDirectory = Environment.CurrentDirectory;
-                proc.FileName = Application.ExecutablePath;
-                proc.Verb = "runas";
+                ProcessStartInfo proc = new()
+                {
+                    UseShellExecute = true,
+                    WorkingDirectory = Environment.CurrentDirectory,
+                    FileName = Application.ExecutablePath,
+                    Verb = "runas"
+                };
                 try
                 {
                     Process.Start(proc);
@@ -56,7 +58,7 @@ namespace MiPowerShell
         private static bool IsAdmin()
         {
             WindowsIdentity id = WindowsIdentity.GetCurrent();
-            WindowsPrincipal principal = new WindowsPrincipal(id);
+            WindowsPrincipal principal = new(id);
             return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
     }

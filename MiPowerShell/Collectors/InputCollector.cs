@@ -35,10 +35,7 @@ namespace MiPowerShell.Collectors
                 throw new Exception("TableLayoutPanel_Input is not present on the form");
             }
             _tableLayoutPanel_Input = (TableLayoutPanel)_tableLayoutPanel_Main.Controls["TableLayoutPanel_Input"]!;
-            //if (_tableLayoutPanel_Main.Controls.ContainsKey("TableLayoutPanel_CommandButtons"))
-            //{
-            //    throw new Exception("TableLayoutPanel_CommandButtons is not present on the form");
-            //}
+            
             _tableLayoutPanel_CommandButtons = (TableLayoutPanel)_tableLayoutPanel_Main.Controls["TableLayoutPanel_CommandButtons"]!;
         }
         public void AssignOpenFileDialog(OpenFileDialog openFileDialog1)
@@ -52,12 +49,33 @@ namespace MiPowerShell.Collectors
             var newPrinterName = CollectNewPrinterName();
             var biosPassword = CollectBiosPassword();
             var newBiosPassword = CollectNewBiosPassword();
-            return new CommandArguments(biosPassword, newBiosPassword, computerNames, oldPrinterName, newPrinterName);
+            var userName = CollectUserName();
+            return new CommandArguments(biosPassword, newBiosPassword, computerNames, oldPrinterName, newPrinterName, userName);
+        }
+
+        private string CollectUserName()
+        {
+            string userName = string.Empty;
+
+            if (_tableLayoutPanel_Input != null && (bool)_tableLayoutPanel_Input.Controls.ContainsKey("TextBox_UserName"))
+            {
+                string key = ((TextBox)_tableLayoutPanel_Input.Controls["TextBox_UserName"]!).Text;
+
+                if (!string.IsNullOrEmpty(key))
+                {
+                    userName = key;
+                }
+                else
+                {
+                    userName = string.Empty;
+                }
+            }
+            return userName;
         }
 
         private string CollectNewPrinterName()
         {
-            string? newPrinterName = "";
+            string newPrinterName = string.Empty;
             if (_tableLayoutPanel_Input != null && (bool)_tableLayoutPanel_Input.Controls.ContainsKey("TextBox_NewPrinterName"))
             {
                 string key = ((TextBox)_tableLayoutPanel_Input.Controls["TextBox_NewPrinterName"]!).Text;
@@ -65,10 +83,6 @@ namespace MiPowerShell.Collectors
                 if (!string.IsNullOrEmpty(key))
                 {
                     newPrinterName = key;
-                }
-                else
-                {
-                    return null;
                 }
             }
             return newPrinterName;

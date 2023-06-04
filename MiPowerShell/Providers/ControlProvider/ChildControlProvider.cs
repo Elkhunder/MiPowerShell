@@ -5,7 +5,7 @@ namespace MiPowerShell.Providers.ControlProvider
 {
     public class ChildControlProvider
     {
-        public static Control GetChildControlByName(Control parentControl, string controlName)
+        public static Control? GetChildControlByName(Control parentControl, string controlName)
         {
             if (parentControl != null && parentControl.Controls.ContainsKey(controlName))
             {

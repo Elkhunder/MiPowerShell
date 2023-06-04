@@ -1,12 +1,12 @@
-﻿using Microsoft.Diagnostics.Tracing.Parsers.MicrosoftWindowsTCPIP;
+﻿using System.Data;
+using System.Runtime.InteropServices;
+using System.Security;
+using Microsoft.Diagnostics.Tracing.Parsers.MicrosoftWindowsTCPIP;
 using Microsoft.Management.Infrastructure;
 using Microsoft.VisualBasic.Devices;
 using MiPowerShell.Arguments;
 using MiPowerShell.Helpers;
 using MiPowerShell.Models;
-using System.Data;
-using System.Runtime.InteropServices;
-using System.Security;
 
 namespace MiPowerShell.Handlers.Commands
 {
@@ -15,7 +15,7 @@ namespace MiPowerShell.Handlers.Commands
         private string? _result;
         public void Handle(CommandArguments arguments, DataGridView dataGridView)
         {
-            BiosPasswordResults results = new BiosPasswordResults();
+            BiosPasswordResults results = new();
 
             var (computerNames, biosPassword, newBiosPassword) = arguments;
 
@@ -23,7 +23,7 @@ namespace MiPowerShell.Handlers.Commands
             {
                 results.TermID?.Add(computerName);
                 bool isOnline = DeviceStatusChecked.IsDeviceOnline(computerName);
-        
+
                 if (!isOnline)
                 {
                     _result = "Offline";
@@ -104,7 +104,7 @@ namespace MiPowerShell.Handlers.Commands
                     catch (CimException ex)
                     {
                         Console.WriteLine($"TermID: {computerName}, Error: {ex.Message}");
-                        results.Error?.Add(nameSpace+": " + ex.Message);
+                        results.Error?.Add(nameSpace + ": " + ex.Message);
                         results.Successful?.Add(false);
                         results.StatusCode?.Add(-2);
                     }
@@ -166,7 +166,7 @@ namespace MiPowerShell.Handlers.Commands
                     {
                         Console.WriteLine($"Error: {ex.Message}");
                         results.Successful?.Add(false);
-                        results.Error?.Add(nameSpace + ":" +  ex.Message);
+                        results.Error?.Add(nameSpace + ":" + ex.Message);
                         results.StatusCode?.Add(-2);
                         results.BiosPasswordIsSet?.Add(true);
                     }
@@ -286,7 +286,7 @@ namespace MiPowerShell.Handlers.Commands
                     }
                 }
             }
-            DataTable table = new DataTable();
+            DataTable table = new();
 
             table.Columns.Add("TermID", typeof(string));
             table.Columns.Add("Successful", typeof(bool));

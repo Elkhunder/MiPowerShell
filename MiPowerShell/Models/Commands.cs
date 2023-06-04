@@ -17,14 +17,22 @@ namespace MiPowerShell.Models
                 "Clear-BiosPassword",
                 "Get-CurrentUser",
                 "Get-HardDriveSerial",
+                "Get-UserProfile",
                 "Get-WindowsVersion",
+                "Remove-UserProfile",
                 "Set-BiosPassword",
-                "Set-PrinterName"
+                "Set-PrinterName",
             };
 
             DevelopmentCommands = new string[]
             {
-                
+                "Uninstall-Software",
+                "Set-Printers",
+                "Set-NetworkProfile",
+                "Install-Language",
+                "Get-Printers",
+                "Add-Shortcut",
+                "Install-Software",
             };
         }
     }

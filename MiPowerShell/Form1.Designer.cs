@@ -61,7 +61,7 @@
             // 
             ListBox_Commands.Dock = DockStyle.Fill;
             ListBox_Commands.FormattingEnabled = true;
-            ListBox_Commands.ItemHeight = 15;
+            ListBox_Commands.ItemHeight = 18;
             ListBox_Commands.Location = new Point(3, 27);
             ListBox_Commands.Margin = new Padding(3, 2, 3, 2);
             ListBox_Commands.Name = "ListBox_Commands";
@@ -295,7 +295,7 @@
             // Form1
             // 
             AcceptButton = Button_Command_Execute;
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             CancelButton = Button_Command_Cancel;

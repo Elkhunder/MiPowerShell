@@ -1,9 +1,9 @@
-﻿using Microsoft.Diagnostics.Runtime.Utilities;
+﻿using System.Data;
+using Microsoft.Diagnostics.Runtime.Utilities;
 using Microsoft.Management.Infrastructure;
 using MiPowerShell.Arguments;
 using MiPowerShell.Helpers;
 using MiPowerShell.Models;
-using System.Data;
 
 namespace MiPowerShell.Handlers.Commands
 {
@@ -11,7 +11,7 @@ namespace MiPowerShell.Handlers.Commands
     {
         CimHandler? _cimHandler;
         CimInstance[]? _cimInstance;
-        HardDriveResults _results = new HardDriveResults();
+        readonly HardDriveResults _results = new();
         public void Handle(CommandArguments arguments, DataGridView dataGridView)
         {
             string[] computerNames = arguments.ComputerNames;
@@ -34,7 +34,7 @@ namespace MiPowerShell.Handlers.Commands
 
                 _cimHandler = new CimHandler(computerName, namespaceName, className);
 
-                if(_cimHandler != null)
+                if (_cimHandler != null)
                 {
                     try
                     {
@@ -55,28 +55,28 @@ namespace MiPowerShell.Handlers.Commands
                     {
                         serialNumbers[i] = (string)_cimInstance[i].CimInstanceProperties["SerialNumber"].Value;
                         driveNames[i] = (string)_cimInstance[i].CimInstanceProperties["Caption"].Value;
-                        
+
                     }
-                    if(serialNumbers.Length > 0)
+                    if (serialNumbers.Length > 0)
                     {
                         _results.SerialNumbers.Add(serialNumbers);
                         _results.Successful?.Add(true);
                     }
-                    if(driveNames.Length > 0)
+                    if (driveNames.Length > 0)
                     {
                         _results.Name.Add(driveNames);
                     }
                 }
             }
-            DataTable table = new DataTable();
+            DataTable table = new();
 
             // TODO: Update Columns //
-            table.Columns.Add("TermID", typeof (string));
-            table.Columns.Add("DriveName", typeof (string));
-            table.Columns.Add("SerialNumbers", typeof (string));
-            table.Columns.Add("Successful", typeof (bool));
-            table.Columns.Add("Error", typeof (string));
-            table.Columns.Add("StatusCode", typeof (int));
+            table.Columns.Add("TermID", typeof(string));
+            table.Columns.Add("DriveName", typeof(string));
+            table.Columns.Add("SerialNumbers", typeof(string));
+            table.Columns.Add("Successful", typeof(bool));
+            table.Columns.Add("Error", typeof(string));
+            table.Columns.Add("StatusCode", typeof(int));
 
             for (int i = 0; i < _results.TermID?.Count; i++)
             {
@@ -86,7 +86,7 @@ namespace MiPowerShell.Handlers.Commands
                 string error = _results.Error.ElementAtOrDefault(i) ?? string.Empty;
                 int? statusCode = _results.StatusCode?.ElementAtOrDefault(i);
                 string serialNumbers = string.Join(",", _results.SerialNumbers.ElementAtOrDefault(i)!) ?? string.Empty;
-                string driveName = string.Join(",", _results.Name.ElementAtOrDefault(i)!) ?? string.Empty; 
+                string driveName = string.Join(",", _results.Name.ElementAtOrDefault(i)!) ?? string.Empty;
 
                 // TODO: Update //
                 table.Rows.Add(termId, driveName, serialNumbers, successful, error, statusCode);
