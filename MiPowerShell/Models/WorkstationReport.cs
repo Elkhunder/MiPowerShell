@@ -33,15 +33,52 @@ namespace MiPowerShell.Models
 
     public class MaintenancePage
     {
-
+        //MaintenanceConfiguration
+            //MaintenanceTime
+            //LastBegan
+            //LastCompleted
+            //LastSucceeded
+            //LastResult
+            //RebootPending
+            //MachineUpTime
+        //PowerManagement
     }
     public class HardwarePage
     {
+        //SystemInformation
+            //System/Model
+            //Manufacturer
+            //AssetTag
+            //ServiceTag
+        //Processors
+            //Name
+            //ProcessorType
+            //Architechture
+            //CPUStatus
+        //Memory
+            //Name
+            //Capacity
+            //Type
+        //HardDrives
+            //Name
+            //Model
+            //Size
+            //Type
+            //Partitions
+        //DiskDrives
+        //VideoControllers
+        //Monitors
+        //NetworkAdapters
 
     }
     public class BiosPage
     {
-
+        //BiosInformation
+            //System/Model
+            //BIOSVersion
+            //BIOSDate
+        //BootOrder
+        //BIOSSettings
     }
     public class NetworkConfigPage
     {
