@@ -19,6 +19,7 @@ namespace MiPowerShell.Models
                 "Get-HardDriveSerial",
                 "Get-UserProfile",
                 "Get-WindowsVersion",
+                "Get-WorkstationReport",
                 "Remove-UserProfile",
                 "Set-BiosPassword",
                 "Set-PrinterName",

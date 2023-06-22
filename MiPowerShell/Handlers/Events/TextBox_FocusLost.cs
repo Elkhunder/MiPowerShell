@@ -8,9 +8,11 @@ namespace MiPowerShell.Handlers.Events
     public class TextBox_FocusLost
     {
         private readonly Control? _tableLayoutPanel;
-        public TextBox_FocusLost(Control tableLayoutPanel)
+        private string _selectedCommand;
+        public TextBox_FocusLost(Control tableLayoutPanel, string selectedCommand)
         {
             _tableLayoutPanel = tableLayoutPanel;
+            _selectedCommand = selectedCommand;
         }
         public void TextBox_ComputerName_FocusLost(object sender, EventArgs e)
         {

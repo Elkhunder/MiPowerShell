@@ -4,6 +4,15 @@
     <_LastSelectedProfileId>C:\Users\jsissom\source\repos\MiPowerShell\MiPowerShell\Properties\PublishProfiles\ClickOnceProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="Controls\WorkstationReport\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\WorkstationReport\WorkstationReportControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\WorkstationReport\WorkstationReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="CredentialsPrompt.cs">
       <SubType>Form</SubType>
     </Compile>

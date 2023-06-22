@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using Microsoft.Diagnostics.Runtime.Utilities;
 using Microsoft.Management.Infrastructure;
 using MiPowerShell.Arguments;
 using MiPowerShell.Helpers;

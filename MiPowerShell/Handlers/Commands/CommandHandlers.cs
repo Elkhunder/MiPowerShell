@@ -15,6 +15,7 @@ namespace MiPowerShell.Handlers.Commands
                 { "Get-Printers", new GetPrintersHandler() },
                 { "Get-UserProfile", new GetUserProfileHandler() },
                 { "Get-WindowsVersion", new GetWindowsVersionHandler() },
+                { "Get-WorkstationReport", new GetWorkstationReport() },
                 { "Install-Language", new InstallLanguageHandler() },
                 { "Remove-UserProfile", new RemoveUserProfileHandler() },
                 { "Set-BiosPassword", new SetBiosPasswordHandler() },

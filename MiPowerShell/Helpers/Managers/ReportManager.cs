@@ -1,29 +1,94 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MiPowerShell.Models;
+using MiPowerShell.Models.WorkstationReport;
 
 namespace MiPowerShell.Helpers.Managers
 {
     internal class ReportManager
     {
-        private bool _gettingSoftwareList;
-        private string _reportName;
-        private string _reportDescription;
-        private string _name;
-        private string _assetTag;
-        private string _assetType;
-        private string _manufacturer;
-        private string _product;
-        private string _productType;
-        private string _operatingSystem;
-        private string _platform;
-        private string _version;
-        privte string[] _installedSoftware;
+        public Form ReportForm;
+        private GeneralInformation _generalInformation;
 
         public ReportManager()
         {
+            ReportForm = new Form();
+            _generalInformation = new GeneralInformation();
+            InitializeComponent();
+
+        }
+
+        private void InitializeComponent()
+        {
+            TabControl tabControl = new TabControl();
+            tabControl.Dock = DockStyle.Fill;
+
+            // Initialize new tab pages
+            TabPage generalInformation = new TabPage();
+            TabPage maintenanceInformation = new TabPage();
+            TabPage hardwareInformation = new TabPage();
+            TabPage biosInformation = new TabPage();
+            TabPage networkInformation = new TabPage();
+            TabPage printersInformation = new TabPage();
+            TabPage securityInformation = new TabPage();
+            TabPage applicationInformation = new TabPage();
+
+            // Suspend Layouts
+            ReportForm.SuspendLayout();
+            tabControl.SuspendLayout();
+
+            // Tab page properties
+            generalInformation.Name = "General Page";
+            generalInformation.Text = "General";
+            generalInformation.Dock = DockStyle.Fill;
+
+            maintenanceInformation.Name = "Maintenance Page";
+            maintenanceInformation.Text = "Maintenance";
+            maintenanceInformation.Dock = DockStyle.Fill;
+
+            hardwareInformation.Name = "Hardware Page";
+            hardwareInformation.Text = "Hardware";
+            hardwareInformation.Dock = DockStyle.Fill;
+
+            biosInformation.Name = "BIOS Page";
+            biosInformation.Text = "BIOS";
+            biosInformation.Dock = DockStyle.Fill;
+
+            networkInformation.Name = "Network Page";
+            networkInformation.Text = "Network";
+            networkInformation.Dock = DockStyle.Fill;
+
+            printersInformation.Name = "Printers Page";
+            printersInformation.Text = "Printers";
+            printersInformation.Dock = DockStyle.Fill;
+
+            securityInformation.Name = "Security Page";
+            securityInformation.Text = "Security";
+            securityInformation.Dock = DockStyle.Fill;
+
+            applicationInformation.Name = "Application Page";
+            applicationInformation.Text = "Applications";
+            applicationInformation.Dock = DockStyle.Fill;
+
+            // Add tab pages to tab control
+            tabControl.Controls.Add(generalInformation);
+            tabControl.Controls.Add(maintenanceInformation);
+            tabControl.Controls.Add(hardwareInformation);
+            tabControl.Controls.Add(biosInformation);
+            tabControl.Controls.Add(networkInformation);
+            tabControl.Controls.Add(printersInformation);
+            tabControl.Controls.Add(securityInformation);
+            tabControl.Controls.Add(applicationInformation);
+
+            // Form properties
+            ReportForm.Controls.Add(tabControl);
+            ReportForm.Text = "Workstation Report";
+            ReportForm.Width = 600;
+            ReportForm.Height = 800;
+
+            // Resume Layouts
+            tabControl.ResumeLayout(false);
+            ReportForm.ResumeLayout(false);
+
+
         }
     }
 }

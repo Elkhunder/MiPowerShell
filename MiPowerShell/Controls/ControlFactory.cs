@@ -11,7 +11,7 @@ public class ControlFactory : IErrorProvider
     private int _controlWidth = 100;
     private readonly ComboBox_IndexChanged _comboBox_IndexChanged;
     private readonly CheckBox_CheckChanged _checkBox_CheckChanged;
-    private readonly TextBox_FocusLost
+    private TextBox_FocusLost? _textBox_FocusLost;
 
     public ControlFactory(Form form)
     {
@@ -22,12 +22,14 @@ public class ControlFactory : IErrorProvider
         _errorProvider.BlinkRate = 1000;
         _comboBox_IndexChanged = new ComboBox_IndexChanged();
         _checkBox_CheckChanged = new CheckBox_CheckChanged(_tableLayoutPanel);
+        
         _errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
         _validator = new Validator();
     }
 
     public void CreateControls(string selectedCommand)
     {
+        _textBox_FocusLost = new TextBox_FocusLost(_tableLayoutPanel, selectedCommand);
         DisposeControls();
         switch (selectedCommand)
         {
@@ -53,6 +55,9 @@ public class ControlFactory : IErrorProvider
                 CreateUsernameControl();
                 break;
             case "Get-WindowsVersion":
+                CreateComputerNameControl();
+                break;
+            case "Get-WorkstationReport":
                 CreateComputerNameControl();
                 break;
             case "Install-Language":

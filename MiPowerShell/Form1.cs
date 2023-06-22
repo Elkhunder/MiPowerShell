@@ -27,9 +27,8 @@ namespace MiPowerShell
             _errorDispatcher = new ErrorDispatcher();
             _inputCollector = new InputCollector(this);
             _tableLayoutPanel = ParentControlProvider.GetParentControlByName("TableLayoutPanel_Input");
-
-            ListBox_Commands.BeginUpdate();
             ListBox_Commands.DataSource = _commands.ActiveCommands;
+            ListBox_Commands.BeginUpdate();
             ListBox_Commands.ClearSelected();
             ListBox_Commands.EndUpdate();
         }

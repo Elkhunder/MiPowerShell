@@ -31,8 +31,6 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             ListBox_Commands = new ListBox();
-            activeCommandsBindingSource = new BindingSource(components);
-            commandsBindingSource = new BindingSource(components);
             Label_Commands_Heading = new Label();
             label_Command_Heading = new Label();
             Button_Command_Clear = new Button();
@@ -48,8 +46,6 @@
             TableLayoutPanel_Input = new TableLayoutPanel();
             commandArgumentsBindingSource = new BindingSource(components);
             dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)activeCommandsBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)commandsBindingSource).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             TableLayoutPanel_CommandButtons.SuspendLayout();
@@ -61,7 +57,7 @@
             // 
             ListBox_Commands.Dock = DockStyle.Fill;
             ListBox_Commands.FormattingEnabled = true;
-            ListBox_Commands.ItemHeight = 18;
+            ListBox_Commands.ItemHeight = 15;
             ListBox_Commands.Location = new Point(3, 27);
             ListBox_Commands.Margin = new Padding(3, 2, 3, 2);
             ListBox_Commands.Name = "ListBox_Commands";
@@ -71,15 +67,6 @@
             ListBox_Commands.TabIndex = 1;
             ListBox_Commands.Tag = "Commands";
             ListBox_Commands.SelectedIndexChanged += ListBox_Commands_SelectedIndexChanged;
-            // 
-            // activeCommandsBindingSource
-            // 
-            activeCommandsBindingSource.DataMember = "ActiveCommands";
-            activeCommandsBindingSource.DataSource = commandsBindingSource;
-            // 
-            // commandsBindingSource
-            // 
-            commandsBindingSource.DataSource = typeof(Models.Commands);
             // 
             // Label_Commands_Heading
             // 
@@ -295,7 +282,7 @@
             // Form1
             // 
             AcceptButton = Button_Command_Execute;
-            AutoScaleDimensions = new SizeF(9F, 18F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             CancelButton = Button_Command_Cancel;
@@ -311,8 +298,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MiPowerShell";
             TopMost = true;
-            ((System.ComponentModel.ISupportInitialize)activeCommandsBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)commandsBindingSource).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
@@ -341,7 +326,5 @@
         private TableLayoutPanel TableLayoutPanel_Input;
         private BindingSource commandArgumentsBindingSource;
         private DataGridView dataGridView1;
-        private BindingSource commandsBindingSource;
-        private BindingSource activeCommandsBindingSource;
     }
 }

@@ -45,17 +45,9 @@
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "dependencies": {
-            "BenchmarkDotNet": {
-              "target": "Package",
-              "version": "[0.13.4, )"
-            },
             "EntityFramework": {
               "target": "Package",
               "version": "[5.0.0, )"
-            },
-            "FluentValidation": {
-              "target": "Package",
-              "version": "[11.4.0, )"
             },
             "Microsoft.Management.Infrastructure": {
               "target": "Package",

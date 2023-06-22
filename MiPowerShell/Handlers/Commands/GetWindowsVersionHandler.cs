@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Diagnostics.Runtime.Utilities;
+﻿using System.Data;
 using Microsoft.Management.Infrastructure;
 using MiPowerShell.Arguments;
 using MiPowerShell.Helpers;
