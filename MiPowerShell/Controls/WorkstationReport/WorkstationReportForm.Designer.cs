@@ -1702,10 +1702,10 @@ namespace MiPowerShell.Controls
             // printersTabPage
             // 
             printersTabPage.Controls.Add(printerTable);
-            printersTabPage.Location = new Point(4, 24);
+            printersTabPage.Location = new Point(4, 26);
             printersTabPage.Name = "printersTabPage";
             printersTabPage.Padding = new Padding(3);
-            printersTabPage.Size = new Size(1394, 573);
+            printersTabPage.Size = new Size(1394, 571);
             printersTabPage.TabIndex = 5;
             printersTabPage.Text = "Printers";
             printersTabPage.UseVisualStyleBackColor = true;
@@ -1727,7 +1727,7 @@ namespace MiPowerShell.Controls
             printerTable.RowStyles.Add(new RowStyle());
             printerTable.RowStyles.Add(new RowStyle());
             printerTable.RowStyles.Add(new RowStyle());
-            printerTable.Size = new Size(1388, 567);
+            printerTable.Size = new Size(1388, 565);
             printerTable.TabIndex = 0;
             printerTable.MouseClick += printerTable_MouseClick;
             // 
@@ -1818,7 +1818,7 @@ namespace MiPowerShell.Controls
             defaultPrinterTable.Name = "defaultPrinterTable";
             defaultPrinterTable.RowCount = 1;
             defaultPrinterTable.RowStyles.Add(new RowStyle());
-            defaultPrinterTable.Size = new Size(1382, 492);
+            defaultPrinterTable.Size = new Size(1382, 490);
             defaultPrinterTable.TabIndex = 3;
             // 
             // label4
