@@ -908,9 +908,9 @@ namespace MiPowerShell.Handlers.Commands
         private void GetSoftwareTabElements(TabPage tabPage)
         {
             _softwareTab = tabPage;
-            TableLayoutPanel tableLayoutPanel = FindControl<TableLayoutPanel>(tabPage, "softwareTable");
+            DataGridView softwareGridView = FindControl<DataGridView>(tabPage, "softwareDataView");
 
-            _softwareTableElements = new SoftwareTabElements(tableLayoutPanel);
+            _softwareTableElements = new SoftwareTabElements(softwareGridView);
         }
         private void UpdateSoftwareProperties()
         {
@@ -951,50 +951,51 @@ namespace MiPowerShell.Handlers.Commands
 
                 }
             }
-            _softwareInformation.InstalledSoftware = new List<Software>(softwareDict.Values);
-            _softwareInformation.InstalledSoftware.Sort();
+            _softwareInformation.InstalledSoftware = new List<Software>(softwareDict.Values).Distinct().OrderBy(name => name).ToList();
 
             IsSoftwareInformationInitialized.Value = true;
             Console.WriteLine("Software Info Initialized");
+            _softwareTableElements.SoftwareDataView.DataSource = _softwareInformation.InstalledSoftware;
+            _softwareTableElements.SoftwareDataView.AutoResizeColumns();
         }
-        public void UpdateSoftwareTabElements()
-        {
-            Console.WriteLine("Entered UpdateSoftwareTabElements.");
+        //public void UpdateSoftwareTabElements()
+        //{
+        //    Console.WriteLine("Entered UpdateSoftwareTabElements.");
 
-            if (_softwareInformation.InstalledSoftware != null && _softwareTableElements != null)
-            {
-                TableLayoutControlCollection controls = _softwareTableElements.SoftwareTable.Controls;
-                TableLayoutPanel softwareTable = _softwareTableElements.SoftwareTable;
-                List<Software> installedSoftware = _softwareInformation.InstalledSoftware;
+        //    if (_softwareInformation.InstalledSoftware != null && _softwareTableElements != null)
+        //    {
+        //        TableLayoutControlCollection controls = _softwareTableElements.SoftwareTable.Controls;
+        //        TableLayoutPanel softwareTable = _softwareTableElements.SoftwareTable;
+        //        List<Software> installedSoftware = _softwareInformation.InstalledSoftware;
 
-                Console.WriteLine($"Number of software items: {installedSoftware.Count}");
-                Console.WriteLine($"Software table row count: {softwareTable.RowCount}");
+        //        Console.WriteLine($"Number of software items: {installedSoftware.Count}");
+        //        Console.WriteLine($"Software table row count: {softwareTable.RowCount}");
 
-                foreach (var software in installedSoftware)
-                {
-                    int rowIndex = softwareTable.RowCount++;
+        //        foreach (var software in installedSoftware)
+        //        {
+        //            int rowIndex = softwareTable.RowCount++;
 
-                    softwareTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+        //            softwareTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
-                    Label nameLabel = new Label() { Text = software.Name, AutoSize = true };
-                    Label versionLabel = new Label() { Text = software.Version.ToString(), AutoSize = true };
-                    Label publisherLabel = new Label() { Text = software.Publisher, AutoSize = true };
-                    Label installDateLabel = new Label() { Text = software.InstallDate, AutoSize = true };
+        //            Label nameLabel = new Label() { Text = software.Name, AutoSize = true };
+        //            Label versionLabel = new Label() { Text = software.Version.ToString(), AutoSize = true };
+        //            Label publisherLabel = new Label() { Text = software.Publisher, AutoSize = true };
+        //            Label installDateLabel = new Label() { Text = software.InstallDate, AutoSize = true };
 
 
-                    controls.Add(nameLabel, 0, rowIndex);
-                    controls.Add(versionLabel, 1, rowIndex);
-                    controls.Add(publisherLabel, 2, rowIndex);
-                    controls.Add(installDateLabel, 3, rowIndex);
+        //            controls.Add(nameLabel, 0, rowIndex);
+        //            controls.Add(versionLabel, 1, rowIndex);
+        //            controls.Add(publisherLabel, 2, rowIndex);
+        //            controls.Add(installDateLabel, 3, rowIndex);
 
-                    Console.WriteLine($"Added software: {software.Name} to the table.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("UpdateSoftwareTabElements: Either InstalledSoftware or SoftwareTableElements is null.");
-            }
-        }
+        //            Console.WriteLine($"Added software: {software.Name} to the table.");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("UpdateSoftwareTabElements: Either InstalledSoftware or SoftwareTableElements is null.");
+        //    }
+        //}
 
 
         // Registry and CIM Methods

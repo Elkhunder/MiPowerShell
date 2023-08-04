@@ -33,7 +33,7 @@ namespace MiPowerShell.Helpers.Managers
 
         
 
-        private void RefreshDeviceList(string deviceName, CimHandler cimHandler)
+        private void RefreshDeviceList(string deviceName, CimHandler cimHandler, WIA.DeviceManager wiaDeviceManager)
         {
             var WmiMonitorID = cimHandler.GetInstances(@"root\wmi", "WmiMonitorID");
             foreach (var monitor  in WmiMonitorID)

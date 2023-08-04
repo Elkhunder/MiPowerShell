@@ -158,7 +158,7 @@ namespace MiPowerShell.Controls
             TabPage? tabPage = GetTabPage("softwareTabPage");
             string? selection = ConvertTabPageName(tabPage);
             await InformationCheckAsync(IsInitialized, selection);
-            UpdateTabIfNeeded(_isSoftwareUpdated, _getWorkstationReport.UpdateSoftwareTabElements);
+            //UpdateTabIfNeeded(_isSoftwareUpdated, _getWorkstationReport.UpdateSoftwareTabElements);
             ChangeTab(tabPage);
         }
 
