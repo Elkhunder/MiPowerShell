@@ -2,8 +2,11 @@ using Microsoft.CodeAnalysis;
 using MiPowerShell.Collectors;
 using MiPowerShell.Dispatchers;
 using MiPowerShell.Helpers;
+using MiPowerShell.Helpers.Managers;
 using MiPowerShell.Models;
 using MiPowerShell.Providers.ControlProvider;
+using System.Printing;
+using Windows.Graphics.Printing;
 
 namespace MiPowerShell
 {
@@ -27,9 +30,8 @@ namespace MiPowerShell
             _errorDispatcher = new ErrorDispatcher();
             _inputCollector = new InputCollector(this);
             _tableLayoutPanel = ParentControlProvider.GetParentControlByName("TableLayoutPanel_Input");
-
-            ListBox_Commands.BeginUpdate();
             ListBox_Commands.DataSource = _commands.ActiveCommands;
+            ListBox_Commands.BeginUpdate();
             ListBox_Commands.ClearSelected();
             ListBox_Commands.EndUpdate();
         }
@@ -134,18 +136,22 @@ namespace MiPowerShell
 
         private void Button_Local_Click(object sender, EventArgs e)
         {
-            ComboBox printerSelection = (ComboBox)ChildControlProvider.GetChildControlByName(_tableLayoutPanel, "ComboBox_PrinterSelection");
+            
             if (_selectedCommand != null && _selectedCommand == "Set-PrinterName")
             {
-                Optional<string[]> printerList = PrinterHandler.GetPrinterList("localhost");
-                if (printerList.HasValue)
+                ComboBox? printerSelection = ChildControlProvider.GetChildControlByName(_tableLayoutPanel, "ComboBox_PrinterSelection") as ComboBox;
+                if (printerSelection != null)
                 {
-                    string[] printerNames = printerList.Value;
-                    printerSelection.Items.Clear();
-                    printerSelection.Items.AddRange(printerNames);
+                    var printerManager = new PrinterManager(Environment.MachineName);
+                    string[] printerNames = printerManager.GetPrinterNames();
+                    if (printerNames.Length > 0)
+                    {
+                        printerSelection.Items.Clear();
+                        printerSelection.Items.AddRange(printerNames);
+                    }
                 }
-
             }
+
             if (Button_Local.Enabled && Button_Local.Focused)
             {
                 Button_Remote.DialogResult = DialogResult.None;

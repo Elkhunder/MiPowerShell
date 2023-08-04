@@ -1,0 +1,65 @@
+CimProperty,CimProperty.Name,CimProperty.Value,CimProperty.CimType,CimProperty.Flags,CimProperty.IsValueModified
+"Caption = ""Microsoft Windows 10 Enterprise""",Caption,"Microsoft Windows 10 Enterprise",String,"Property, ReadOnly, NotModified",False
+"Description = """"",Description,"",String,"Property, NotModified",False
+"InstallDate = 5/2/2022 12:52:18 PM",InstallDate,"5/2/2022 12:52:18 PM",DateTime,"Property, ReadOnly, NotModified",False
+"Name = ""Microsoft Windows 10 Enterprise?C:\WIND...",Name,"Microsoft Windows 10 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition4",String,"Property, ReadOnly, NotModified",False
+"Status = ""OK""",Status,OK,String,"Property, ReadOnly, NotModified",False
+"CreationClassName = ""Win32_OperatingSystem""",CreationClassName,Win32_OperatingSystem,String,"Property, ReadOnly, NotModified",False
+"CSCreationClassName = ""Win32_ComputerSystem""",CSCreationClassName,Win32_ComputerSystem,String,"Property, ReadOnly, NotModified",False
+"CSName = ""LTRDS011""",CSName,LTRDS011,String,"Property, ReadOnly, NotModified",False
+"CurrentTimeZone = -240",CurrentTimeZone,-240,SInt16,"Property, ReadOnly, NotModified",False
+"Distributed = False",Distributed,False,Boolean,"Property, ReadOnly, NotModified",False
+"FreePhysicalMemory = 2914816",FreePhysicalMemory,2914816,UInt64,"Property, ReadOnly, NotModified",False
+"FreeSpaceInPagingFiles = 8768632",FreeSpaceInPagingFiles,8768632,UInt64,"Property, ReadOnly, NotModified",False
+"FreeVirtualMemory = 6783052",FreeVirtualMemory,6783052,UInt64,"Property, ReadOnly, NotModified",False
+"LastBootUpTime = 6/28/2023 12:23:51 PM",LastBootUpTime,"6/28/2023 12:23:51 PM",DateTime,"Property, ReadOnly, NotModified",False
+"LocalDateTime = 6/29/2023 10:58:58 PM",LocalDateTime,"6/29/2023 10:58:58 PM",DateTime,"Property, ReadOnly, NotModified",False
+"MaxNumberOfProcesses = 4294967295",MaxNumberOfProcesses,4294967295,UInt32,"Property, ReadOnly, NotModified",False
+"MaxProcessMemorySize = 137438953344",MaxProcessMemorySize,137438953344,UInt64,"Property, ReadOnly, NotModified",False
+"NumberOfLicensedUsers = 0",NumberOfLicensedUsers,0,UInt32,"Property, ReadOnly, NotModified",False
+"NumberOfProcesses = 381",NumberOfProcesses,381,UInt32,"Property, ReadOnly, NotModified",False
+"NumberOfUsers = 12",NumberOfUsers,12,UInt32,"Property, ReadOnly, NotModified",False
+"OSType = 18",OSType,18,UInt16,"Property, ReadOnly, NotModified",False
+OtherTypeDescription,OtherTypeDescription,"",String,"Property, ReadOnly, NotModified, NullValue",False
+"SizeStoredInPagingFiles = 9437184",SizeStoredInPagingFiles,9437184,UInt64,"Property, ReadOnly, NotModified",False
+TotalSwapSpaceSize,TotalSwapSpaceSize,"",UInt64,"Property, ReadOnly, NotModified, NullValue",False
+"TotalVirtualMemorySize = 25597316",TotalVirtualMemorySize,25597316,UInt64,"Property, ReadOnly, NotModified",False
+"TotalVisibleMemorySize = 16160132",TotalVisibleMemorySize,16160132,UInt64,"Property, ReadOnly, NotModified",False
+"Version = ""10.0.19044""",Version,10.0.19044,String,"Property, ReadOnly, NotModified",False
+"BootDevice = ""\Device\HarddiskVolume2""",BootDevice,\Device\HarddiskVolume2,String,"Property, ReadOnly, NotModified",False
+"BuildNumber = ""19044""",BuildNumber,19044,String,"Property, ReadOnly, NotModified",False
+"BuildType = ""Multiprocessor Free""",BuildType,"Multiprocessor Free",String,"Property, ReadOnly, NotModified",False
+"CodeSet = ""1252""",CodeSet,1252,String,"Property, ReadOnly, NotModified",False
+"CountryCode = ""1""",CountryCode,1,String,"Property, ReadOnly, NotModified",False
+CSDVersion,CSDVersion,"",String,"Property, ReadOnly, NotModified, NullValue",False
+"DataExecutionPrevention_32BitApplications = True",DataExecutionPrevention_32BitApplications,True,Boolean,"Property, ReadOnly, NotModified",False
+"DataExecutionPrevention_Available = True",DataExecutionPrevention_Available,True,Boolean,"Property, ReadOnly, NotModified",False
+"DataExecutionPrevention_Drivers = True",DataExecutionPrevention_Drivers,True,Boolean,"Property, ReadOnly, NotModified",False
+"DataExecutionPrevention_SupportPolicy = 2",DataExecutionPrevention_SupportPolicy,2,UInt8,"Property, ReadOnly, NotModified",False
+"Debug = False",Debug,False,Boolean,"Property, ReadOnly, NotModified",False
+"EncryptionLevel = 256",EncryptionLevel,256,UInt32,"Property, ReadOnly, NotModified",False
+"ForegroundApplicationBoost = 2",ForegroundApplicationBoost,2,UInt8,"Property, NotModified",False
+LargeSystemCache,LargeSystemCache,"",UInt32,"Property, ReadOnly, NotModified, NullValue",False
+"Locale = ""0409""",Locale,0409,String,"Property, ReadOnly, NotModified",False
+"Manufacturer = ""Microsoft Corporation""",Manufacturer,"Microsoft Corporation",String,"Property, ReadOnly, NotModified",False
+"MUILanguages = ...",MUILanguages,System.String[],StringArray,"Property, ReadOnly, NotModified",False
+"OperatingSystemSKU = 4",OperatingSystemSKU,4,UInt32,"Property, ReadOnly, NotModified",False
+"Organization = ""Michigan Medicine""",Organization,"Michigan Medicine",String,"Property, ReadOnly, NotModified",False
+"OSArchitecture = ""64-bit""",OSArchitecture,64-bit,String,"Property, ReadOnly, NotModified",False
+"OSLanguage = 1033",OSLanguage,1033,UInt32,"Property, ReadOnly, NotModified",False
+"OSProductSuite = 256",OSProductSuite,256,UInt32,"Property, ReadOnly, NotModified",False
+PAEEnabled,PAEEnabled,"",Boolean,"Property, ReadOnly, NotModified, NullValue",False
+PlusProductID,PlusProductID,"",String,"Property, ReadOnly, NotModified, NullValue",False
+PlusVersionNumber,PlusVersionNumber,"",String,"Property, ReadOnly, NotModified, NullValue",False
+"PortableOperatingSystem = False",PortableOperatingSystem,False,Boolean,"Property, ReadOnly, NotModified",False
+"Primary = True",Primary,True,Boolean,"Property, ReadOnly, NotModified",False
+"ProductType = 1",ProductType,1,UInt32,"Property, ReadOnly, NotModified",False
+"RegisteredUser = ""Enterprise Device Enginering and Managm...",RegisteredUser,"Enterprise Device Enginering and Managment",String,"Property, ReadOnly, NotModified",False
+"SerialNumber = ""00330-80000-00000-AA174""",SerialNumber,00330-80000-00000-AA174,String,"Property, ReadOnly, NotModified",False
+"ServicePackMajorVersion = 0",ServicePackMajorVersion,0,UInt16,"Property, ReadOnly, NotModified",False
+"ServicePackMinorVersion = 0",ServicePackMinorVersion,0,UInt16,"Property, ReadOnly, NotModified",False
+"SuiteMask = 272",SuiteMask,272,UInt32,"Property, ReadOnly, NotModified",False
+"SystemDevice = ""\Device\HarddiskVolume4""",SystemDevice,\Device\HarddiskVolume4,String,"Property, ReadOnly, NotModified",False
+"SystemDirectory = ""C:\WINDOWS\system32""",SystemDirectory,C:\WINDOWS\system32,String,"Property, ReadOnly, NotModified",False
+"SystemDrive = ""C:""",SystemDrive,C:,String,"Property, ReadOnly, NotModified",False
+"WindowsDirectory = ""C:\WINDOWS""",WindowsDirectory,C:\WINDOWS,String,"Property, ReadOnly, NotModified",False

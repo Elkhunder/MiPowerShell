@@ -1,0 +1,58 @@
+CimProperty,CimProperty.Name,CimProperty.Value,CimProperty.CimType,CimProperty.Flags,CimProperty.IsValueModified
+"Caption = ""Intel64 Family 6 Model 140 Stepping 1""",Caption,Intel64 Family 6 Model 140 Stepping 1,String,"Property, ReadOnly, NotModified",FALSE
+"Description = ""Intel64 Family 6 Model 140 Stepping 1""",Description,Intel64 Family 6 Model 140 Stepping 1,String,"Property, ReadOnly, NotModified",FALSE
+InstallDate,InstallDate,,DateTime,"Property, ReadOnly, NotModified, NullValue",FALSE
+"Name = ""11th Gen Intel(R) Core(TM) i7-1165G7 @ ...",Name,11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz,String,"Property, ReadOnly, NotModified",FALSE
+"Status = ""OK""",Status,OK,String,"Property, ReadOnly, NotModified",FALSE
+Availability = 3,Availability,3,UInt16,"Property, ReadOnly, NotModified",FALSE
+ConfigManagerErrorCode,ConfigManagerErrorCode,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE
+ConfigManagerUserConfig,ConfigManagerUserConfig,,Boolean,"Property, ReadOnly, NotModified, NullValue",FALSE
+"CreationClassName = ""Win32_Processor""",CreationClassName,Win32_Processor,String,"Property, ReadOnly, NotModified",FALSE
+"DeviceID = ""CPU0""",DeviceID,CPU0,String,"Property, Key, ReadOnly, NotModified",FALSE
+ErrorCleared,ErrorCleared,,Boolean,"Property, ReadOnly, NotModified, NullValue",FALSE
+ErrorDescription,ErrorDescription,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+LastErrorCode,LastErrorCode,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE
+PNPDeviceID,PNPDeviceID,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+PowerManagementCapabilities,PowerManagementCapabilities,,UInt16Array,"Property, ReadOnly, NotModified, NullValue",FALSE
+PowerManagementSupported = False,PowerManagementSupported,FALSE,Boolean,"Property, ReadOnly, NotModified",FALSE
+StatusInfo = 3,StatusInfo,3,UInt16,"Property, ReadOnly, NotModified",FALSE
+"SystemCreationClassName = ""Win32_ComputerSystem""",SystemCreationClassName,Win32_ComputerSystem,String,"Property, ReadOnly, NotModified",FALSE
+"SystemName = ""LTRDS011""",SystemName,LTRDS011,String,"Property, ReadOnly, NotModified",FALSE
+AddressWidth = 64,AddressWidth,64,UInt16,"Property, ReadOnly, NotModified",FALSE
+CurrentClockSpeed = 1690,CurrentClockSpeed,1690,UInt32,"Property, ReadOnly, NotModified",FALSE
+DataWidth = 64,DataWidth,64,UInt16,"Property, ReadOnly, NotModified",FALSE
+Family = 198,Family,198,UInt16,"Property, ReadOnly, NotModified",FALSE
+LoadPercentage = 51,LoadPercentage,51,UInt16,"Property, ReadOnly, NotModified",FALSE
+MaxClockSpeed = 1690,MaxClockSpeed,1690,UInt32,"Property, ReadOnly, NotModified",FALSE
+OtherFamilyDescription,OtherFamilyDescription,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+"Role = ""CPU""",Role,CPU,String,"Property, ReadOnly, NotModified",FALSE
+Stepping,Stepping,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+UniqueId,UniqueId,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+UpgradeMethod = 1,UpgradeMethod,1,UInt16,"Property, ReadOnly, NotModified",FALSE
+Architecture = 9,Architecture,9,UInt16,"Property, ReadOnly, NotModified",FALSE
+"AssetTag = "" """,AssetTag, ,String,"Property, ReadOnly, NotModified",FALSE
+Characteristics = 252,Characteristics,252,UInt32,"Property, ReadOnly, NotModified",FALSE
+CpuStatus = 1,CpuStatus,1,UInt16,"Property, ReadOnly, NotModified",FALSE
+CurrentVoltage = 6,CurrentVoltage,6,UInt16,"Property, ReadOnly, NotModified",FALSE
+ExtClock = 100,ExtClock,100,UInt32,"Property, ReadOnly, NotModified",FALSE
+L2CacheSize = 5120,L2CacheSize,5120,UInt32,"Property, ReadOnly, NotModified",FALSE
+L2CacheSpeed,L2CacheSpeed,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE
+L3CacheSize = 12288,L3CacheSize,12288,UInt32,"Property, ReadOnly, NotModified",FALSE
+L3CacheSpeed = 0,L3CacheSpeed,0,UInt32,"Property, ReadOnly, NotModified",FALSE
+Level = 6,Level,6,UInt16,"Property, ReadOnly, NotModified",FALSE
+"Manufacturer = ""GenuineIntel""",Manufacturer,GenuineIntel,String,"Property, ReadOnly, NotModified",FALSE
+NumberOfCores = 4,NumberOfCores,4,UInt32,"Property, ReadOnly, NotModified",FALSE
+NumberOfEnabledCore = 4,NumberOfEnabledCore,4,UInt32,"Property, ReadOnly, NotModified",FALSE
+NumberOfLogicalProcessors = 8,NumberOfLogicalProcessors,8,UInt32,"Property, ReadOnly, NotModified",FALSE
+"PartNumber = "" """,PartNumber, ,String,"Property, ReadOnly, NotModified",FALSE
+"ProcessorId = ""BFEBFBFF000806C1""",ProcessorId,BFEBFBFF000806C1,String,"Property, ReadOnly, NotModified",FALSE
+ProcessorType = 3,ProcessorType,3,UInt16,"Property, ReadOnly, NotModified",FALSE
+Revision,Revision,,UInt16,"Property, ReadOnly, NotModified, NullValue",FALSE
+SecondLevelAddressTranslationExtensions = False,SecondLevelAddressTranslationExtensions,FALSE,Boolean,"Property, ReadOnly, NotModified",FALSE
+"SerialNumber = "" """,SerialNumber, ,String,"Property, ReadOnly, NotModified",FALSE
+"SocketDesignation = ""U3E1""",SocketDesignation,U3E1,String,"Property, ReadOnly, NotModified",FALSE
+ThreadCount = 8,ThreadCount,8,UInt32,"Property, ReadOnly, NotModified",FALSE
+"Version = """"",Version,,String,"Property, ReadOnly, NotModified",FALSE
+VirtualizationFirmwareEnabled = False,VirtualizationFirmwareEnabled,FALSE,Boolean,"Property, ReadOnly, NotModified",FALSE
+VMMonitorModeExtensions = False,VMMonitorModeExtensions,FALSE,Boolean,"Property, ReadOnly, NotModified",FALSE
+VoltageCaps,VoltageCaps,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE

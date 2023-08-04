@@ -1,8 +1,5 @@
 ﻿using System.Data;
-using System.Security;
-using Microsoft.Diagnostics.Runtime.Utilities;
 using Microsoft.Management.Infrastructure;
-using Microsoft.VisualBasic.ApplicationServices;
 using MiPowerShell.Arguments;
 using MiPowerShell.Helpers;
 using MiPowerShell.Models;

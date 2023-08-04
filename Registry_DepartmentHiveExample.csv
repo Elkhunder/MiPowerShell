@@ -1,0 +1,104 @@
+KeyValuePair`2,KeyValuePair`2.key,KeyValuePair`2.value,KeyValuePair`2.Key,KeyValuePair`2.Value
+"[BuildDate, 5/2/2022]",BuildDate,5/2/2022,BuildDate,5/2/2022
+"[BuildMethod, SCCM]",BuildMethod,SCCM,BuildMethod,SCCM
+"[SerialNumber, J6K19K3]",SerialNumber,J6K19K3,SerialNumber,J6K19K3
+"[BuildTime, 1:02:27 PM]",BuildTime,1:02:27 PM,BuildTime,1:02:27 PM
+"[GhostVersion, ]",GhostVersion,,GhostVersion,
+"[ImageVersion, ]",ImageVersion,,ImageVersion,
+"[Personality, ]",Personality,,Personality,
+"[LapTop, Laptop]",LapTop,Laptop,LapTop,Laptop
+"[Manufacturer, Dell Inc.]",Manufacturer,Dell Inc.,Manufacturer,Dell Inc.
+"[Model, Latitude 5420]",Model,Latitude 5420,Model,Latitude 5420
+"[Tablet, ]",Tablet,,Tablet,
+"[BuildType, ]",BuildType,,BuildType,
+"[BIOSReleaseDate, 10/27/2022]",BIOSReleaseDate,10/27/2022,BIOSReleaseDate,10/27/2022
+"[BIOSVendor, Dell Inc.]",BIOSVendor,Dell Inc.,BIOSVendor,Dell Inc.
+"[BIOSVersion, 1.23.1]",BIOSVersion,1.23.1,BIOSVersion,1.23.1
+"[Data0, ]",Data0,,Data0,
+"[Data1, ]",Data1,,Data1,
+"[Data2, ]",Data2,,Data2,
+"[Data3, ]",Data3,,Data3,
+"[Data4, ]",Data4,,Data4,
+"[Data5, ]",Data5,,Data5,
+"[Data6, ]",Data6,,Data6,
+"[Data7, ]",Data7,,Data7,
+"[Data8, ]",Data8,,Data8,
+"[Data9, ]",Data9,,Data9,
+"[DHCP, YES]",DHCP,YES,DHCP,YES
+"[HOMEPAGE, http://www.med.umich.edu/i/]",HOMEPAGE,http://www.med.umich.edu/i/,HOMEPAGE,http://www.med.umich.edu/i/
+"[KIOSK, NO]",KIOSK,NO,KIOSK,NO
+"[MAINT, 23:00]",MAINT,23:00,MAINT,23:00
+"[MaintTime, ]",MaintTime,,MaintTime,
+"[MODE, Standard]",MODE,Standard,MODE,Standard
+"[SWBASE, Rd]",SWBASE,Rd,SWBASE,Rd
+"[SWAREA, ]",SWAREA,,SWAREA,
+"[SWSECT, ]",SWSECT,,SWSECT,
+"[T1, 1800]",T1,1800,T1,1800
+"[T2, 60]",T2,60,T2,60
+"[T3, ]",T3,,T3,
+"[T4, ]",T4,,T4,
+"[TempComputerName, ]",TempComputerName,,TempComputerName,
+"[Timers, S30.31]",Timers,S30.31,Timers,S30.31
+"[AssetType, UMHS]",AssetType,UMHS,AssetType,UMHS
+"[BuiltBy, jsissom]",BuiltBy,jsissom,BuiltBy,jsissom
+"[ImageDeployDate, ]",ImageDeployDate,,ImageDeployDate,
+"[ImageDeployTime, ]",ImageDeployTime,,ImageDeployTime,
+"[WinPe, ]",WinPe,,WinPe,
+"[PwrDefaultBOB, ]",PwrDefaultBOB,,PwrDefaultBOB,
+"[PwrDefaultEOB, ]",PwrDefaultEOB,,PwrDefaultEOB,
+"[PwrMonitor, NO]",PwrMonitor,NO,PwrMonitor,NO
+"[PwrCPU, NO]",PwrCPU,NO,PwrCPU,NO
+"[PwrDay1BOB, ]",PwrDay1BOB,,PwrDay1BOB,
+"[PwrDay1EOB, 23:00]",PwrDay1EOB,23:00,PwrDay1EOB,23:00
+"[PwrDay2BOB, ]",PwrDay2BOB,,PwrDay2BOB,
+"[PwrDay2EOB, 23:00]",PwrDay2EOB,23:00,PwrDay2EOB,23:00
+"[PwrDay3BOB, ]",PwrDay3BOB,,PwrDay3BOB,
+"[PwrDay3EOB, 23:00]",PwrDay3EOB,23:00,PwrDay3EOB,23:00
+"[PwrDay4BOB, ]",PwrDay4BOB,,PwrDay4BOB,
+"[PwrDay4EOB, 23:00]",PwrDay4EOB,23:00,PwrDay4EOB,23:00
+"[PwrDay5BOB, ]",PwrDay5BOB,,PwrDay5BOB,
+"[PwrDay5EOB, 23:00]",PwrDay5EOB,23:00,PwrDay5EOB,23:00
+"[PwrDay6BOB, ]",PwrDay6BOB,,PwrDay6BOB,
+"[PwrDay6EOB, 23:00]",PwrDay6EOB,23:00,PwrDay6EOB,23:00
+"[PwrDay7BOB, ]",PwrDay7BOB,,PwrDay7BOB,
+"[PwrDay7EOB, 23:00]",PwrDay7EOB,23:00,PwrDay7EOB,23:00
+"[CenEnv, Prod]",CenEnv,Prod,CenEnv,Prod
+"[CenTimer, 20]",CenTimer,20,CenTimer,20
+"[InstallCmd, EnterpriseMobile]",InstallCmd,EnterpriseMobile,InstallCmd,EnterpriseMobile
+"[InstallReturnCode, ]",InstallReturnCode,,InstallReturnCode,
+"[InstallVersion, ]",InstallVersion,,InstallVersion,
+"[EndUserConfVer, ]",EndUserConfVer,,EndUserConfVer,
+"[MaintLastBegin, Thu 06/29/2023 23:00:07.70]",MaintLastBegin,Thu 06/29/2023 23:00:07.70,MaintLastBegin,Thu 06/29/2023 23:00:07.70
+"[BinVersion, ]",BinVersion,,BinVersion,
+"[GinaDLL, ]",GinaDLL,,GinaDLL,
+"[MaintLastReboot, Tue 05/23/2023 - 13:08:30.01]",MaintLastReboot,Tue 05/23/2023 - 13:08:30.01,MaintLastReboot,Tue 05/23/2023 - 13:08:30.01
+"[MaintLastStatus, 1667]",MaintLastStatus,1667,MaintLastStatus,1667
+"[MaintLastFinish, Thu 06/29/2023 23:01:11.99]",MaintLastFinish,Thu 06/29/2023 23:01:11.99,MaintLastFinish,Thu 06/29/2023 23:01:11.99
+"[MaintLastSuccess, Thu 06/29/2023 23:01:12.08]",MaintLastSuccess,Thu 06/29/2023 23:01:12.08,MaintLastSuccess,Thu 06/29/2023 23:01:12.08
+"[DefragLastBegin, ]",DefragLastBegin,,DefragLastBegin,
+"[DefragLastFinish, ]",DefragLastFinish,,DefragLastFinish,
+"[DefragLastRC, ]",DefragLastRC,,DefragLastRC,
+"[TaskSequence, CoreImage Build Windows 10 (20H2) v 7.7]",TaskSequence,CoreImage Build Windows 10 (20H2) v 7.7,TaskSequence,CoreImage Build Windows 10 (20H2) v 7.7
+"[MaintLastStep, 06/29/2023 23:01:12.11 - PreMaint: 2.02: Completed PreMaint (0)]",MaintLastStep,06/29/2023 23:01:12.11 - PreMaint: 2.02: Completed PreMaint (0),MaintLastStep,06/29/2023 23:01:12.11 - PreMaint: 2.02: Completed PreMaint (0)
+"[BROWSER_CLEANUP, Enabled]",BROWSER_CLEANUP,Enabled,BROWSER_CLEANUP,Enabled
+"[DISPLAYBOARD_ACCOUNT, ]",DISPLAYBOARD_ACCOUNT,,DISPLAYBOARD_ACCOUNT,
+"[Displayboard_Password, ]",Displayboard_Password,,Displayboard_Password,
+"[DISPLAYBOARD_SHELL, ]",DISPLAYBOARD_SHELL,,DISPLAYBOARD_SHELL,
+"[MICHART_ENV, PRD]",MICHART_ENV,PRD,MICHART_ENV,PRD
+"[MiChart_Type, INPATIENT-MICHART]",MiChart_Type,INPATIENT-MICHART,MiChart_Type,INPATIENT-MICHART
+"[OBIX_CONFIG, ]",OBIX_CONFIG,,OBIX_CONFIG,
+"[RemoteUsers, MCIT-DAdm-Radiology]",RemoteUsers,MCIT-DAdm-Radiology,RemoteUsers,MCIT-DAdm-Radiology
+"[SCREENSAVER, Standard]",SCREENSAVER,Standard,SCREENSAVER,Standard
+"[CWDb-LUPDate, ]",CWDb-LUPDate,,CWDb-LUPDate,
+"[NtCfg-New, True]",NtCfg-New,TRUE,NtCfg-New,TRUE
+"[TermID, LTRDS011]",TermID,LTRDS011,TermID,LTRDS011
+"[LocalAccounts, BobSmithe,ShirleyDurham]",LocalAccounts,"BobSmithe,ShirleyDurham",LocalAccounts,"BobSmithe,ShirleyDurham"
+"[ForcedLogoff, ALLUSERS]",ForcedLogoff,ALLUSERS,ForcedLogoff,ALLUSERS
+"[MaintVer, 6.01]",MaintVer,6.01,MaintVer,6.01
+"[MaintLastTSMode, ALL]",MaintLastTSMode,ALL,MaintLastTSMode,ALL
+"[BUILT_BY, JSISSOM]",BUILT_BY,JSISSOM,BUILT_BY,JSISSOM
+"[IDENTIFIER, LTRDS011]",IDENTIFIER,LTRDS011,IDENTIFIER,LTRDS011
+"[FCS-LUPDate, ]",FCS-LUPDate,,FCS-LUPDate,
+"[HelpDeskUrl, https://i.med.umich.edu/MCIT/cs/customer/Pages/default.aspx]",HelpDeskUrl,https://i.med.umich.edu/MCIT/cs/customer/Pages/default.aspx,HelpDeskUrl,https://i.med.umich.edu/MCIT/cs/customer/Pages/default.aspx
+"[TroubleTicketUrl, https://help.medicine.umich.edu ]",TroubleTicketUrl,https://help.medicine.umich.edu ,TroubleTicketUrl,https://help.medicine.umich.edu 
+"[BootDiskVersion, 21H2]",BootDiskVersion,21H2,BootDiskVersion,21H2

@@ -8,31 +8,37 @@ namespace MiPowerShell.Handlers.Events
     public class TextBox_FocusLost
     {
         private readonly Control? _tableLayoutPanel;
+        public string? SelectedCommand
+        {
+            get; set;
+        }
         public TextBox_FocusLost(Control tableLayoutPanel)
         {
             _tableLayoutPanel = tableLayoutPanel;
         }
-        public void TextBox_ComputerName_FocusLost(object sender, EventArgs e)
+        public void TextBox_ComputerName_FocusLost(object? sender, EventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
-            // get commands box to check the selected command
-
-            if (!string.IsNullOrEmpty(_selectedCommand) && _selectedCommand == "Set-PrinterName")
+            if (sender is not null)
             {
-                string termId = textBox.Text;
-                string namespaceName = @"root\cimv2";
-                string className = "CIM_Printer";
-
-                CimHandler cimHandler = new CimHandler(termId, namespaceName, className);
-                CimInstance[] cimInstances = cimHandler.CimInstances;
-                PrinterManager printerManager = new(cimInstances);
-
-                if (_tableLayoutPanel != null)
+                TextBox? textBox = sender as TextBox;
+                // get commands box to check the selected command
+                if (textBox is not null && !string.IsNullOrEmpty(SelectedCommand))
                 {
-                    ComboBox comboBox = (ComboBox)ChildControlProvider.GetChildControlByName(_tableLayoutPanel, "ComboBox_PrinterSelection")!;
+                    if (SelectedCommand == "Set-PrinterName")
+                    {
+                        string deviceName = textBox.Text;
 
-                    comboBox.Items.AddRange(printerManager.GetPrinterList());
+                        var printerManager = new PrinterManager(deviceName);
+
+                        if (_tableLayoutPanel != null)
+                        {
+                            ComboBox comboBox = (ComboBox)ChildControlProvider.GetChildControlByName(_tableLayoutPanel, "ComboBox_PrinterSelection")!;
+                            comboBox.Items.Clear();
+                            comboBox.Items.AddRange(printerManager.GetPrinterNames());
+                        }
+                    }
                 }
+                
             }
         }
     }

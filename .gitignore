@@ -396,3 +396,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/MiPowerShell/Properties/PublishProfiles/Beta.pubxml
+/.vs/MiPowerShell/v17/.suo

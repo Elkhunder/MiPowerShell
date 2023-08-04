@@ -1,0 +1,41 @@
+CimProperty,CimProperty.Name,CimProperty.Value,CimProperty.CimType,CimProperty.Flags,CimProperty.IsValueModified
+"Caption = ""C:""",Caption,C:,String,"Property, ReadOnly, NotModified",FALSE
+"Description = ""Local Fixed Disk""",Description,Local Fixed Disk,String,"Property, ReadOnly, NotModified",FALSE
+InstallDate,InstallDate,,DateTime,"Property, ReadOnly, NotModified, NullValue",FALSE
+"Name = ""C:""",Name,C:,String,"Property, ReadOnly, NotModified",FALSE
+Status,Status,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+Availability,Availability,,UInt16,"Property, ReadOnly, NotModified, NullValue",FALSE
+ConfigManagerErrorCode,ConfigManagerErrorCode,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE
+ConfigManagerUserConfig,ConfigManagerUserConfig,,Boolean,"Property, ReadOnly, NotModified, NullValue",FALSE
+"CreationClassName = ""Win32_LogicalDisk""",CreationClassName,Win32_LogicalDisk,String,"Property, ReadOnly, NotModified",FALSE
+"DeviceID = ""C:""",DeviceID,C:,String,"Property, Key, ReadOnly, NotModified",FALSE
+ErrorCleared,ErrorCleared,,Boolean,"Property, ReadOnly, NotModified, NullValue",FALSE
+ErrorDescription,ErrorDescription,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+LastErrorCode,LastErrorCode,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE
+PNPDeviceID,PNPDeviceID,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+PowerManagementCapabilities,PowerManagementCapabilities,,UInt16Array,"Property, ReadOnly, NotModified, NullValue",FALSE
+PowerManagementSupported,PowerManagementSupported,,Boolean,"Property, ReadOnly, NotModified, NullValue",FALSE
+StatusInfo,StatusInfo,,UInt16,"Property, ReadOnly, NotModified, NullValue",FALSE
+"SystemCreationClassName = ""Win32_ComputerSystem""",SystemCreationClassName,Win32_ComputerSystem,String,"Property, ReadOnly, NotModified",FALSE
+"SystemName = ""LTRDS011""",SystemName,LTRDS011,String,"Property, ReadOnly, NotModified",FALSE
+Access = 0,Access,0,UInt16,"Property, ReadOnly, NotModified",FALSE
+BlockSize,BlockSize,,UInt64,"Property, ReadOnly, NotModified, NullValue",FALSE
+ErrorMethodology,ErrorMethodology,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+NumberOfBlocks,NumberOfBlocks,,UInt64,"Property, NotModified, NullValue",FALSE
+Purpose,Purpose,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+FreeSpace = 82137268224,FreeSpace,82137268224,UInt64,"Property, ReadOnly, NotModified",FALSE
+Size = 509290213376,Size,5.0929E+11,UInt64,"Property, ReadOnly, NotModified",FALSE
+Compressed = False,Compressed,FALSE,Boolean,"Property, ReadOnly, NotModified",FALSE
+DriveType = 3,DriveType,3,UInt32,"Property, ReadOnly, NotModified",FALSE
+"FileSystem = ""NTFS""",FileSystem,NTFS,String,"Property, ReadOnly, NotModified",FALSE
+MaximumComponentLength = 255,MaximumComponentLength,255,UInt32,"Property, ReadOnly, NotModified",FALSE
+MediaType = 12,MediaType,12,UInt32,"Property, ReadOnly, NotModified",FALSE
+ProviderName,ProviderName,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+QuotasDisabled = True,QuotasDisabled,TRUE,Boolean,"Property, ReadOnly, NotModified",FALSE
+QuotasIncomplete = False,QuotasIncomplete,FALSE,Boolean,"Property, ReadOnly, NotModified",FALSE
+QuotasRebuilding = False,QuotasRebuilding,FALSE,Boolean,"Property, ReadOnly, NotModified",FALSE
+SupportsDiskQuotas = True,SupportsDiskQuotas,TRUE,Boolean,"Property, ReadOnly, NotModified",FALSE
+SupportsFileBasedCompression = True,SupportsFileBasedCompression,TRUE,Boolean,"Property, ReadOnly, NotModified",FALSE
+VolumeDirty = False,VolumeDirty,FALSE,Boolean,"Property, ReadOnly, NotModified",FALSE
+"VolumeName = ""OS-APPS""",VolumeName,OS-APPS,String,"Property, NotModified",FALSE
+"VolumeSerialNumber = ""62A1DF2B""",VolumeSerialNumber,62A1DF2B,String,"Property, ReadOnly, NotModified",FALSE

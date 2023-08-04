@@ -1,0 +1,52 @@
+CimProperty,CimProperty.Name,CimProperty.Value,CimProperty.CimType,CimProperty.Flags,CimProperty.IsValueModified
+"Caption = ""NVMe Micron 2300 NVMe 512GB""",Caption,"NVMe Micron 2300 NVMe 512GB",String,"Property, ReadOnly, NotModified",False
+"Description = ""Disk drive""",Description,"Disk drive",String,"Property, ReadOnly, NotModified",False
+InstallDate,InstallDate,"",DateTime,"Property, ReadOnly, NotModified, NullValue",False
+"Name = ""\\.\PHYSICALDRIVE0""",Name,\\.\PHYSICALDRIVE0,String,"Property, ReadOnly, NotModified",False
+"Status = ""OK""",Status,OK,String,"Property, ReadOnly, NotModified",False
+Availability,Availability,"",UInt16,"Property, ReadOnly, NotModified, NullValue",False
+"ConfigManagerErrorCode = 0",ConfigManagerErrorCode,0,UInt32,"Property, ReadOnly, NotModified",False
+"ConfigManagerUserConfig = False",ConfigManagerUserConfig,False,Boolean,"Property, ReadOnly, NotModified",False
+"CreationClassName = ""Win32_DiskDrive""",CreationClassName,Win32_DiskDrive,String,"Property, ReadOnly, NotModified",False
+"DeviceID = ""\\.\PHYSICALDRIVE0""",DeviceID,\\.\PHYSICALDRIVE0,String,"Property, Key, ReadOnly, NotModified",False
+ErrorCleared,ErrorCleared,"",Boolean,"Property, ReadOnly, NotModified, NullValue",False
+ErrorDescription,ErrorDescription,"",String,"Property, ReadOnly, NotModified, NullValue",False
+LastErrorCode,LastErrorCode,"",UInt32,"Property, ReadOnly, NotModified, NullValue",False
+"PNPDeviceID = ""SCSI\DISK&VEN_NVME&PROD_MICRON_2300_NVM...",PNPDeviceID,SCSI\DISK&VEN_NVME&PROD_MICRON_2300_NVME\4&1BA05A4E&0&020000,String,"Property, ReadOnly, NotModified",False
+PowerManagementCapabilities,PowerManagementCapabilities,"",UInt16Array,"Property, ReadOnly, NotModified, NullValue",False
+PowerManagementSupported,PowerManagementSupported,"",Boolean,"Property, ReadOnly, NotModified, NullValue",False
+StatusInfo,StatusInfo,"",UInt16,"Property, ReadOnly, NotModified, NullValue",False
+"SystemCreationClassName = ""Win32_ComputerSystem""",SystemCreationClassName,Win32_ComputerSystem,String,"Property, ReadOnly, NotModified",False
+"SystemName = ""LTRDS011""",SystemName,LTRDS011,String,"Property, ReadOnly, NotModified",False
+"Capabilities = ...",Capabilities,System.UInt16[],UInt16Array,"Property, ReadOnly, NotModified",False
+"CapabilityDescriptions = ...",CapabilityDescriptions,System.String[],StringArray,"Property, ReadOnly, NotModified",False
+CompressionMethod,CompressionMethod,"",String,"Property, ReadOnly, NotModified, NullValue",False
+DefaultBlockSize,DefaultBlockSize,"",UInt64,"Property, ReadOnly, NotModified, NullValue",False
+ErrorMethodology,ErrorMethodology,"",String,"Property, ReadOnly, NotModified, NullValue",False
+MaxBlockSize,MaxBlockSize,"",UInt64,"Property, ReadOnly, NotModified, NullValue",False
+MaxMediaSize,MaxMediaSize,"",UInt64,"Property, ReadOnly, NotModified, NullValue",False
+MinBlockSize,MinBlockSize,"",UInt64,"Property, ReadOnly, NotModified, NullValue",False
+NeedsCleaning,NeedsCleaning,"",Boolean,"Property, ReadOnly, NotModified, NullValue",False
+NumberOfMediaSupported,NumberOfMediaSupported,"",UInt32,"Property, ReadOnly, NotModified, NullValue",False
+"BytesPerSector = 512",BytesPerSector,512,UInt32,"Property, ReadOnly, NotModified",False
+"FirmwareRevision = ""23000030""",FirmwareRevision,23000030,String,"Property, ReadOnly, NotModified",False
+"Index = 0",Index,0,UInt32,"Property, ReadOnly, NotModified",False
+"InterfaceType = ""SCSI""",InterfaceType,SCSI,String,"Property, ReadOnly, NotModified",False
+"Manufacturer = ""(Standard disk drives)""",Manufacturer,"(Standard disk drives)",String,"Property, ReadOnly, NotModified",False
+"MediaLoaded = True",MediaLoaded,True,Boolean,"Property, ReadOnly, NotModified",False
+"MediaType = ""Fixed hard disk media""",MediaType,"Fixed hard disk media",String,"Property, ReadOnly, NotModified",False
+"Model = ""NVMe Micron 2300 NVMe 512GB""",Model,"NVMe Micron 2300 NVMe 512GB",String,"Property, ReadOnly, NotModified",False
+"Partitions = 3",Partitions,3,UInt32,"Property, ReadOnly, NotModified",False
+"SCSIBus = 2",SCSIBus,2,UInt32,"Property, ReadOnly, NotModified",False
+"SCSILogicalUnit = 0",SCSILogicalUnit,0,UInt16,"Property, ReadOnly, NotModified",False
+"SCSIPort = 0",SCSIPort,0,UInt16,"Property, ReadOnly, NotModified",False
+"SCSITargetId = 0",SCSITargetId,0,UInt16,"Property, ReadOnly, NotModified",False
+"SectorsPerTrack = 63",SectorsPerTrack,63,UInt32,"Property, ReadOnly, NotModified",False
+"SerialNumber = ""0000_0000_0000_0001_00A0_7521_3199_27FF...",SerialNumber,0000_0000_0000_0001_00A0_7521_3199_27FF.,String,"Property, ReadOnly, NotModified",False
+Signature,Signature,"",UInt32,"Property, ReadOnly, NotModified, NullValue",False
+"Size = 512105932800",Size,512105932800,UInt64,"Property, ReadOnly, NotModified",False
+"TotalCylinders = 62260",TotalCylinders,62260,UInt64,"Property, ReadOnly, NotModified",False
+"TotalHeads = 255",TotalHeads,255,UInt32,"Property, ReadOnly, NotModified",False
+"TotalSectors = 1000206900",TotalSectors,1000206900,UInt64,"Property, ReadOnly, NotModified",False
+"TotalTracks = 15876300",TotalTracks,15876300,UInt64,"Property, ReadOnly, NotModified",False
+"TracksPerCylinder = 255",TracksPerCylinder,255,UInt32,"Property, ReadOnly, NotModified",False

@@ -1,9 +1,7 @@
 ﻿using System.Data;
 using System.Runtime.InteropServices;
 using System.Security;
-using Microsoft.Diagnostics.Tracing.Parsers.MicrosoftWindowsTCPIP;
 using Microsoft.Management.Infrastructure;
-using Microsoft.VisualBasic.Devices;
 using MiPowerShell.Arguments;
 using MiPowerShell.Helpers;
 using MiPowerShell.Models;

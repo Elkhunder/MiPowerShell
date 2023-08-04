@@ -1,0 +1,60 @@
+CimProperty,CimProperty.Name,CimProperty.Value,CimProperty.CimType,CimProperty.Flags,CimProperty.IsValueModified
+"Caption = ""Intel(R) Iris(R) Xe Graphics""",Caption,Intel(R) Iris(R) Xe Graphics,String,"Property, ReadOnly, NotModified",FALSE
+"Description = ""Intel(R) Iris(R) Xe Graphics""",Description,Intel(R) Iris(R) Xe Graphics,String,"Property, ReadOnly, NotModified",FALSE
+InstallDate,InstallDate,,DateTime,"Property, ReadOnly, NotModified, NullValue",FALSE
+"Name = ""Intel(R) Iris(R) Xe Graphics""",Name,Intel(R) Iris(R) Xe Graphics,String,"Property, ReadOnly, NotModified",FALSE
+"Status = ""OK""",Status,OK,String,"Property, ReadOnly, NotModified",FALSE
+Availability = 3,Availability,3,UInt16,"Property, ReadOnly, NotModified",FALSE
+ConfigManagerErrorCode = 0,ConfigManagerErrorCode,0,UInt32,"Property, ReadOnly, NotModified",FALSE
+ConfigManagerUserConfig = False,ConfigManagerUserConfig,FALSE,Boolean,"Property, ReadOnly, NotModified",FALSE
+"CreationClassName = ""Win32_VideoController""",CreationClassName,Win32_VideoController,String,"Property, ReadOnly, NotModified",FALSE
+"DeviceID = ""VideoController2""",DeviceID,VideoController2,String,"Property, Key, ReadOnly, NotModified",FALSE
+ErrorCleared,ErrorCleared,,Boolean,"Property, ReadOnly, NotModified, NullValue",FALSE
+ErrorDescription,ErrorDescription,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+LastErrorCode,LastErrorCode,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE
+"PNPDeviceID = ""PCI\VEN_8086&DEV_9A49&SUBSYS_0A201028&R...",PNPDeviceID,PCI\VEN_8086&DEV_9A49&SUBSYS_0A201028&REV_01\3&11583659&0&10,String,"Property, ReadOnly, NotModified",FALSE
+PowerManagementCapabilities,PowerManagementCapabilities,,UInt16Array,"Property, ReadOnly, NotModified, NullValue",FALSE
+PowerManagementSupported,PowerManagementSupported,,Boolean,"Property, ReadOnly, NotModified, NullValue",FALSE
+StatusInfo,StatusInfo,,UInt16,"Property, ReadOnly, NotModified, NullValue",FALSE
+"SystemCreationClassName = ""Win32_ComputerSystem""",SystemCreationClassName,Win32_ComputerSystem,String,"Property, ReadOnly, NotModified",FALSE
+"SystemName = ""LTRDS011""",SystemName,LTRDS011,String,"Property, ReadOnly, NotModified",FALSE
+MaxNumberControlled,MaxNumberControlled,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE
+ProtocolSupported,ProtocolSupported,,UInt16,"Property, ReadOnly, NotModified, NullValue",FALSE
+TimeOfLastReset,TimeOfLastReset,,DateTime,"Property, ReadOnly, NotModified, NullValue",FALSE
+AcceleratorCapabilities,AcceleratorCapabilities,,UInt16Array,"Property, ReadOnly, NotModified, NullValue",FALSE
+CapabilityDescriptions,CapabilityDescriptions,,StringArray,"Property, ReadOnly, NotModified, NullValue",FALSE
+CurrentBitsPerPixel = 32,CurrentBitsPerPixel,32,UInt32,"Property, ReadOnly, NotModified",FALSE
+CurrentHorizontalResolution = 1920,CurrentHorizontalResolution,1920,UInt32,"Property, ReadOnly, NotModified",FALSE
+CurrentNumberOfColors = 4294967296,CurrentNumberOfColors,4294967296,UInt64,"Property, ReadOnly, NotModified",FALSE
+CurrentNumberOfColumns = 0,CurrentNumberOfColumns,0,UInt32,"Property, ReadOnly, NotModified",FALSE
+CurrentNumberOfRows = 0,CurrentNumberOfRows,0,UInt32,"Property, ReadOnly, NotModified",FALSE
+CurrentRefreshRate = 60,CurrentRefreshRate,60,UInt32,"Property, ReadOnly, NotModified",FALSE
+CurrentScanMode = 4,CurrentScanMode,4,UInt16,"Property, ReadOnly, NotModified",FALSE
+CurrentVerticalResolution = 1080,CurrentVerticalResolution,1080,UInt32,"Property, ReadOnly, NotModified",FALSE
+MaxMemorySupported,MaxMemorySupported,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE
+MaxRefreshRate = 60,MaxRefreshRate,60,UInt32,"Property, ReadOnly, NotModified",FALSE
+MinRefreshRate = 48,MinRefreshRate,48,UInt32,"Property, ReadOnly, NotModified",FALSE
+NumberOfVideoPages,NumberOfVideoPages,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE
+VideoMemoryType = 2,VideoMemoryType,2,UInt16,"Property, ReadOnly, NotModified",FALSE
+"VideoProcessor = ""Intel(R) Iris(R) Xe Graphics Family""",VideoProcessor,Intel(R) Iris(R) Xe Graphics Family,String,"Property, ReadOnly, NotModified",FALSE
+NumberOfColorPlanes,NumberOfColorPlanes,,UInt16,"Property, ReadOnly, NotModified, NullValue",FALSE
+VideoArchitecture = 5,VideoArchitecture,5,UInt16,"Property, ReadOnly, NotModified",FALSE
+VideoMode,VideoMode,,UInt16,"Property, ReadOnly, NotModified, NullValue",FALSE
+"AdapterCompatibility = ""Intel Corporation""",AdapterCompatibility,Intel Corporation,String,"Property, ReadOnly, NotModified",FALSE
+"AdapterDACType = ""Internal""",AdapterDACType,Internal,String,"Property, ReadOnly, NotModified",FALSE
+AdapterRAM = 1073741824,AdapterRAM,1073741824,UInt32,"Property, ReadOnly, NotModified",FALSE
+ColorTableEntries,ColorTableEntries,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE
+DeviceSpecificPens,DeviceSpecificPens,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE
+DitherType = 0,DitherType,0,UInt32,"Property, ReadOnly, NotModified",FALSE
+DriverDate = 9/1/2022 8:00:00 PM,DriverDate,9/1/2022 20:00,DateTime,"Property, ReadOnly, NotModified",FALSE
+"DriverVersion = ""31.0.101.3616""",DriverVersion,31.0.101.3616,String,"Property, ReadOnly, NotModified",FALSE
+ICMIntent,ICMIntent,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE
+ICMMethod,ICMMethod,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE
+"InfFilename = ""oem324.inf""",InfFilename,oem324.inf,String,"Property, ReadOnly, NotModified",FALSE
+"InfSection = ""iTGLD_w10_DS""",InfSection,iTGLD_w10_DS,String,"Property, ReadOnly, NotModified",FALSE
+"InstalledDisplayDrivers = ""C:\WINDOWS\System32\DriverStore\FileRep...",InstalledDisplayDrivers,"C:\WINDOWS\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_f4e2087fb68fa9c1\igdumdim64.dll,C:\WINDOWS\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_f4e2087fb68fa9c1\igd10iumd64.dll,C:\WINDOWS\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_f4e2087fb68fa9c1\igd10iumd64.dll,C:\WINDOWS\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_f4e2087fb68fa9c1\igd12umd64.dll",String,"Property, ReadOnly, NotModified",FALSE
+Monochrome = False,Monochrome,FALSE,Boolean,"Property, ReadOnly, NotModified",FALSE
+ReservedSystemPaletteEntries,ReservedSystemPaletteEntries,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE
+SpecificationVersion,SpecificationVersion,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE
+SystemPaletteEntries,SystemPaletteEntries,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE
+"VideoModeDescription = ""1920 x 1080 x 4294967296 colors""",VideoModeDescription,1920 x 1080 x 4294967296 colors,String,"Property, ReadOnly, NotModified",FALSE

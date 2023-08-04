@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\jsissom\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\jsissom\\.nuget\\packages",
+      "C:\\Users\\umhs-jsissom\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\umhs-jsissom\\.nuget\\packages",
       "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ],
     "configProperties": {
