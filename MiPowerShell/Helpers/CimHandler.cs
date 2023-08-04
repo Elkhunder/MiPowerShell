@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -42,6 +43,14 @@ namespace MiPowerShell.Helpers
             {
                 return _tcs.Task;
             }
+        }
+
+        public CimInstance[]? GetMonitorInformation()
+        {
+            string namespaceName = @"root/wmi";
+            string className = "WmiMonitorID";
+
+            return _cimSession.EnumerateInstances(namespaceName, className).ToArray();
         }
 
         protected virtual void Dispose(bool disposing)

@@ -2,6 +2,7 @@
 using MiPowerShell.CustomExceptions.FileExceptions;
 using MiPowerShell.Dispatchers;
 using System.Diagnostics;
+using System.IO;
 using System.Security;
 
 namespace MiPowerShell.Collectors

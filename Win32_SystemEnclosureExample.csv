@@ -1,0 +1,38 @@
+CimProperty,CimProperty.Name,CimProperty.Value,CimProperty.CimType,CimProperty.Flags,CimProperty.IsValueModified
+"Caption = ""System Enclosure""",Caption,System Enclosure,String,"Property, ReadOnly, NotModified",FALSE
+"Description = ""System Enclosure""",Description,System Enclosure,String,"Property, ReadOnly, NotModified",FALSE
+InstallDate,InstallDate,,DateTime,"Property, ReadOnly, NotModified, NullValue",FALSE
+"Name = ""System Enclosure""",Name,System Enclosure,String,"Property, ReadOnly, NotModified",FALSE
+Status,Status,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+"CreationClassName = ""Win32_SystemEnclosure""",CreationClassName,Win32_SystemEnclosure,String,"Property, ReadOnly, NotModified",FALSE
+"Manufacturer = ""Dell Inc.""",Manufacturer,Dell Inc.,String,"Property, ReadOnly, NotModified",FALSE
+Model,Model,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+OtherIdentifyingInfo,OtherIdentifyingInfo,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+PartNumber,PartNumber,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+PoweredOn,PoweredOn,,Boolean,"Property, ReadOnly, NotModified, NullValue",FALSE
+"SerialNumber = ""J6K19K3""",SerialNumber,J6K19K3,String,"Property, ReadOnly, NotModified",FALSE
+SKU,SKU,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+"Tag = ""System Enclosure 0""",Tag,System Enclosure 0,String,"Property, Key, ReadOnly, NotModified",FALSE
+"Version = """"",Version,,String,"Property, ReadOnly, NotModified",FALSE
+Depth,Depth,,Real32,"Property, ReadOnly, NotModified, NullValue",FALSE
+Height,Height,,Real32,"Property, ReadOnly, NotModified, NullValue",FALSE
+HotSwappable,HotSwappable,,Boolean,"Property, ReadOnly, NotModified, NullValue",FALSE
+Removable,Removable,,Boolean,"Property, ReadOnly, NotModified, NullValue",FALSE
+Replaceable,Replaceable,,Boolean,"Property, ReadOnly, NotModified, NullValue",FALSE
+Weight,Weight,,Real32,"Property, ReadOnly, NotModified, NullValue",FALSE
+Width,Width,,Real32,"Property, ReadOnly, NotModified, NullValue",FALSE
+AudibleAlarm,AudibleAlarm,,Boolean,"Property, ReadOnly, NotModified, NullValue",FALSE
+BreachDescription,BreachDescription,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+CableManagementStrategy,CableManagementStrategy,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+LockPresent = False,LockPresent,FALSE,Boolean,"Property, ReadOnly, NotModified",FALSE
+SecurityBreach,SecurityBreach,,UInt16,"Property, ReadOnly, NotModified, NullValue",FALSE
+ServiceDescriptions,ServiceDescriptions,,StringArray,"Property, ReadOnly, NotModified, NullValue",FALSE
+ServicePhilosophy,ServicePhilosophy,,UInt16Array,"Property, ReadOnly, NotModified, NullValue",FALSE
+VisibleAlarm,VisibleAlarm,,Boolean,"Property, ReadOnly, NotModified, NullValue",FALSE
+ChassisTypes = ...,ChassisTypes,System.UInt16[],UInt16Array,"Property, ReadOnly, NotModified",FALSE
+CurrentRequiredOrProduced,CurrentRequiredOrProduced,,SInt16,"Property, ReadOnly, NotModified, NullValue",FALSE
+HeatGeneration,HeatGeneration,,UInt16,"Property, ReadOnly, NotModified, NullValue",FALSE
+NumberOfPowerCords,NumberOfPowerCords,,UInt16,"Property, ReadOnly, NotModified, NullValue",FALSE
+TypeDescriptions,TypeDescriptions,,StringArray,"Property, ReadOnly, NotModified, NullValue",FALSE
+SecurityStatus = 3,SecurityStatus,3,UInt16,"Property, ReadOnly, NotModified",FALSE
+"SMBIOSAssetTag = ""1006558""",SMBIOSAssetTag,1006558,String,"Property, ReadOnly, NotModified",FALSE

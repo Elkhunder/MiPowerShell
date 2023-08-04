@@ -1,0 +1,65 @@
+CimProperty,CimProperty.Name,CimProperty.Value,CimProperty.CimType,CimProperty.Flags,CimProperty.IsValueModified
+"Caption = ""LTRDS011""",Caption,LTRDS011,String,"Property, ReadOnly, NotModified",FALSE
+"Description = ""AT/AT COMPATIBLE""",Description,AT/AT COMPATIBLE,String,"Property, ReadOnly, NotModified",FALSE
+InstallDate,InstallDate,,DateTime,"Property, ReadOnly, NotModified, NullValue",FALSE
+"Name = ""LTRDS011""",Name,LTRDS011,String,"Property, Key, ReadOnly, NotModified",FALSE
+"Status = ""OK""",Status,OK,String,"Property, ReadOnly, NotModified",FALSE
+"CreationClassName = ""Win32_ComputerSystem""",CreationClassName,Win32_ComputerSystem,String,"Property, ReadOnly, NotModified",FALSE
+NameFormat,NameFormat,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+PrimaryOwnerContact,PrimaryOwnerContact,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+"PrimaryOwnerName = ""Enterprise Device Enginering and Managm...",PrimaryOwnerName,Enterprise Device Enginering and Managment,String,"Property, ReadOnly, NotModified",FALSE
+Roles = ...,Roles,System.String[],StringArray,"Property, NotModified",FALSE
+InitialLoadInfo,InitialLoadInfo,,StringArray,"Property, ReadOnly, NotModified, NullValue",FALSE
+LastLoadInfo,LastLoadInfo,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+PowerManagementCapabilities,PowerManagementCapabilities,,UInt16Array,"Property, ReadOnly, NotModified, NullValue",FALSE
+PowerManagementSupported,PowerManagementSupported,,Boolean,"Property, ReadOnly, NotModified, NullValue",FALSE
+PowerState = 0,PowerState,0,UInt16,"Property, ReadOnly, NotModified",FALSE
+ResetCapability = 1,ResetCapability,1,UInt16,"Property, ReadOnly, NotModified",FALSE
+AdminPasswordStatus = 3,AdminPasswordStatus,3,UInt16,"Property, ReadOnly, NotModified",FALSE
+AutomaticManagedPagefile = True,AutomaticManagedPagefile,TRUE,Boolean,"Property, NotModified",FALSE
+AutomaticResetBootOption = True,AutomaticResetBootOption,TRUE,Boolean,"Property, NotModified",FALSE
+AutomaticResetCapability = True,AutomaticResetCapability,TRUE,Boolean,"Property, ReadOnly, NotModified",FALSE
+BootOptionOnLimit,BootOptionOnLimit,,UInt16,"Property, ReadOnly, NotModified, NullValue",FALSE
+BootOptionOnWatchDog,BootOptionOnWatchDog,,UInt16,"Property, ReadOnly, NotModified, NullValue",FALSE
+BootROMSupported = True,BootROMSupported,TRUE,Boolean,"Property, ReadOnly, NotModified",FALSE
+BootStatus = ...,BootStatus,System.UInt16[],UInt16Array,"Property, ReadOnly, NotModified",FALSE
+"BootupState = ""Normal boot""",BootupState,Normal boot,String,"Property, ReadOnly, NotModified",FALSE
+ChassisBootupState = 3,ChassisBootupState,3,UInt16,"Property, ReadOnly, NotModified",FALSE
+"ChassisSKUNumber = ""Notebook""",ChassisSKUNumber,Notebook,String,"Property, ReadOnly, NotModified",FALSE
+CurrentTimeZone = -240,CurrentTimeZone,-240,SInt16,"Property, NotModified",FALSE
+DaylightInEffect = True,DaylightInEffect,TRUE,Boolean,"Property, ReadOnly, NotModified",FALSE
+"DNSHostName = ""LTRDS011""",DNSHostName,LTRDS011,String,"Property, ReadOnly, NotModified",FALSE
+"Domain = ""umhs.med.umich.edu""",Domain,umhs.med.umich.edu,String,"Property, ReadOnly, NotModified",FALSE
+DomainRole = 1,DomainRole,1,UInt16,"Property, ReadOnly, NotModified",FALSE
+EnableDaylightSavingsTime = True,EnableDaylightSavingsTime,TRUE,Boolean,"Property, NotModified",FALSE
+FrontPanelResetStatus = 3,FrontPanelResetStatus,3,UInt16,"Property, ReadOnly, NotModified",FALSE
+HypervisorPresent = True,HypervisorPresent,TRUE,Boolean,"Property, ReadOnly, NotModified",FALSE
+InfraredSupported = False,InfraredSupported,FALSE,Boolean,"Property, ReadOnly, NotModified",FALSE
+KeyboardPasswordStatus = 3,KeyboardPasswordStatus,3,UInt16,"Property, ReadOnly, NotModified",FALSE
+"Manufacturer = ""Dell Inc.""",Manufacturer,Dell Inc.,String,"Property, ReadOnly, NotModified",FALSE
+"Model = ""Latitude 5420""",Model,Latitude 5420,String,"Property, ReadOnly, NotModified",FALSE
+NetworkServerModeEnabled = True,NetworkServerModeEnabled,TRUE,Boolean,"Property, ReadOnly, NotModified",FALSE
+NumberOfLogicalProcessors = 8,NumberOfLogicalProcessors,8,UInt32,"Property, ReadOnly, NotModified",FALSE
+NumberOfProcessors = 1,NumberOfProcessors,1,UInt32,"Property, ReadOnly, NotModified",FALSE
+OEMLogoBitmap,OEMLogoBitmap,,UInt8Array,"Property, ReadOnly, NotModified, NullValue",FALSE
+OEMStringArray = ...,OEMStringArray,System.String[],StringArray,"Property, ReadOnly, NotModified",FALSE
+PartOfDomain = True,PartOfDomain,TRUE,Boolean,"Property, ReadOnly, NotModified",FALSE
+PauseAfterReset = -1,PauseAfterReset,-1,SInt64,"Property, ReadOnly, NotModified",FALSE
+PCSystemType = 2,PCSystemType,2,UInt16,"Property, ReadOnly, NotModified",FALSE
+PCSystemTypeEx = 2,PCSystemTypeEx,2,UInt16,"Property, ReadOnly, NotModified",FALSE
+PowerOnPasswordStatus = 3,PowerOnPasswordStatus,3,UInt16,"Property, ReadOnly, NotModified",FALSE
+PowerSupplyState = 3,PowerSupplyState,3,UInt16,"Property, ReadOnly, NotModified",FALSE
+ResetCount = -1,ResetCount,-1,SInt16,"Property, ReadOnly, NotModified",FALSE
+ResetLimit = -1,ResetLimit,-1,SInt16,"Property, ReadOnly, NotModified",FALSE
+SupportContactDescription,SupportContactDescription,,StringArray,"Property, ReadOnly, NotModified, NullValue",FALSE
+"SystemFamily = ""Latitude""",SystemFamily,Latitude,String,"Property, ReadOnly, NotModified",FALSE
+"SystemSKUNumber = ""0A20""",SystemSKUNumber,0A20,String,"Property, ReadOnly, NotModified",FALSE
+SystemStartupDelay,SystemStartupDelay,,UInt16,"Property, NotModified, NullValue",FALSE
+SystemStartupOptions,SystemStartupOptions,,StringArray,"Property, NotModified, NullValue",FALSE
+SystemStartupSetting,SystemStartupSetting,,UInt8,"Property, NotModified, NullValue",FALSE
+"SystemType = ""x64-based PC""",SystemType,x64-based PC,String,"Property, ReadOnly, NotModified",FALSE
+ThermalState = 3,ThermalState,3,UInt16,"Property, ReadOnly, NotModified",FALSE
+TotalPhysicalMemory = 16547975168,TotalPhysicalMemory,16547975168,UInt64,"Property, ReadOnly, NotModified",FALSE
+"UserName = ""UMHS\jsissom""",UserName,UMHS\jsissom,String,"Property, ReadOnly, NotModified",FALSE
+WakeUpType = 1,WakeUpType,1,UInt16,"Property, ReadOnly, NotModified",FALSE
+Workgroup,Workgroup,,String,"Property, NotModified, NullValue",FALSE

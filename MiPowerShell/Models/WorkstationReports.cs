@@ -7,68 +7,12 @@ using System.Threading.Tasks;
 
 namespace MiPowerShell.Models
 {
-    internal class WorkstationReports
-    {
-        public bool _gettingSoftwareList { get; set; }
-        public HardwarePage? HardwarePage { get; set; }
-        public BIOSPage? BIOSPage { get; set; }
-        public NetworkConfigPage? NetworkConfigPage { get; set; }
-        public PrintersPage? PrintersPage { get; set; }
-        public SecurityPage? SecurityPage { get; set; }
-        public SoftwarePage? SoftwarePage { get; set; }
-        
-        public WorkstationReports()
-        {
-            HardwarePage = new();
-            BIOSPage = new();
-            NetworkConfigPage = new();
-            PrintersPage = new();
-            SecurityPage = new();
-            SoftwarePage = new();
-        }
-    }
+    
 
-    public class HardwarePage
-    {
-        SystemInformation systemInformation = new();
-        Memory Memory = new Memory();
-        HardDrives hardDrives = new();
-        DiskDrives diskDrives = new();
-        VideoControllers videoControllers = new();
-        Monitors monitors = new();
-        NetworkAdapters networkAdapters = new();
-    }
+    
 
-    public class SystemInformation
-    {
-        public SystemInformation()
-        {
-            Model = string.Empty;
-            Manufacturer = string.Empty;
-            AssetTag = string.Empty;
-            ServiceTag = string.Empty;
-        }
-
-        public string Model { get; set; }
-        public string Manufacturer { get; set; }
-        public string AssetTag { get; set; }
-        public string ServiceTag { get; set; }
-    }
-    public class Processors
-    {
-        public Processors()
-        {
-            Name = string.Empty;
-            ProcessorType = string.Empty;
-            Architechture = string.Empty;
-            CPUStatus = string.Empty;
-        }
-
-        public string Name { get; set; }
-        public string ProcessorType { get; set; }
-        public string Architechture { get; set; }
-        public string CPUStatus { get; set; }
-    }
+    
+    
     public class Memory
     {
         public Memory()
@@ -82,65 +26,10 @@ namespace MiPowerShell.Models
         public string Capacity { get; set; }
         public string Type { get; set; }
     }
-    public class HardDrives
-    {
-        public HardDrives()
-        {
-            Name = string.Empty;
-            Model = string.Empty;
-            Size = string.Empty;
-            Type = string.Empty;
-            Partitions = string.Empty;
-        }
-
-        public string Name { get; set; }
-        public string Model { get; set; }
-        public string Size { get; set; }
-        public string Type { get; set; }
-        public string Partitions {get; set; }
-    }
-    public class DiskDrives
-    {
-    }
-    public class VideoControllers
-    {
-    }
-    public class Monitors
-    {
-    }
+    
 
 
-    public class BIOSPage
-    {
-        public BIOSInformation? BIOSInformation { get; set; }
-        public BootOrder? BootOrder { get; set; }
-        public BIOSSettings? BIOSSettings { get; set; }
-        public BIOSPage()
-        {
-            BIOSInformation = new();
-            BIOSSettings = new();
-            BootOrder = new();
-        }
-    }
-    public class BIOSInformation
-    {
-        public BIOSInformation()
-        {
-            Model = string.Empty;
-            BIOSVersion = string.Empty;
-            BIOSDate = string.Empty;
-        }
-
-        public string Model { get; set; }
-        public string BIOSVersion { get; set; }
-        public string BIOSDate { get; set; }
-    }
-    public class BootOrder
-    {
-    }
-    public class BIOSSettings
-    {
-    }
+    
 
 
     public class NetworkConfigPage

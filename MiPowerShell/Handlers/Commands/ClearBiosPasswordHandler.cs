@@ -1,11 +1,13 @@
-﻿using Microsoft.Management.Infrastructure;
+﻿using System.Collections.Concurrent;
+using System.Data;
+using System.Runtime.InteropServices;
+using System.Security;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.Management.Infrastructure;
 using MiPowerShell.Arguments;
 using MiPowerShell.Helpers;
-using CimType = Microsoft.Management.Infrastructure.CimType;
-using System.Security;
-using System.Runtime.InteropServices;
 using MiPowerShell.Models;
-using System.Data;
+using CimType = Microsoft.Management.Infrastructure.CimType;
 
 namespace MiPowerShell.Handlers.Commands
 {
@@ -16,8 +18,8 @@ namespace MiPowerShell.Handlers.Commands
         {
             var (computerNames, biosPassword) = arguments;
             BiosPasswordResults results = new BiosPasswordResults();
-                 
-            
+
+
             foreach (var computerName in computerNames)
             {
                 results.TermID?.Add(computerName);
@@ -40,7 +42,7 @@ namespace MiPowerShell.Handlers.Commands
                 {
                     instance = cimSession.EnumerateInstances(namespaceName, className).First();
                 }
-                catch(CimException ex)
+                catch (CimException ex)
                 {
                     if (ex.MessageId == "HRESULT 0x8007052e")
                     {
@@ -101,14 +103,14 @@ namespace MiPowerShell.Handlers.Commands
                     {
                         instance = cimSession.EnumerateInstances(nameSpace, className).First();
                     }
-                    catch(CimException ex)
+                    catch (CimException ex)
                     {
                         Console.WriteLine($"TermID: {computerName}, Error: {ex.Message}");
                         results.Error?.Add(ex.Message);
                         results.Successful?.Add(false);
                         results.StatusCode?.Add(-2);
                     }
-                    
+
                     string oldPassword = ConvertSecureStringToPlainText(biosPassword);
 
                     var encoder = new System.Text.UTF8Encoding();
@@ -208,7 +210,7 @@ namespace MiPowerShell.Handlers.Commands
                     {
                         instance = cimSession.EnumerateInstances(nameSpace, className).First();
                     }
-                    catch(CimException ex)
+                    catch (CimException ex)
                     {
                         Console.WriteLine($"TermID: {computerName}, Error: {ex.Message}");
                         results.Error?.Add(ex.Message);
@@ -217,7 +219,7 @@ namespace MiPowerShell.Handlers.Commands
                         continue;
                     }
                     string oldPassword = ConvertSecureStringToPlainText(biosPassword);
-                    
+
                     var methodParameters = new CimMethodParametersCollection
                     {
                         CimMethodParameter.Create("Name", settingName, CimFlags.Parameter),
@@ -263,7 +265,7 @@ namespace MiPowerShell.Handlers.Commands
                     finally
                     {
                         instance.Dispose();
-                    }  
+                    }
                 }
             }
             DataTable table = new DataTable();
@@ -302,7 +304,7 @@ namespace MiPowerShell.Handlers.Commands
                 Marshal.ZeroFreeBSTR(bstr);
             }
             return oldPassword ?? string.Empty;
-            
+
         }
 
         public bool ValidateArguments(CommandArguments arguments)

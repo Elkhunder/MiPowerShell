@@ -10,19 +10,19 @@
         "projectUniqueName": "C:\\Users\\jsissom\\source\\repos\\MiPowerShell\\MiPowerShell\\MiPowerShell.csproj",
         "projectName": "MiPowerShell",
         "projectPath": "C:\\Users\\jsissom\\source\\repos\\MiPowerShell\\MiPowerShell\\MiPowerShell.csproj",
-        "packagesPath": "C:\\Users\\umhs-jsissom\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\jsissom\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\jsissom\\source\\repos\\MiPowerShell\\MiPowerShell\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\umhs-jsissom\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jsissom\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net7.0-windows"
+          "net7.0-windows10.0.22621.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -30,8 +30,8 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0-windows7.0": {
-            "targetAlias": "net7.0-windows",
+          "net7.0-windows10.0.22621": {
+            "targetAlias": "net7.0-windows10.0.22621.0",
             "projectReferences": {}
           }
         },
@@ -42,12 +42,16 @@
         }
       },
       "frameworks": {
-        "net7.0-windows7.0": {
-          "targetAlias": "net7.0-windows",
+        "net7.0-windows10.0.22621": {
+          "targetAlias": "net7.0-windows10.0.22621.0",
           "dependencies": {
             "EntityFramework": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[6.4.4, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.6.0, )"
             },
             "Microsoft.Management.Infrastructure": {
               "target": "Package",
@@ -73,15 +77,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.Windows.SDK.NET.Ref",
+              "version": "[10.0.22621.29, 10.0.22621.29]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             },
-            "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "Microsoft.Windows.SDK.NET.Ref": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App": {
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }

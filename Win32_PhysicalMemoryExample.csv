@@ -1,0 +1,37 @@
+CimProperty,CimProperty.Name,CimProperty.Value,CimProperty.CimType,CimProperty.Flags,CimProperty.IsValueModified
+"Caption = ""Physical Memory""",Caption,Physical Memory,String,"Property, ReadOnly, NotModified",FALSE
+"Description = ""Physical Memory""",Description,Physical Memory,String,"Property, ReadOnly, NotModified",FALSE
+InstallDate,InstallDate,,DateTime,"Property, ReadOnly, NotModified, NullValue",FALSE
+"Name = ""Physical Memory""",Name,Physical Memory,String,"Property, ReadOnly, NotModified",FALSE
+Status,Status,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+"CreationClassName = ""Win32_PhysicalMemory""",CreationClassName,Win32_PhysicalMemory,String,"Property, ReadOnly, NotModified",FALSE
+"Manufacturer = ""80AD000080AD""",Manufacturer,80AD000080AD,String,"Property, ReadOnly, NotModified",FALSE
+Model,Model,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+OtherIdentifyingInfo,OtherIdentifyingInfo,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+"PartNumber = ""HMAA1GS6CJR6N-XN    """,PartNumber,HMAA1GS6CJR6N-XN    ,String,"Property, ReadOnly, NotModified",FALSE
+PoweredOn,PoweredOn,,Boolean,"Property, ReadOnly, NotModified, NullValue",FALSE
+"SerialNumber = ""24CB5EB0""",SerialNumber,24CB5EB0,String,"Property, ReadOnly, NotModified",FALSE
+SKU,SKU,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+"Tag = ""Physical Memory 0""",Tag,Physical Memory 0,String,"Property, Key, ReadOnly, NotModified",FALSE
+Version,Version,,String,"Property, ReadOnly, NotModified, NullValue",FALSE
+HotSwappable,HotSwappable,,Boolean,"Property, ReadOnly, NotModified, NullValue",FALSE
+Removable,Removable,,Boolean,"Property, ReadOnly, NotModified, NullValue",FALSE
+Replaceable,Replaceable,,Boolean,"Property, ReadOnly, NotModified, NullValue",FALSE
+FormFactor = 12,FormFactor,12,UInt16,"Property, ReadOnly, NotModified",FALSE
+"BankLabel = ""BANK 0""",BankLabel,BANK 0,String,"Property, ReadOnly, NotModified",FALSE
+Capacity = 8589934592,Capacity,8589934592,UInt64,"Property, ReadOnly, NotModified",FALSE
+DataWidth = 64,DataWidth,64,UInt16,"Property, ReadOnly, NotModified",FALSE
+InterleavePosition,InterleavePosition,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE
+MemoryType = 0,MemoryType,0,UInt16,"Property, ReadOnly, NotModified",FALSE
+PositionInRow,PositionInRow,,UInt32,"Property, ReadOnly, NotModified, NullValue",FALSE
+Speed = 3200,Speed,3200,UInt32,"Property, ReadOnly, NotModified",FALSE
+TotalWidth = 64,TotalWidth,64,UInt16,"Property, ReadOnly, NotModified",FALSE
+Attributes = 1,Attributes,1,UInt32,"Property, ReadOnly, NotModified",FALSE
+ConfiguredClockSpeed = 3200,ConfiguredClockSpeed,3200,UInt32,"Property, ReadOnly, NotModified",FALSE
+ConfiguredVoltage = 1200,ConfiguredVoltage,1200,UInt32,"Property, ReadOnly, NotModified",FALSE
+"DeviceLocator = ""DIMM B""",DeviceLocator,DIMM B,String,"Property, ReadOnly, NotModified",FALSE
+InterleaveDataDepth,InterleaveDataDepth,,UInt16,"Property, ReadOnly, NotModified, NullValue",FALSE
+MaxVoltage = 0,MaxVoltage,0,UInt32,"Property, ReadOnly, NotModified",FALSE
+MinVoltage = 0,MinVoltage,0,UInt32,"Property, ReadOnly, NotModified",FALSE
+SMBIOSMemoryType = 26,SMBIOSMemoryType,26,UInt32,"Property, ReadOnly, NotModified",FALSE
+TypeDetail = 128,TypeDetail,128,UInt16,"Property, ReadOnly, NotModified",FALSE

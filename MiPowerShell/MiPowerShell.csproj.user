@@ -1,13 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_LastSelectedProfileId>C:\Users\jsissom\source\repos\MiPowerShell\MiPowerShell\Properties\PublishProfiles\ClickOnceProfile.pubxml</_LastSelectedProfileId>
+    <_LastSelectedProfileId>C:\Users\jsissom\source\repos\MiPowerShell\MiPowerShell\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="Controls\WorkstationReport\UserControl1.cs">
+    <Compile Update="Controls\RoundedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\WorkstationReport\CardViewPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Controls\WorkstationReport\WorkstationReportControl.cs">
+    <Compile Update="Controls\WorkstationReport\OverlayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controls\WorkstationReport\PrinterQueueForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controls\WorkstationReport\PrintQueuePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Controls\WorkstationReport\WorkstationReportForm.cs">

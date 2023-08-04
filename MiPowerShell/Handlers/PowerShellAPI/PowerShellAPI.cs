@@ -20,12 +20,24 @@ namespace MiPowerShell.Handlers
     public class PowerShellAPI : IDisposable
     {
         private readonly RunspacePool _runspacePool;
+        private readonly string? _deviceName;
         private bool disposedValue;
+
         protected PowerShellAPI(RunspacePool runspacePool)
         {
             _runspacePool = runspacePool;
         }
-        
+
+        protected PowerShellAPI(RunspacePool runspacePool, string deviceName)
+        {
+            _runspacePool = runspacePool;
+            _deviceName = deviceName;
+        }
+
+        protected RunspacePool RunspacePool
+        {
+            get { return _runspacePool; }
+        }
 
         public static PowerShellAPI Create(int maxRunspaces)
         {
@@ -36,12 +48,25 @@ namespace MiPowerShell.Handlers
         
         public Collection<PSObject> RunPowerShell(PSCommand command)
         {
-            var powershell = PowerShell.Create();
-            
-            powershell.RunspacePool = _runspacePool;
-            powershell.Commands = command;
-            var result =  powershell.Invoke();
-            return result;
+            using (var powershell = PowerShell.Create())
+            {
+                powershell.RunspacePool = this.RunspacePool;
+
+                if (!string.IsNullOrEmpty(this._deviceName))
+                {
+                    var remoteCommand = new PSCommand();
+                    remoteCommand.AddCommand("Invoke-Command");
+                    remoteCommand.AddParameter("ComputerName", this._deviceName);
+                    remoteCommand.AddParameter("ScriptBlock", command.Commands[0].CommandText);
+                    powershell.Commands = remoteCommand;
+                }
+                else
+                {
+                    powershell.Commands = command;
+                }
+                var result = powershell.Invoke();
+                return result;
+            }
         }
 
         public Collection<T> RunPowerShell<T>(PSCommand command)

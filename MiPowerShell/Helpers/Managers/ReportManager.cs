@@ -1,5 +1,5 @@
 ﻿using MiPowerShell.Models;
-using MiPowerShell.Models.WorkstationReport;
+using MiPowerShell.Models.WorkstationReport.Data;
 
 namespace MiPowerShell.Helpers.Managers
 {

@@ -5,13 +5,13 @@ using MiPowerShell.Validation;
 public class ControlFactory : IErrorProvider
 {
     private readonly Form _form;
-    private Control _tableLayoutPanel;
-    private ErrorProvider _errorProvider;
-    private Validator _validator;
-    private int _controlWidth = 100;
+    private readonly Control _tableLayoutPanel;
+    private readonly ErrorProvider _errorProvider;
+    private readonly Validator _validator;
+    private readonly int _controlWidth = 100;
     private readonly ComboBox_IndexChanged _comboBox_IndexChanged;
     private readonly CheckBox_CheckChanged _checkBox_CheckChanged;
-    private TextBox_FocusLost? _textBox_FocusLost;
+    private readonly TextBox_FocusLost _textBox_FocusLost;
 
     public ControlFactory(Form form)
     {
@@ -22,14 +22,14 @@ public class ControlFactory : IErrorProvider
         _errorProvider.BlinkRate = 1000;
         _comboBox_IndexChanged = new ComboBox_IndexChanged();
         _checkBox_CheckChanged = new CheckBox_CheckChanged(_tableLayoutPanel);
-        
+        _textBox_FocusLost = new TextBox_FocusLost(_tableLayoutPanel);
         _errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
         _validator = new Validator();
     }
 
     public void CreateControls(string selectedCommand)
     {
-        _textBox_FocusLost = new TextBox_FocusLost(_tableLayoutPanel, selectedCommand);
+        _textBox_FocusLost.SelectedCommand = selectedCommand;
         DisposeControls();
         switch (selectedCommand)
         {
@@ -82,7 +82,7 @@ public class ControlFactory : IErrorProvider
                 CreateComputerNameControl();
                 break;
             case "Set-PrinterName":
-                CreateComputerNameControl();
+                CreateComputerNameControl(_textBox_FocusLost.TextBox_ComputerName_FocusLost);
                 CreatePrinterSelectionControl();
                 CreateNewPrinterNameControl();
                 break;
@@ -111,9 +111,10 @@ public class ControlFactory : IErrorProvider
         CreateTextBoxControl("Required", "Computers", "Computers");
     }
 
-    private void CreateComputerNameControl(string eventName)
+    private void CreateComputerNameControl(EventHandler eventHandler)
     {
         CreateLabelControl("EnterComputerName");
+        CreateTextBoxControl("Required", "Computers", "Computers", eventHandler);
     }
 
     private void CreatePasswordControl(string selectedCommand)
