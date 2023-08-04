@@ -8,11 +8,11 @@ namespace MiPowerShell.Models.WorkstationReport.Elements
 {
     public class SoftwareTabElements
     {
-        public SoftwareTabElements(TableLayoutPanel softwareTable)
+        public SoftwareTabElements(DataGridView softwareDataView)
         {
-            SoftwareTable = softwareTable;
+            SoftwareDataView = softwareDataView;
         }
 
-        public TableLayoutPanel SoftwareTable { get; set; }
+        public DataGridView SoftwareDataView { get; set; }
     }
 }
