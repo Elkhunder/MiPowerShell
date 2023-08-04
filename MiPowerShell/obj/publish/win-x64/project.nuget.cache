@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "bxoNtkWtEBqtfHjlLLE9gbS1bMmpd7V1hjnoOyB5vCDfUmy0OfMjwxSTIcV83xjm+KK71p9coyJm4V8FZ68v7g==",
+  "dgSpecHash": "1c2WzZ02H8uO/VxcdaKHp1TUdyG921czjDduBwj8eg2Nfo+PcgrINKaNqbMmeNfvzlMS55S7mqs9n7h4zOm1MA==",
   "success": true,
   "projectFilePath": "C:\\Users\\jsissom\\source\\repos\\MiPowerShell\\MiPowerShell\\MiPowerShell.csproj",
   "expectedPackageFiles": [
@@ -99,7 +99,8 @@
     "C:\\Users\\umhs-jsissom\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512",
     "C:\\Users\\umhs-jsissom\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\7.0.9\\microsoft.netcore.app.runtime.win-x64.7.0.9.nupkg.sha512",
     "C:\\Users\\umhs-jsissom\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\7.0.9\\microsoft.windowsdesktop.app.runtime.win-x64.7.0.9.nupkg.sha512",
-    "C:\\Users\\umhs-jsissom\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\7.0.9\\microsoft.aspnetcore.app.runtime.win-x64.7.0.9.nupkg.sha512"
+    "C:\\Users\\umhs-jsissom\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\7.0.9\\microsoft.aspnetcore.app.runtime.win-x64.7.0.9.nupkg.sha512",
+    "C:\\Users\\umhs-jsissom\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.22621.29\\microsoft.windows.sdk.net.ref.10.0.22621.29.nupkg.sha512"
   ],
   "logs": []
 }
