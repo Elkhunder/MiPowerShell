@@ -30,9 +30,10 @@ namespace MiPowerShell.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WorkstationReportForm));
             headingFlowLayoutPanel = new FlowLayoutPanel();
             pictureBox1 = new PictureBox();
@@ -153,16 +154,10 @@ namespace MiPowerShell.Controls
             networkAdaptersTable = new TableLayoutPanel();
             ipConfigurationTable = new TableLayoutPanel();
             printersTabPage = new TabPage();
-            printerTable = new TableLayoutPanel();
+            printerPanel = new FlowLayoutPanel();
             installedPrintersHeader = new Label();
+            installedPrintersDataView = new DataGridView();
             printerDeafultHeader = new Label();
-            installedPrinterTable = new TableLayoutPanel();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            defaultPrinterTable = new TableLayoutPanel();
-            label4 = new Label();
-            label5 = new Label();
             securityTabPage = new TabPage();
             securityTable = new TableLayoutPanel();
             localAccountsTable = new TableLayoutPanel();
@@ -176,9 +171,6 @@ namespace MiPowerShell.Controls
             softwareTabPage = new TabPage();
             softwareDataView = new DataGridView();
             exitButton = new Button();
-            installedSoftwareBindingSource = new BindingSource(components);
-            softwareInformationBindingSource = new BindingSource(components);
-            printDocument1 = new System.Drawing.Printing.PrintDocument();
             headingFlowLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             mainTableLayoutPanel.SuspendLayout();
@@ -210,15 +202,12 @@ namespace MiPowerShell.Controls
             networkTabPage.SuspendLayout();
             networkTable.SuspendLayout();
             printersTabPage.SuspendLayout();
-            printerTable.SuspendLayout();
-            installedPrinterTable.SuspendLayout();
-            defaultPrinterTable.SuspendLayout();
+            printerPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)installedPrintersDataView).BeginInit();
             securityTabPage.SuspendLayout();
             securityTable.SuspendLayout();
             softwareTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)softwareDataView).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)installedSoftwareBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)softwareInformationBindingSource).BeginInit();
             SuspendLayout();
             // 
             // headingFlowLayoutPanel
@@ -232,7 +221,7 @@ namespace MiPowerShell.Controls
             headingFlowLayoutPanel.Location = new Point(0, 0);
             headingFlowLayoutPanel.Name = "headingFlowLayoutPanel";
             headingFlowLayoutPanel.Padding = new Padding(10, 5, 0, 0);
-            headingFlowLayoutPanel.Size = new Size(1637, 43);
+            headingFlowLayoutPanel.Size = new Size(1478, 43);
             headingFlowLayoutPanel.TabIndex = 0;
             // 
             // pictureBox1
@@ -292,7 +281,7 @@ namespace MiPowerShell.Controls
             mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
             mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            mainTableLayoutPanel.Size = new Size(1637, 705);
+            mainTableLayoutPanel.Size = new Size(1478, 706);
             mainTableLayoutPanel.TabIndex = 1;
             // 
             // headerFlowLayoutPanel
@@ -309,7 +298,7 @@ namespace MiPowerShell.Controls
             headerFlowLayoutPanel.Location = new Point(3, 3);
             headerFlowLayoutPanel.Name = "headerFlowLayoutPanel";
             headerFlowLayoutPanel.Padding = new Padding(10, 0, 0, 0);
-            headerFlowLayoutPanel.Size = new Size(1631, 29);
+            headerFlowLayoutPanel.Size = new Size(1472, 29);
             headerFlowLayoutPanel.TabIndex = 0;
             // 
             // deviceNameHeaderLabel
@@ -396,7 +385,7 @@ namespace MiPowerShell.Controls
             navigationFlowLayoutPanel.Name = "navigationFlowLayoutPanel";
             navigationFlowLayoutPanel.Padding = new Padding(0, 40, 0, 0);
             mainTableLayoutPanel.SetRowSpan(navigationFlowLayoutPanel, 2);
-            navigationFlowLayoutPanel.Size = new Size(209, 664);
+            navigationFlowLayoutPanel.Size = new Size(187, 665);
             navigationFlowLayoutPanel.TabIndex = 2;
             // 
             // generalNavButton
@@ -503,11 +492,11 @@ namespace MiPowerShell.Controls
             mainTabControl.Controls.Add(securityTabPage);
             mainTabControl.Controls.Add(softwareTabPage);
             mainTabControl.Dock = DockStyle.Fill;
-            mainTabControl.Location = new Point(225, 38);
+            mainTabControl.Location = new Point(203, 38);
             mainTabControl.Margin = new Padding(3, 3, 10, 3);
             mainTabControl.Name = "mainTabControl";
             mainTabControl.SelectedIndex = 0;
-            mainTabControl.Size = new Size(1402, 601);
+            mainTabControl.Size = new Size(1265, 601);
             mainTabControl.TabIndex = 4;
             mainTabControl.MouseClick += mainTabControl_MouseClick;
             // 
@@ -517,7 +506,7 @@ namespace MiPowerShell.Controls
             generalTabPage.Location = new Point(4, 26);
             generalTabPage.Name = "generalTabPage";
             generalTabPage.Padding = new Padding(3);
-            generalTabPage.Size = new Size(1394, 571);
+            generalTabPage.Size = new Size(1257, 571);
             generalTabPage.TabIndex = 0;
             generalTabPage.Text = "General";
             generalTabPage.UseVisualStyleBackColor = true;
@@ -540,7 +529,7 @@ namespace MiPowerShell.Controls
             generalTableLayoutPanel.RowStyles.Add(new RowStyle());
             generalTableLayoutPanel.RowStyles.Add(new RowStyle());
             generalTableLayoutPanel.RowStyles.Add(new RowStyle());
-            generalTableLayoutPanel.Size = new Size(1388, 565);
+            generalTableLayoutPanel.Size = new Size(1251, 565);
             generalTableLayoutPanel.TabIndex = 0;
             // 
             // generalInformationFlowLayoutPanel
@@ -556,7 +545,7 @@ namespace MiPowerShell.Controls
             generalInformationFlowLayoutPanel.FlowDirection = FlowDirection.TopDown;
             generalInformationFlowLayoutPanel.Location = new Point(3, 3);
             generalInformationFlowLayoutPanel.Name = "generalInformationFlowLayoutPanel";
-            generalInformationFlowLayoutPanel.Size = new Size(1382, 104);
+            generalInformationFlowLayoutPanel.Size = new Size(1245, 104);
             generalInformationFlowLayoutPanel.TabIndex = 0;
             // 
             // generalInformationHeaderLabel
@@ -622,7 +611,7 @@ namespace MiPowerShell.Controls
             screenTimeoutFlowLayoutPanel.FlowDirection = FlowDirection.TopDown;
             screenTimeoutFlowLayoutPanel.Location = new Point(3, 113);
             screenTimeoutFlowLayoutPanel.Name = "screenTimeoutFlowLayoutPanel";
-            screenTimeoutFlowLayoutPanel.Size = new Size(1382, 84);
+            screenTimeoutFlowLayoutPanel.Size = new Size(1245, 84);
             screenTimeoutFlowLayoutPanel.TabIndex = 1;
             // 
             // screenTimeoutHeaderLabel
@@ -677,7 +666,7 @@ namespace MiPowerShell.Controls
             centricityFlowLayoutPanel.FlowDirection = FlowDirection.TopDown;
             centricityFlowLayoutPanel.Location = new Point(3, 203);
             centricityFlowLayoutPanel.Name = "centricityFlowLayoutPanel";
-            centricityFlowLayoutPanel.Size = new Size(1382, 64);
+            centricityFlowLayoutPanel.Size = new Size(1245, 64);
             centricityFlowLayoutPanel.TabIndex = 2;
             // 
             // centricityHeaderLabel
@@ -722,7 +711,7 @@ namespace MiPowerShell.Controls
             buildInformationFlowLayoutPanel.FlowDirection = FlowDirection.TopDown;
             buildInformationFlowLayoutPanel.Location = new Point(3, 273);
             buildInformationFlowLayoutPanel.Name = "buildInformationFlowLayoutPanel";
-            buildInformationFlowLayoutPanel.Size = new Size(1382, 289);
+            buildInformationFlowLayoutPanel.Size = new Size(1245, 289);
             buildInformationFlowLayoutPanel.TabIndex = 3;
             // 
             // buildInformationHeaderLabel
@@ -762,7 +751,7 @@ namespace MiPowerShell.Controls
             maintenanceTabPage.Location = new Point(4, 24);
             maintenanceTabPage.Name = "maintenanceTabPage";
             maintenanceTabPage.Padding = new Padding(3);
-            maintenanceTabPage.Size = new Size(1394, 573);
+            maintenanceTabPage.Size = new Size(1257, 573);
             maintenanceTabPage.TabIndex = 1;
             maintenanceTabPage.Text = "Maintenance";
             maintenanceTabPage.UseVisualStyleBackColor = true;
@@ -781,7 +770,7 @@ namespace MiPowerShell.Controls
             maintenanceTableLayoutPanel.RowCount = 2;
             maintenanceTableLayoutPanel.RowStyles.Add(new RowStyle());
             maintenanceTableLayoutPanel.RowStyles.Add(new RowStyle());
-            maintenanceTableLayoutPanel.Size = new Size(1388, 567);
+            maintenanceTableLayoutPanel.Size = new Size(1251, 567);
             maintenanceTableLayoutPanel.TabIndex = 0;
             // 
             // maintenanceConfigurationFlowLayoutPanel
@@ -800,7 +789,7 @@ namespace MiPowerShell.Controls
             maintenanceConfigurationFlowLayoutPanel.FlowDirection = FlowDirection.TopDown;
             maintenanceConfigurationFlowLayoutPanel.Location = new Point(3, 3);
             maintenanceConfigurationFlowLayoutPanel.Name = "maintenanceConfigurationFlowLayoutPanel";
-            maintenanceConfigurationFlowLayoutPanel.Size = new Size(1382, 165);
+            maintenanceConfigurationFlowLayoutPanel.Size = new Size(1245, 165);
             maintenanceConfigurationFlowLayoutPanel.TabIndex = 2;
             // 
             // maintenanceConfigurationLabel
@@ -894,7 +883,7 @@ namespace MiPowerShell.Controls
             powerManagementFlowLayoutPanel.FlowDirection = FlowDirection.TopDown;
             powerManagementFlowLayoutPanel.Location = new Point(3, 174);
             powerManagementFlowLayoutPanel.Name = "powerManagementFlowLayoutPanel";
-            powerManagementFlowLayoutPanel.Size = new Size(1382, 390);
+            powerManagementFlowLayoutPanel.Size = new Size(1245, 390);
             powerManagementFlowLayoutPanel.TabIndex = 3;
             // 
             // powerManagementHeaderLabel
@@ -924,7 +913,7 @@ namespace MiPowerShell.Controls
             hardwareTabPage.Location = new Point(4, 24);
             hardwareTabPage.Name = "hardwareTabPage";
             hardwareTabPage.Padding = new Padding(3);
-            hardwareTabPage.Size = new Size(1394, 573);
+            hardwareTabPage.Size = new Size(1257, 573);
             hardwareTabPage.TabIndex = 2;
             hardwareTabPage.Text = "Hardware";
             hardwareTabPage.UseVisualStyleBackColor = true;
@@ -962,7 +951,7 @@ namespace MiPowerShell.Controls
             hardwareTableLayoutPanel.RowStyles.Add(new RowStyle());
             hardwareTableLayoutPanel.RowStyles.Add(new RowStyle());
             hardwareTableLayoutPanel.RowStyles.Add(new RowStyle());
-            hardwareTableLayoutPanel.Size = new Size(1388, 567);
+            hardwareTableLayoutPanel.Size = new Size(1251, 567);
             hardwareTableLayoutPanel.TabIndex = 0;
             // 
             // videoControllersHeaderLabel
@@ -1018,7 +1007,7 @@ namespace MiPowerShell.Controls
             hardwareProcessorsTable.RowCount = 2;
             hardwareProcessorsTable.RowStyles.Add(new RowStyle());
             hardwareProcessorsTable.RowStyles.Add(new RowStyle());
-            hardwareProcessorsTable.Size = new Size(1382, 28);
+            hardwareProcessorsTable.Size = new Size(1245, 28);
             hardwareProcessorsTable.TabIndex = 12;
             // 
             // processorNameHeadingLabel
@@ -1034,7 +1023,7 @@ namespace MiPowerShell.Controls
             // processorTypeHeadingLabel
             // 
             processorTypeHeadingLabel.AutoSize = true;
-            processorTypeHeadingLabel.Location = new Point(1052, 9);
+            processorTypeHeadingLabel.Location = new Point(915, 9);
             processorTypeHeadingLabel.Margin = new Padding(3, 8, 3, 0);
             processorTypeHeadingLabel.Name = "processorTypeHeadingLabel";
             processorTypeHeadingLabel.Size = new Size(120, 17);
@@ -1044,7 +1033,7 @@ namespace MiPowerShell.Controls
             // architectureHeadingLabel
             // 
             architectureHeadingLabel.AutoSize = true;
-            architectureHeadingLabel.Location = new Point(1179, 9);
+            architectureHeadingLabel.Location = new Point(1042, 9);
             architectureHeadingLabel.Margin = new Padding(3, 8, 3, 0);
             architectureHeadingLabel.Name = "architectureHeadingLabel";
             architectureHeadingLabel.Size = new Size(104, 17);
@@ -1054,7 +1043,7 @@ namespace MiPowerShell.Controls
             // cpuStatusHeadingLabel
             // 
             cpuStatusHeadingLabel.AutoSize = true;
-            cpuStatusHeadingLabel.Location = new Point(1290, 9);
+            cpuStatusHeadingLabel.Location = new Point(1153, 9);
             cpuStatusHeadingLabel.Margin = new Padding(3, 8, 3, 0);
             cpuStatusHeadingLabel.Name = "cpuStatusHeadingLabel";
             cpuStatusHeadingLabel.Size = new Size(88, 17);
@@ -1075,7 +1064,7 @@ namespace MiPowerShell.Controls
             systemInformationPanel.Location = new Point(3, 3);
             systemInformationPanel.MinimumSize = new Size(715, 20);
             systemInformationPanel.Name = "systemInformationPanel";
-            systemInformationPanel.Size = new Size(1382, 104);
+            systemInformationPanel.Size = new Size(1245, 104);
             systemInformationPanel.TabIndex = 0;
             // 
             // systemInformationHeaderLabel
@@ -1150,7 +1139,7 @@ namespace MiPowerShell.Controls
             hardwareMemoryTable.RowStyles.Add(new RowStyle());
             hardwareMemoryTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             hardwareMemoryTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            hardwareMemoryTable.Size = new Size(1382, 27);
+            hardwareMemoryTable.Size = new Size(1245, 27);
             hardwareMemoryTable.TabIndex = 8;
             // 
             // memoryNameHeadingLabel
@@ -1215,7 +1204,7 @@ namespace MiPowerShell.Controls
             hardwarePhysicalDisksTable.RowCount = 1;
             hardwarePhysicalDisksTable.RowStyles.Add(new RowStyle());
             hardwarePhysicalDisksTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            hardwarePhysicalDisksTable.Size = new Size(1382, 27);
+            hardwarePhysicalDisksTable.Size = new Size(1245, 27);
             hardwarePhysicalDisksTable.TabIndex = 10;
             // 
             // hardDriveNameHeadingLabel
@@ -1305,7 +1294,7 @@ namespace MiPowerShell.Controls
             hardwareLogicalDisksTable.RowCount = 1;
             hardwareLogicalDisksTable.RowStyles.Add(new RowStyle());
             hardwareLogicalDisksTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            hardwareLogicalDisksTable.Size = new Size(1382, 27);
+            hardwareLogicalDisksTable.Size = new Size(1245, 27);
             hardwareLogicalDisksTable.TabIndex = 11;
             // 
             // diskDriveIdHeadingLabel
@@ -1414,7 +1403,7 @@ namespace MiPowerShell.Controls
             hardwareVideoContollersTable.RowCount = 1;
             hardwareVideoContollersTable.RowStyles.Add(new RowStyle());
             hardwareVideoContollersTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            hardwareVideoContollersTable.Size = new Size(1382, 193);
+            hardwareVideoContollersTable.Size = new Size(1245, 193);
             hardwareVideoContollersTable.TabIndex = 13;
             // 
             // videoControllerNameHeadingLabel
@@ -1483,7 +1472,7 @@ namespace MiPowerShell.Controls
             biosTabPage.Location = new Point(4, 24);
             biosTabPage.Name = "biosTabPage";
             biosTabPage.Padding = new Padding(3);
-            biosTabPage.Size = new Size(1394, 573);
+            biosTabPage.Size = new Size(1257, 573);
             biosTabPage.TabIndex = 3;
             biosTabPage.Text = "BIOS";
             biosTabPage.UseVisualStyleBackColor = true;
@@ -1511,7 +1500,7 @@ namespace MiPowerShell.Controls
             biosTable.RowStyles.Add(new RowStyle());
             biosTable.RowStyles.Add(new RowStyle());
             biosTable.RowStyles.Add(new RowStyle());
-            biosTable.Size = new Size(1388, 567);
+            biosTable.Size = new Size(1251, 567);
             biosTable.TabIndex = 0;
             // 
             // biosInformationHeader
@@ -1532,7 +1521,7 @@ namespace MiPowerShell.Controls
             biosInformationPanel.FlowDirection = FlowDirection.TopDown;
             biosInformationPanel.Location = new Point(3, 26);
             biosInformationPanel.Name = "biosInformationPanel";
-            biosInformationPanel.Size = new Size(1382, 1);
+            biosInformationPanel.Size = new Size(1245, 1);
             biosInformationPanel.TabIndex = 1;
             // 
             // bootOrderHeader
@@ -1552,7 +1541,7 @@ namespace MiPowerShell.Controls
             bootOrderPanel.Dock = DockStyle.Fill;
             bootOrderPanel.Location = new Point(3, 55);
             bootOrderPanel.Name = "bootOrderPanel";
-            bootOrderPanel.Size = new Size(1382, 1);
+            bootOrderPanel.Size = new Size(1245, 1);
             bootOrderPanel.TabIndex = 3;
             // 
             // biosSettingsHeader
@@ -1583,7 +1572,7 @@ namespace MiPowerShell.Controls
             biosSettingsTable.Name = "biosSettingsTable";
             biosSettingsTable.RowCount = 1;
             biosSettingsTable.RowStyles.Add(new RowStyle());
-            biosSettingsTable.Size = new Size(1382, 480);
+            biosSettingsTable.Size = new Size(1245, 480);
             biosSettingsTable.TabIndex = 5;
             // 
             // biosAttributeName
@@ -1612,7 +1601,7 @@ namespace MiPowerShell.Controls
             // 
             biosPossibleValues.AutoSize = true;
             biosPossibleValues.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            biosPossibleValues.Location = new Point(757, 3);
+            biosPossibleValues.Location = new Point(688, 3);
             biosPossibleValues.Margin = new Padding(3);
             biosPossibleValues.Name = "biosPossibleValues";
             biosPossibleValues.Size = new Size(128, 17);
@@ -1625,7 +1614,7 @@ namespace MiPowerShell.Controls
             networkTabPage.Location = new Point(4, 24);
             networkTabPage.Name = "networkTabPage";
             networkTabPage.Padding = new Padding(3);
-            networkTabPage.Size = new Size(1394, 573);
+            networkTabPage.Size = new Size(1257, 573);
             networkTabPage.TabIndex = 4;
             networkTabPage.Text = "Network";
             networkTabPage.UseVisualStyleBackColor = true;
@@ -1648,7 +1637,7 @@ namespace MiPowerShell.Controls
             networkTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             networkTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             networkTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            networkTable.Size = new Size(1388, 567);
+            networkTable.Size = new Size(1251, 567);
             networkTable.TabIndex = 0;
             // 
             // networkAdaptersHeader
@@ -1681,7 +1670,7 @@ namespace MiPowerShell.Controls
             networkAdaptersTable.RowCount = 2;
             networkAdaptersTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             networkAdaptersTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            networkAdaptersTable.Size = new Size(1382, 257);
+            networkAdaptersTable.Size = new Size(1245, 257);
             networkAdaptersTable.TabIndex = 2;
             // 
             // ipConfigurationTable
@@ -1696,152 +1685,99 @@ namespace MiPowerShell.Controls
             ipConfigurationTable.RowCount = 2;
             ipConfigurationTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             ipConfigurationTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            ipConfigurationTable.Size = new Size(1382, 258);
+            ipConfigurationTable.Size = new Size(1245, 258);
             ipConfigurationTable.TabIndex = 3;
             // 
             // printersTabPage
             // 
-            printersTabPage.Controls.Add(printerTable);
+            printersTabPage.Controls.Add(printerPanel);
             printersTabPage.Location = new Point(4, 26);
             printersTabPage.Name = "printersTabPage";
             printersTabPage.Padding = new Padding(3);
-            printersTabPage.Size = new Size(1394, 571);
+            printersTabPage.Size = new Size(1257, 571);
             printersTabPage.TabIndex = 5;
             printersTabPage.Text = "Printers";
             printersTabPage.UseVisualStyleBackColor = true;
             printersTabPage.MouseClick += printersTabPage_MouseClick;
             // 
-            // printerTable
+            // printerPanel
             // 
-            printerTable.ColumnCount = 1;
-            printerTable.ColumnStyles.Add(new ColumnStyle());
-            printerTable.Controls.Add(installedPrintersHeader, 0, 0);
-            printerTable.Controls.Add(printerDeafultHeader, 0, 2);
-            printerTable.Controls.Add(installedPrinterTable, 0, 1);
-            printerTable.Controls.Add(defaultPrinterTable, 0, 3);
-            printerTable.Dock = DockStyle.Fill;
-            printerTable.Location = new Point(3, 3);
-            printerTable.Name = "printerTable";
-            printerTable.RowCount = 4;
-            printerTable.RowStyles.Add(new RowStyle());
-            printerTable.RowStyles.Add(new RowStyle());
-            printerTable.RowStyles.Add(new RowStyle());
-            printerTable.RowStyles.Add(new RowStyle());
-            printerTable.Size = new Size(1388, 565);
-            printerTable.TabIndex = 0;
-            printerTable.MouseClick += printerTable_MouseClick;
+            printerPanel.AutoSize = true;
+            printerPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            printerPanel.Controls.Add(installedPrintersHeader);
+            printerPanel.Controls.Add(installedPrintersDataView);
+            printerPanel.Controls.Add(printerDeafultHeader);
+            printerPanel.Dock = DockStyle.Fill;
+            printerPanel.FlowDirection = FlowDirection.TopDown;
+            printerPanel.Location = new Point(3, 3);
+            printerPanel.Name = "printerPanel";
+            printerPanel.Size = new Size(1251, 565);
+            printerPanel.TabIndex = 0;
+            printerPanel.WrapContents = false;
             // 
             // installedPrintersHeader
             // 
             installedPrintersHeader.AutoSize = true;
+            installedPrintersHeader.Dock = DockStyle.Fill;
             installedPrintersHeader.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             installedPrintersHeader.Location = new Point(3, 3);
             installedPrintersHeader.Margin = new Padding(3, 3, 3, 0);
             installedPrintersHeader.Name = "installedPrintersHeader";
-            installedPrintersHeader.Size = new Size(152, 17);
-            installedPrintersHeader.TabIndex = 0;
+            installedPrintersHeader.Size = new Size(1244, 17);
+            installedPrintersHeader.TabIndex = 5;
             installedPrintersHeader.Text = "Installed Printers";
+            // 
+            // installedPrintersDataView
+            // 
+            installedPrintersDataView.AllowUserToAddRows = false;
+            installedPrintersDataView.AllowUserToDeleteRows = false;
+            installedPrintersDataView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            installedPrintersDataView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            installedPrintersDataView.BackgroundColor = SystemColors.Control;
+            installedPrintersDataView.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new Padding(0, 0, 0, 5);
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            installedPrintersDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            installedPrintersDataView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            installedPrintersDataView.DefaultCellStyle = dataGridViewCellStyle2;
+            installedPrintersDataView.Dock = DockStyle.Fill;
+            installedPrintersDataView.EnableHeadersVisualStyles = false;
+            installedPrintersDataView.Location = new Point(10, 25);
+            installedPrintersDataView.Margin = new Padding(10, 5, 10, 5);
+            installedPrintersDataView.MaximumSize = new Size(1230, 300);
+            installedPrintersDataView.MinimumSize = new Size(1230, 250);
+            installedPrintersDataView.Name = "installedPrintersDataView";
+            installedPrintersDataView.ReadOnly = true;
+            installedPrintersDataView.RowHeadersVisible = false;
+            installedPrintersDataView.RowTemplate.Height = 25;
+            installedPrintersDataView.Size = new Size(1230, 250);
+            installedPrintersDataView.TabIndex = 6;
             // 
             // printerDeafultHeader
             // 
             printerDeafultHeader.AutoSize = true;
+            printerDeafultHeader.Dock = DockStyle.Fill;
             printerDeafultHeader.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            printerDeafultHeader.Location = new Point(3, 52);
+            printerDeafultHeader.Location = new Point(3, 286);
             printerDeafultHeader.Margin = new Padding(3, 6, 3, 0);
             printerDeafultHeader.Name = "printerDeafultHeader";
-            printerDeafultHeader.Size = new Size(136, 17);
-            printerDeafultHeader.TabIndex = 1;
+            printerDeafultHeader.Size = new Size(1244, 17);
+            printerDeafultHeader.TabIndex = 7;
             printerDeafultHeader.Text = "Printer Defaults";
-            // 
-            // installedPrinterTable
-            // 
-            installedPrinterTable.AutoSize = true;
-            installedPrinterTable.ColumnCount = 4;
-            installedPrinterTable.ColumnStyles.Add(new ColumnStyle());
-            installedPrinterTable.ColumnStyles.Add(new ColumnStyle());
-            installedPrinterTable.ColumnStyles.Add(new ColumnStyle());
-            installedPrinterTable.ColumnStyles.Add(new ColumnStyle());
-            installedPrinterTable.Controls.Add(label1, 1, 0);
-            installedPrinterTable.Controls.Add(label2, 2, 0);
-            installedPrinterTable.Controls.Add(label3, 3, 0);
-            installedPrinterTable.Dock = DockStyle.Fill;
-            installedPrinterTable.Location = new Point(3, 23);
-            installedPrinterTable.Name = "installedPrinterTable";
-            installedPrinterTable.RowCount = 1;
-            installedPrinterTable.RowStyles.Add(new RowStyle());
-            installedPrinterTable.Size = new Size(1382, 20);
-            installedPrinterTable.TabIndex = 2;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(3, 3);
-            label1.Margin = new Padding(3, 3, 3, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(80, 17);
-            label1.TabIndex = 0;
-            label1.Text = "Device ID";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(89, 3);
-            label2.Margin = new Padding(3, 3, 3, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(96, 17);
-            label2.TabIndex = 1;
-            label2.Text = "Driver Name";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(191, 3);
-            label3.Margin = new Padding(3, 3, 3, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(80, 17);
-            label3.TabIndex = 2;
-            label3.Text = "Port Name";
-            // 
-            // defaultPrinterTable
-            // 
-            defaultPrinterTable.AutoSize = true;
-            defaultPrinterTable.ColumnCount = 2;
-            defaultPrinterTable.ColumnStyles.Add(new ColumnStyle());
-            defaultPrinterTable.ColumnStyles.Add(new ColumnStyle());
-            defaultPrinterTable.Controls.Add(label4, 0, 0);
-            defaultPrinterTable.Controls.Add(label5, 1, 0);
-            defaultPrinterTable.Dock = DockStyle.Fill;
-            defaultPrinterTable.Location = new Point(3, 72);
-            defaultPrinterTable.Name = "defaultPrinterTable";
-            defaultPrinterTable.RowCount = 1;
-            defaultPrinterTable.RowStyles.Add(new RowStyle());
-            defaultPrinterTable.Size = new Size(1382, 490);
-            defaultPrinterTable.TabIndex = 3;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(3, 3);
-            label4.Margin = new Padding(3, 3, 3, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(112, 17);
-            label4.TabIndex = 0;
-            label4.Text = "User Account ";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(121, 3);
-            label5.Margin = new Padding(3, 3, 3, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(80, 17);
-            label5.TabIndex = 1;
-            label5.Text = "Device ID";
+            printerDeafultHeader.Click += printerDeafultHeader_Click;
             // 
             // securityTabPage
             // 
@@ -1849,7 +1785,7 @@ namespace MiPowerShell.Controls
             securityTabPage.Location = new Point(4, 24);
             securityTabPage.Name = "securityTabPage";
             securityTabPage.Padding = new Padding(3);
-            securityTabPage.Size = new Size(1394, 573);
+            securityTabPage.Size = new Size(1257, 573);
             securityTabPage.TabIndex = 6;
             securityTabPage.Text = "Security";
             securityTabPage.UseVisualStyleBackColor = true;
@@ -1880,7 +1816,7 @@ namespace MiPowerShell.Controls
             securityTable.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             securityTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             securityTable.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            securityTable.Size = new Size(1388, 567);
+            securityTable.Size = new Size(1251, 567);
             securityTable.TabIndex = 0;
             // 
             // localAccountsTable
@@ -1895,7 +1831,7 @@ namespace MiPowerShell.Controls
             localAccountsTable.RowCount = 2;
             localAccountsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             localAccountsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            localAccountsTable.Size = new Size(1382, 115);
+            localAccountsTable.Size = new Size(1245, 115);
             localAccountsTable.TabIndex = 0;
             // 
             // localAdministratorsTable
@@ -1910,7 +1846,7 @@ namespace MiPowerShell.Controls
             localAdministratorsTable.RowCount = 2;
             localAdministratorsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             localAdministratorsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            localAdministratorsTable.Size = new Size(1382, 115);
+            localAdministratorsTable.Size = new Size(1245, 115);
             localAdministratorsTable.TabIndex = 1;
             // 
             // localAccountsHeader
@@ -1961,7 +1897,7 @@ namespace MiPowerShell.Controls
             installedHotFixesTable.RowCount = 2;
             installedHotFixesTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             installedHotFixesTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            installedHotFixesTable.Size = new Size(1382, 115);
+            installedHotFixesTable.Size = new Size(1245, 115);
             installedHotFixesTable.TabIndex = 6;
             // 
             // firewallRulesTable
@@ -1976,16 +1912,16 @@ namespace MiPowerShell.Controls
             firewallRulesTable.RowCount = 2;
             firewallRulesTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             firewallRulesTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            firewallRulesTable.Size = new Size(1382, 118);
+            firewallRulesTable.Size = new Size(1245, 118);
             firewallRulesTable.TabIndex = 7;
             // 
             // softwareTabPage
             // 
             softwareTabPage.Controls.Add(softwareDataView);
-            softwareTabPage.Location = new Point(4, 26);
+            softwareTabPage.Location = new Point(4, 24);
             softwareTabPage.Name = "softwareTabPage";
             softwareTabPage.Padding = new Padding(3);
-            softwareTabPage.Size = new Size(1394, 571);
+            softwareTabPage.Size = new Size(1257, 573);
             softwareTabPage.TabIndex = 7;
             softwareTabPage.Text = "Software";
             softwareTabPage.UseVisualStyleBackColor = true;
@@ -1996,29 +1932,29 @@ namespace MiPowerShell.Controls
             softwareDataView.AllowUserToDeleteRows = false;
             softwareDataView.AllowUserToResizeColumns = false;
             softwareDataView.AllowUserToResizeRows = false;
-            softwareDataView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            softwareDataView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            softwareDataView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            softwareDataView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             softwareDataView.BackgroundColor = SystemColors.Control;
             softwareDataView.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             softwareDataView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new Padding(0, 0, 0, 5);
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            softwareDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.Padding = new Padding(0, 0, 0, 5);
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            softwareDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             softwareDataView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            softwareDataView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            softwareDataView.DefaultCellStyle = dataGridViewCellStyle4;
             softwareDataView.Dock = DockStyle.Fill;
             softwareDataView.EnableHeadersVisualStyles = false;
             softwareDataView.Location = new Point(3, 3);
@@ -2027,7 +1963,7 @@ namespace MiPowerShell.Controls
             softwareDataView.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             softwareDataView.RowHeadersVisible = false;
             softwareDataView.RowTemplate.Height = 25;
-            softwareDataView.Size = new Size(1388, 565);
+            softwareDataView.Size = new Size(1251, 567);
             softwareDataView.TabIndex = 0;
             // 
             // exitButton
@@ -2035,7 +1971,7 @@ namespace MiPowerShell.Controls
             exitButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             exitButton.BackColor = SystemColors.Control;
             exitButton.DialogResult = DialogResult.Cancel;
-            exitButton.Location = new Point(1529, 645);
+            exitButton.Location = new Point(1370, 645);
             exitButton.Margin = new Padding(3, 3, 10, 5);
             exitButton.Name = "exitButton";
             exitButton.Size = new Size(98, 42);
@@ -2044,23 +1980,13 @@ namespace MiPowerShell.Controls
             exitButton.UseVisualStyleBackColor = false;
             exitButton.Click += exitButton_Click;
             // 
-            // installedSoftwareBindingSource
-            // 
-            installedSoftwareBindingSource.DataMember = "InstalledSoftware";
-            installedSoftwareBindingSource.DataSource = softwareInformationBindingSource;
-            // 
-            // softwareInformationBindingSource
-            // 
-            softwareInformationBindingSource.DataSource = typeof(Models.WorkstationReport.Data.SoftwareInformation);
-            // 
             // WorkstationReportForm
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             CancelButton = exitButton;
-            ClientSize = new Size(1637, 748);
+            ClientSize = new Size(1478, 749);
             Controls.Add(mainTableLayoutPanel);
             Controls.Add(headingFlowLayoutPanel);
             Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
@@ -2126,20 +2052,16 @@ namespace MiPowerShell.Controls
             networkTable.ResumeLayout(false);
             networkTable.PerformLayout();
             printersTabPage.ResumeLayout(false);
-            printerTable.ResumeLayout(false);
-            printerTable.PerformLayout();
-            installedPrinterTable.ResumeLayout(false);
-            installedPrinterTable.PerformLayout();
-            defaultPrinterTable.ResumeLayout(false);
-            defaultPrinterTable.PerformLayout();
+            printersTabPage.PerformLayout();
+            printerPanel.ResumeLayout(false);
+            printerPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)installedPrintersDataView).EndInit();
             securityTabPage.ResumeLayout(false);
             securityTabPage.PerformLayout();
             securityTable.ResumeLayout(false);
             securityTable.PerformLayout();
             softwareTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)softwareDataView).EndInit();
-            ((System.ComponentModel.ISupportInitialize)installedSoftwareBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)softwareInformationBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -2196,7 +2118,6 @@ namespace MiPowerShell.Controls
         private Label buildInformationHeaderLabel;
         private Label builtByLabel;
         private Label buildDateLabel;
-        private System.Drawing.Printing.PrintDocument printDocument1;
         private TableLayoutPanel maintenanceTableLayoutPanel;
         private FlowLayoutPanel maintenanceConfigurationFlowLayoutPanel;
         private Label maintenanceConfigurationLabel;
@@ -2264,11 +2185,6 @@ namespace MiPowerShell.Controls
         private Label ipConfigurationHeader;
         private TableLayoutPanel networkAdaptersTable;
         private TableLayoutPanel ipConfigurationTable;
-        private TableLayoutPanel printerTable;
-        private Label installedPrintersHeader;
-        private Label printerDeafultHeader;
-        private TableLayoutPanel installedPrinterTable;
-        private TableLayoutPanel defaultPrinterTable;
         private TableLayoutPanel securityTable;
         private TableLayoutPanel localAccountsTable;
         private TableLayoutPanel localAdministratorsTable;
@@ -2282,19 +2198,12 @@ namespace MiPowerShell.Controls
         private Label biosAttributeName;
         private Label biosCurrentValue;
         private Label biosPossibleValues;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
         private Label loadingLabel;
         private DataGridView softwareData;
-        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn versionDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn publisherDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn installDateDataGridViewTextBoxColumn;
-        private BindingSource installedSoftwareBindingSource;
-        private BindingSource softwareInformationBindingSource;
         private DataGridView softwareDataView;
+        private FlowLayoutPanel printerPanel;
+        private DataGridView installedPrintersDataView;
+        private Label installedPrintersHeader;
+        private Label printerDeafultHeader;
     }
 }

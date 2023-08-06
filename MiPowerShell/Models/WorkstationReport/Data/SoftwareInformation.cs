@@ -8,7 +8,7 @@ namespace MiPowerShell.Models.WorkstationReport.Data
 {
     public class SoftwareInformation
     {
-        public List<Software>? InstalledSoftware { get; set; }
+        public List<Software> InstalledSoftware { get; set; }
         public bool IsInitialized = false;
         public SoftwareInformation()
         {

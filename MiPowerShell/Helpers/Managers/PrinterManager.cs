@@ -1,11 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.Management.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Namotion.Reflection;
 using System.Printing;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MiPowerShell.Helpers.Managers
 {
@@ -14,20 +10,17 @@ namespace MiPowerShell.Helpers.Managers
         private readonly string _deviceName;
         private readonly BackgroundTaskManager _taskManager;
         private readonly PrintServer _printServer;
-        private CimInstance[]? _cimInstances;
+        private CimInstance[] _win32Printer;
+        private CimHandler _cimHandler;
         public PrinterManager(string deviceName)
         {
             _deviceName = deviceName;
             _taskManager = new BackgroundTaskManager();
             _printServer = new PrintServer($@"\\{deviceName}");
-            
-        }
 
-        public PrinterManager(string deviceName, BackgroundTaskManager backgroundTaskManager, PrintServer printServer)
-        {
-            _deviceName = deviceName;
-            _taskManager = backgroundTaskManager;
-            _printServer = printServer;
+            _cimHandler = new(deviceName);
+            _win32Printer = _cimHandler.GetInstances(@"root\cimv2", "Win32_Printer");
+            
         }
 
         public PrintQueueCollection GetPrinters()
@@ -35,19 +28,23 @@ namespace MiPowerShell.Helpers.Managers
             return _printServer.GetPrintQueues();
         }
 
-        public PrintQueueCollection GetPrinters(string deviceName)
-        {
-            return (new PrintServer(deviceName)).GetPrintQueues();
-        }
-
         public PrintQueue GetPrinter(string printerName)
         {
             return _printServer.GetPrintQueue(printerName);
         }
 
-        public PrintQueue GetPrinter(string printerName, string deviceName)
+        public CimInstance[] GetPrintersWmi()
         {
-            return (new PrintServer(deviceName)).GetPrintQueue(printerName);
+            return _win32Printer;
+        }
+
+        public CimInstance? GetPrinterWmi(string printerName)
+        {
+            return _win32Printer.FirstOrDefault(printer =>
+            {
+                object? deviceID = printer.TryGetPropertyValue<object?>("DeviceID");
+                return deviceID?.ToString() == printerName;
+            });
         }
 
         public string[] GetPrinterNames()
@@ -81,22 +78,32 @@ namespace MiPowerShell.Helpers.Managers
             }
         }
 
-        public PrinterManager(CimInstance[]? cimInstances)
+        public List<string> GetPrinterNamesWmi()
         {
-            _cimInstances = cimInstances;
+            List<string> printerNames = new List<string>();
+            foreach(CimInstance printer in _win32Printer)
+            {
+                object? deviceID = printer.TryGetPropertyValue<object?>("deviceID");
+                string? printerName = deviceID?.ToString();
+                if (printerName is not null)
+                {
+                    printerNames.Add(printerName);
+                }
+            }
+            return printerNames;
         }
 
         public string[] GetPrinterList()
         {
-            if (_cimInstances == null)
-            {
-                return new[] { "" };
-            }
-            string[] printerNames = new string[_cimInstances.Length];
-
+            string[] printerNames = new string[_win32Printer.Length];
             for (int i = 0; i < printerNames.Length; i++)
             {
-                printerNames[i] = (string)_cimInstances[i].CimInstanceProperties["name"].Value;
+                object? deviceID = _win32Printer.TryGetPropertyValue<object?>("deviceID");
+                string? printerName = deviceID?.ToString();
+                if (printerName is not null)
+                {
+                    printerNames[i] = printerName;
+                }
             }
             return printerNames;
         }

@@ -8,13 +8,13 @@ namespace MiPowerShell.Models.WorkstationReport.Elements
 {
     public class PrinterTabElements
     {
-        public PrinterTabElements(TableLayoutPanel installedPrinterTable, TableLayoutPanel defaultPrinterTable)
+        public PrinterTabElements(DataGridView installedPrintersDataView, TableLayoutPanel defaultPrinterTable)
         {
-            InstalledPrinterTable = installedPrinterTable;
+            InstalledPrintersDataView = installedPrintersDataView;
             DefaultPrinterTable = defaultPrinterTable;
         }
 
-        public TableLayoutPanel InstalledPrinterTable { get; set; }
+        public DataGridView InstalledPrintersDataView { get; set; }
         public TableLayoutPanel DefaultPrinterTable { get; set; }
     }
 }
