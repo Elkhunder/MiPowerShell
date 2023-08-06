@@ -138,7 +138,7 @@ namespace MiPowerShell.Controls
             TabPage? tabPage = GetTabPage("printersTabPage");
             string? selection = ConvertTabPageName(tabPage);
             await InformationCheckAsync(IsInitialized, selection);
-            UpdateTabIfNeeded(_isPrintersUpdated, _getWorkstationReport.UpdatePrinterTabElements);
+            //UpdateTabIfNeeded(_isPrintersUpdated, _getWorkstationReport.UpdatePrinterTabElements);
             ChangeTab(tabPage);
         }
 
@@ -178,6 +178,11 @@ namespace MiPowerShell.Controls
         }
 
         private void printerTable_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void printerDeafultHeader_Click(object sender, EventArgs e)
         {
 
         }

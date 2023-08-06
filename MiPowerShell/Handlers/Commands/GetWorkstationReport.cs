@@ -762,11 +762,11 @@ namespace MiPowerShell.Handlers.Commands
         private void GetPrintersTabElements(TabPage tabPage)
         {
             _printersTab = tabPage;
-            TableLayoutPanel printerTable = FindControl<TableLayoutPanel>(tabPage, "printerTable");
-            TableLayoutPanel installedPrinterTable = FindControl<TableLayoutPanel>(printerTable, "installedPrinterTable");
+            FlowLayoutPanel printerTable = FindControl<FlowLayoutPanel>(tabPage, "printerPanel");
+            DataGridView installedPrintersDataView = FindControl<DataGridView>(printerTable, "installedPrintersDataView");
             TableLayoutPanel defaultPrinterTable = FindControl<TableLayoutPanel>(printerTable, "defaultPrinterTable");
 
-            _printerTabElements = new(installedPrinterTable, defaultPrinterTable);
+            _printerTabElements = new(installedPrintersDataView, defaultPrinterTable);
         }
         private void UpdatePrinterProperties(Form form, CimInstance[] Printers, Dictionary<string, object> DefaultPrinter, string deviceName)
         {
@@ -785,109 +785,177 @@ namespace MiPowerShell.Handlers.Commands
             }));
             _printerInformation = new(printerList);
             IsPrinterInformationInitialized.Value = true;
-        }
-        public void UpdatePrinterTabElements()
-        {
-            if (_printerInformation == null || _printerTabElements == null) { return; }
 
-            foreach (Printer printer in _printerInformation.InstalledPrinters)
+            _reportForm.Invoke(() =>
             {
-                int rowIndex = _printerTabElements.InstalledPrinterTable.RowCount++;
-                _printerTabElements.InstalledPrinterTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                DataGridView grid = _printerTabElements.InstalledPrintersDataView as DataGridView;
+                _reportForm.SuspendLayout();
+                grid.DataSource = _printerInformation.InstalledPrinters;
+                grid.AutoResizeColumns();
 
-                Label printerName = new Label()
+                int totalHeight = _printerTabElements.InstalledPrintersDataView.ColumnHeadersHeight;
+
+                foreach (DataGridViewRow row in grid.Rows)
                 {
-                    Text = printer.DeviceId,
-                    AutoSize = true,
-                    Anchor = AnchorStyles.Left
-                };
-                Label driverName = new Label()
+                    totalHeight += row.Height;
+                }
+                grid.Height = totalHeight;
+
+                DataGridViewButtonColumn buttonColumn = new();
+                buttonColumn.Name = "buttonColumn";
+                buttonColumn.HeaderText = "Print Queue";
+                buttonColumn.Text = "Open";
+                buttonColumn.UseColumnTextForButtonValue = true;
+
+                int desiredIndex = 0;
+                grid.Columns.Insert(desiredIndex, buttonColumn);
+
+                buttonColumn.Width = 80;
+
+                grid.CellContentClick += (sender, e) =>
                 {
-                    Text = printer.DriverName,
-                    AutoSize = true,
-                    Anchor = AnchorStyles.Left
-                };
-                Label portName = new Label
-                {
-                    Text = printer.PortName,
-                    AutoSize = true,
-                    Anchor = AnchorStyles.Left
-                };
-                Button printQueueButton = new Button
-                {
-                    Text = "Open Print Queue",
-                    AutoSize = true,
-                    Anchor = AnchorStyles.Left,
-                };
-                printQueueButton.Click += PrintQueueButton_Click;
+                    if (grid.Columns[e.ColumnIndex].Name is not "buttonColumn" || e.RowIndex < 0) return;
 
-                TableLayoutControlCollection controls = _printerTabElements.InstalledPrinterTable.Controls;
+                    string? printerName = grid.Rows[e.RowIndex].Cells[1].Value.ToString();
 
-                controls.Add(printQueueButton, _columnIndexOpenPrintQueueButton, rowIndex);
-                controls.Add(printerName, _columnIndexPrinterName, rowIndex);
-                controls.Add(driverName, _columnIndexPrinterDriverName, rowIndex);
-                controls.Add(portName, _columnIndexPrinterPortName, rowIndex);
-
-            }
-        }
-
-        private void PrintQueueButton_Click(object? sender, EventArgs e)
-        {
-            Button? button = sender as Button;
-            TableLayoutPanel? panel = _printerTabElements?.InstalledPrinterTable;
-            string? printerName = null;
-            if (button is not null && panel is not null)
-            {
-                int rowIndex = panel.GetRow(button);
-
-                foreach (Control control in panel.Controls)
-                {
-                    int controlRowIndex = panel.GetRow(control);
-                    int controlColumnIndex = panel.GetColumn(control);
-                    Console.WriteLine($"Control: {controlRowIndex}:{controlColumnIndex}, Printer Name: {rowIndex}:{_columnIndexPrinterName}");
-                    Console.WriteLine($"Row: {rowIndex == controlRowIndex}, Column: {_columnIndexPrinterName == controlColumnIndex}");
-                    if (panel.GetRow(control) == rowIndex && panel.GetColumn(control) == _columnIndexPrinterName)
+                    if (printerName is not null)
                     {
-                        if (control is not null && control is Label)
+                        PrintQueue printQueue = new PrintQueue(_printServer, printerName, PrintSystemDesiredAccess.AdministratePrinter);
+
+                        PrinterQueueForm printerQueueForm = new PrinterQueueForm(printQueue);
+                        OverlayForm overlayForm = new OverlayForm(_reportForm!, printerQueueForm);
+
+                        if (_reportForm is not null)
                         {
-                            printerName = control.Text;
-                            break;
+                            printerQueueForm.MaximumSize = _reportForm.Size;
+                            overlayForm.Show(_reportForm);
                         }
+                        else
+                        {
+                            printerQueueForm.MaximumSize = Screen.PrimaryScreen?.Bounds.Size ?? new System.Drawing.Size(800, 600);
+                        }
+                        printerQueueForm.Shown += (sender, e) =>
+                        {
+                            printerQueueForm.Location = new System.Drawing.Point(
+                                _reportForm!.Location.X + (_reportForm.Width - printerQueueForm.Width) / 2,
+                                _reportForm.Location.Y + (_reportForm.Height - printerQueueForm.Height) / 2
+                            );
+                        };
+                        printerQueueForm.Show();
+
+                        printerQueueForm.FormClosed += (sender, e) =>
+                        {
+                            overlayForm.Close();
+                        };
                     }
-
-                }
-            }
-            if (printerName is not null)
-            {
-                PrintQueue printQueue = new PrintQueue(_printServer, printerName, PrintSystemDesiredAccess.AdministratePrinter);
-
-                PrinterQueueForm printerQueueForm = new PrinterQueueForm(printQueue);
-                OverlayForm overlayForm = new OverlayForm(_reportForm!, printerQueueForm);
-
-                if (_reportForm is not null)
-                {
-                    printerQueueForm.MaximumSize = _reportForm.Size;
-                    overlayForm.Show(_reportForm);
-                }
-                else
-                {
-                    printerQueueForm.MaximumSize = Screen.PrimaryScreen?.Bounds.Size ?? new System.Drawing.Size(800, 600);
-                }
-                printerQueueForm.Shown += (sender, e) =>
-                {
-                    printerQueueForm.Location = new System.Drawing.Point(
-                        _reportForm!.Location.X + (_reportForm.Width - printerQueueForm.Width) / 2,
-                        _reportForm.Location.Y + (_reportForm.Height - printerQueueForm.Height) / 2
-                    );
                 };
-                printerQueueForm.Show();
 
-                printerQueueForm.FormClosed += (sender, e) =>
-                {
-                    overlayForm.Close();
-                };
-            }
+                _reportForm.ResumeLayout();
+            });
+            
         }
+        //public void UpdatePrinterTabElements()
+        //{
+        //    if (_printerInformation == null || _printerTabElements == null) { return; }
+
+        //    foreach (Printer printer in _printerInformation.InstalledPrinters)
+        //    {
+        //        int rowIndex = _printerTabElements.InstalledPrinterTable.RowCount++;
+        //        _printerTabElements.InstalledPrinterTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+
+        //        Label printerName = new Label()
+        //        {
+        //            Text = printer.DeviceId,
+        //            AutoSize = true,
+        //            Anchor = AnchorStyles.Left
+        //        };
+        //        Label driverName = new Label()
+        //        {
+        //            Text = printer.DriverName,
+        //            AutoSize = true,
+        //            Anchor = AnchorStyles.Left
+        //        };
+        //        Label portName = new Label
+        //        {
+        //            Text = printer.PortName,
+        //            AutoSize = true,
+        //            Anchor = AnchorStyles.Left
+        //        };
+        //        Button printQueueButton = new Button
+        //        {
+        //            Text = "Open Print Queue",
+        //            AutoSize = true,
+        //            Anchor = AnchorStyles.Left,
+        //        };
+        //        printQueueButton.Click += PrintQueueButton_Click;
+
+        //        TableLayoutControlCollection controls = _printerTabElements.InstalledPrinterTable.Controls;
+
+        //        controls.Add(printQueueButton, _columnIndexOpenPrintQueueButton, rowIndex);
+        //        controls.Add(printerName, _columnIndexPrinterName, rowIndex);
+        //        controls.Add(driverName, _columnIndexPrinterDriverName, rowIndex);
+        //        controls.Add(portName, _columnIndexPrinterPortName, rowIndex);
+
+        //    }
+        //}
+
+        //private void PrintQueueButton_Click(object? sender, EventArgs e)
+        //{
+        //    Button? button = sender as Button;
+        //    TableLayoutPanel? panel = _printerTabElements?.InstalledPrinterTable;
+        //    string? printerName = null;
+        //    if (button is not null && panel is not null)
+        //    {
+        //        int rowIndex = panel.GetRow(button);
+
+        //        foreach (Control control in panel.Controls)
+        //        {
+        //            int controlRowIndex = panel.GetRow(control);
+        //            int controlColumnIndex = panel.GetColumn(control);
+        //            Console.WriteLine($"Control: {controlRowIndex}:{controlColumnIndex}, Printer Name: {rowIndex}:{_columnIndexPrinterName}");
+        //            Console.WriteLine($"Row: {rowIndex == controlRowIndex}, Column: {_columnIndexPrinterName == controlColumnIndex}");
+        //            if (panel.GetRow(control) == rowIndex && panel.GetColumn(control) == _columnIndexPrinterName)
+        //            {
+        //                if (control is not null && control is Label)
+        //                {
+        //                    printerName = control.Text;
+        //                    break;
+        //                }
+        //            }
+
+        //        }
+        //    }
+        //    if (printerName is not null)
+        //    {
+        //        PrintQueue printQueue = new PrintQueue(_printServer, printerName, PrintSystemDesiredAccess.AdministratePrinter);
+
+        //        PrinterQueueForm printerQueueForm = new PrinterQueueForm(printQueue);
+        //        OverlayForm overlayForm = new OverlayForm(_reportForm!, printerQueueForm);
+
+        //        if (_reportForm is not null)
+        //        {
+        //            printerQueueForm.MaximumSize = _reportForm.Size;
+        //            overlayForm.Show(_reportForm);
+        //        }
+        //        else
+        //        {
+        //            printerQueueForm.MaximumSize = Screen.PrimaryScreen?.Bounds.Size ?? new System.Drawing.Size(800, 600);
+        //        }
+        //        printerQueueForm.Shown += (sender, e) =>
+        //        {
+        //            printerQueueForm.Location = new System.Drawing.Point(
+        //                _reportForm!.Location.X + (_reportForm.Width - printerQueueForm.Width) / 2,
+        //                _reportForm.Location.Y + (_reportForm.Height - printerQueueForm.Height) / 2
+        //            );
+        //        };
+        //        printerQueueForm.Show();
+
+        //        printerQueueForm.FormClosed += (sender, e) =>
+        //        {
+        //            overlayForm.Close();
+        //        };
+        //    }
+        //}
 
 
         // Security Methods

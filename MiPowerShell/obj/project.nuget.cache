@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "t9KJ8KYGzrYmf37KuEO4vm3qHR767Sn4LSrhzsuZHGft35DVyfFDs0o11frlJ1BHqeI286jfRUoYeGWURUc/0g==",
+  "dgSpecHash": "uEo7p+FoWR0Y8IvsGUH7haweJNolk7z1J2x0v4eQjVPDwNdTL+IxChSBly4O3FiCAVYKoYgh5fnyRTotKlgLlQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\jsissom\\source\\repos\\MiPowerShell\\MiPowerShell\\MiPowerShell.csproj",
   "expectedPackageFiles": [
@@ -97,6 +97,10 @@
     "C:\\Users\\umhs-jsissom\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\umhs-jsissom\\.nuget\\packages\\system.web.services.description\\4.10.0\\system.web.services.description.4.10.0.nupkg.sha512",
     "C:\\Users\\umhs-jsissom\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512",
+    "C:\\Users\\umhs-jsissom\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.8\\microsoft.netcore.app.ref.7.0.8.nupkg.sha512",
+    "C:\\Users\\umhs-jsissom\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.8\\microsoft.windowsdesktop.app.ref.7.0.8.nupkg.sha512",
+    "C:\\Users\\umhs-jsissom\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.8\\microsoft.aspnetcore.app.ref.7.0.8.nupkg.sha512",
+    "C:\\Users\\umhs-jsissom\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.8\\microsoft.netcore.app.host.win-x64.7.0.8.nupkg.sha512",
     "C:\\Users\\umhs-jsissom\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.22621.29\\microsoft.windows.sdk.net.ref.10.0.22621.29.nupkg.sha512"
   ],
   "logs": []

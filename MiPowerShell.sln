@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiPowerShell.Tests", "MiPow
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MiPowerShellSetup", "MiPowerShellSetup\MiPowerShellSetup.vdproj", "{7ACBAE5D-67F8-4B46-845C-CDD44314E30B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiPowerShell-Benchmarks", "MiPowerShell-Benchmarks\MiPowerShell-Benchmarks.csproj", "{BA143110-DEF8-4B3C-9D98-E5F2BD8241DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU
@@ -31,6 +33,12 @@ Global
 		{7ACBAE5D-67F8-4B46-845C-CDD44314E30B}.All|Any CPU.ActiveCfg = Debug
 		{7ACBAE5D-67F8-4B46-845C-CDD44314E30B}.Debug|Any CPU.ActiveCfg = Debug
 		{7ACBAE5D-67F8-4B46-845C-CDD44314E30B}.Release|Any CPU.ActiveCfg = Release
+		{BA143110-DEF8-4B3C-9D98-E5F2BD8241DD}.All|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA143110-DEF8-4B3C-9D98-E5F2BD8241DD}.All|Any CPU.Build.0 = Debug|Any CPU
+		{BA143110-DEF8-4B3C-9D98-E5F2BD8241DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA143110-DEF8-4B3C-9D98-E5F2BD8241DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA143110-DEF8-4B3C-9D98-E5F2BD8241DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA143110-DEF8-4B3C-9D98-E5F2BD8241DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
