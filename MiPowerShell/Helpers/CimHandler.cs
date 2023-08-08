@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Management.Infrastructure;
 using Microsoft.Management.Infrastructure.Generic;
+using MiPowerShell.Interfaces.Providers;
 
 namespace MiPowerShell.Helpers
 {
-    public class CimHandler : IDisposable, IObserver<CimInstance>
+    public class CimHandler : ICimHandler, IObserver<CimInstance>
     {
         private readonly CimSession _cimSession;
         private CimInstance[]? _cimInstances;

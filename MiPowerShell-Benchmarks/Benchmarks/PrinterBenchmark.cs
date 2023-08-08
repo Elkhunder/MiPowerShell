@@ -10,22 +10,13 @@ namespace MiPowerShell_Benchmarks.Benchmarks
         [Params("Home")]
         public string PrinterName { get; set; }
 
+        [Params("LTRDS011")]
+        public string DeviceName { get; set; }
+
         [GlobalSetup]
         public void Setup()
         {
-            _printManager = new("LTRDS011");
-        }
-
-        [Benchmark]
-        public void GetPrinterNamesTest()
-        {
-            _printManager.GetPrinterNames();
-        }
-
-        [Benchmark]
-        public void GetPrinterNamesWmiTest()
-        {
-            _printManager.GetPrinterNamesWmi();
+            _printManager = new(DeviceName);
         }
 
         [Benchmark]
@@ -47,9 +38,37 @@ namespace MiPowerShell_Benchmarks.Benchmarks
         }
 
         [Benchmark]
+        public void GetPrinterNativeTest()
+        {
+            _printManager.GetPrinterNative(PrinterName);
+        }
+
+        [Benchmark]
         public void GetPrinterWmiTest()
         {
             _printManager.GetPrinterWmi(PrinterName);
         }
+
+        [Benchmark]
+        public void GetPrinterNamesTest()
+        {
+            _printManager.GetPrinterNames();
+        }
+
+        [Benchmark]
+        public void GetPrinterNamesWithDeviceNameTest()
+        {
+            _printManager.GetPrinterNames(DeviceName);
+        }
+
+        [Benchmark]
+        public void GetPrinterNamesWmiTest()
+        {
+            _printManager.GetPrinterNamesWmi();
+        }
+
+        
+
+        
     }
 }
